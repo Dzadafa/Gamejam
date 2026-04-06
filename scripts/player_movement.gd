@@ -1,7 +1,6 @@
 extends CharacterBody2D
 class_name Player
 
-
 const SPEED = 400.0
 const ACCELERATION = SPEED * 5
 const FRICTION = SPEED * 4
