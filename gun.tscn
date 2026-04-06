@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://coju3uru7rrg"]
+
+[ext_resource type="Script" uid="uid://cvdeuta4p7fk7" path="res://gun.gd" id="1_dk5gl"]
+[ext_resource type="Texture2D" uid="uid://bumh5if4xovdf" path="res://icon.svg" id="1_vk1bi"]
+[ext_resource type="PackedScene" uid="uid://c0lwagco6gir3" path="res://bullet.tscn" id="2_kw0bs"]
+
+[node name="Gun" type="Node2D" unique_id=1675322956]
+script = ExtResource("1_dk5gl")
+bullet_scene = ExtResource("2_kw0bs")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=946894066]
+position = Vector2(53.999996, 0)
+scale = Vector2(0.8446356, 0.119999826)
+texture = ExtResource("1_vk1bi")
+
+[node name="BulletSpawn" type="Marker2D" parent="." unique_id=1175842860]
+position = Vector2(106, 0)
+gizmo_extents = 159.1
+
+[node name="BulletTarget" type="Marker2D" parent="." unique_id=1101334262]
+position = Vector2(107, 0)
+
+[node name="ReloadTimer" type="Timer" parent="." unique_id=311825937]
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_timer_timeout"]
