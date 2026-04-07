@@ -1,10 +1,16 @@
 [gd_scene format=3 uid="uid://dohr5ci2ffcq1"]
 
-[ext_resource type="Script" uid="uid://bk3ppj3ol0cq2" path="res://enemy_movement.gd" id="1_4gyqm"]
+[ext_resource type="Script" uid="uid://bk3ppj3ol0cq2" path="res://scripts/enemy_movement.gd" id="1_4gyqm"]
 [ext_resource type="Texture2D" uid="uid://bumh5if4xovdf" path="res://icon.svg" id="2_qi2p4"]
+[ext_resource type="Texture2D" uid="uid://c7yvmueh8uiss" path="res://assets/gullible/left_foot.png" id="3_nenq2"]
+[ext_resource type="Texture2D" uid="uid://hxnyghd1axgp" path="res://assets/gullible/right_foot.png" id="4_md484"]
+[ext_resource type="Texture2D" uid="uid://dmp8rrohgr55t" path="res://assets/gullible/left_arm.png" id="5_ipns3"]
+[ext_resource type="Texture2D" uid="uid://bvda1855tw327" path="res://assets/gullible/body.png" id="6_8qclf"]
+[ext_resource type="Texture2D" uid="uid://x8ork2h2gteg" path="res://assets/gullible/right_arm.png" id="7_w8i8w"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iifgy"]
-size = Vector2(129, 125)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_otmr2"]
+radius = 30.708921
+height = 92.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4gyqm"]
 radius = 407.95343
@@ -12,17 +18,19 @@ radius = 407.95343
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
 size = Vector2(129, 125)
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1172907404]
+[node name="Gullible" type="CharacterBody2D" unique_id=1172907404]
 collision_layer = 2
 script = ExtResource("1_4gyqm")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=515656335]
+position = Vector2(0, -9)
+rotation = 0.1887001
+shape = SubResource("CapsuleShape2D_otmr2")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1845980680]
+visible = false
 modulate = Color(1, 0, 0, 0.9843137)
 texture = ExtResource("2_qi2p4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=515656335]
-position = Vector2(0.5, -0.5)
-shape = SubResource("RectangleShape2D_iifgy")
 
 [node name="ChaseArea" type="Area2D" parent="." unique_id=435124335]
 
@@ -36,6 +44,83 @@ position = Vector2(1.5, -0.5)
 shape = SubResource("RectangleShape2D_md0e3")
 
 [node name="Timer" type="Timer" parent="." unique_id=1193657295]
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1311484848]
+
+[node name="CanvasGroup" type="CanvasGroup" parent="Node2D" unique_id=1870888623]
+
+[node name="LeftFoot" type="Sprite2D" parent="Node2D/CanvasGroup" unique_id=22295791]
+position = Vector2(-36.327145, 37.579803)
+scale = Vector2(0.12526602, 0.12526602)
+texture = ExtResource("3_nenq2")
+offset = Vector2(352.1725, -376.17026)
+
+[node name="RightFoot" type="Sprite2D" parent="Node2D/CanvasGroup" unique_id=434789095]
+position = Vector2(28.811184, 41.337784)
+scale = Vector2(0.12526602, 0.12526602)
+texture = ExtResource("4_md484")
+offset = Vector2(-313.38208, -388.7279)
+
+[node name="LeftArm" type="Sprite2D" parent="Node2D/CanvasGroup" unique_id=1432847223]
+position = Vector2(-48.853745, 0)
+scale = Vector2(0.12526602, 0.12526602)
+texture = ExtResource("5_ipns3")
+offset = Vector2(477.74884, 0.55874723)
+
+[node name="Body" type="Sprite2D" parent="Node2D/CanvasGroup" unique_id=1896565775]
+scale = Vector2(0.12526602, 0.12526602)
+texture = ExtResource("6_8qclf")
+offset = Vector2(-11.998886, -24.556526)
+
+[node name="RightArm" type="Sprite2D" parent="Node2D/CanvasGroup" unique_id=794119485]
+position = Vector2(42.590446, -2.5053203)
+scale = Vector2(0.12526602, 0.12526602)
+texture = ExtResource("7_w8i8w")
+offset = Vector2(-438.95844, 25.674013)
+
+[node name="Node2D2" type="Node2D" parent="." unique_id=1646405937]
+
+[node name="Skeleton2D" type="Skeleton2D" parent="Node2D2" unique_id=323621508]
+
+[node name="body" type="Bone2D" parent="Node2D2/Skeleton2D" unique_id=2080496331]
+scale = Vector2(1.2526602, 1.2526602)
+rest = Transform2D(1, 0, 0, 1, 0, 0)
+
+[node name="left_arm" type="Bone2D" parent="Node2D2/Skeleton2D/body" unique_id=1996400619]
+position = Vector2(-39, 0)
+rest = Transform2D(1, 0, 0, 1, -39, 0)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Node2D2/Skeleton2D/body/left_arm" unique_id=552621699]
+scale = Vector2(0.1, 0.1)
+remote_path = NodePath("../../../../../Node2D/CanvasGroup/LeftArm")
+
+[node name="right_arm" type="Bone2D" parent="Node2D2/Skeleton2D/body" unique_id=195336823]
+position = Vector2(34, -2)
+rest = Transform2D(1, 0, 0, 1, 34, -2)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Node2D2/Skeleton2D/body/right_arm" unique_id=1252864283]
+scale = Vector2(0.1, 0.1)
+remote_path = NodePath("../../../../../Node2D/CanvasGroup/RightArm")
+
+[node name="left_foot" type="Bone2D" parent="Node2D2/Skeleton2D/body" unique_id=99765540]
+position = Vector2(-29, 30)
+rest = Transform2D(1, 0, 0, 1, -29, 30)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Node2D2/Skeleton2D/body/left_foot" unique_id=1718112223]
+scale = Vector2(0.1, 0.1)
+remote_path = NodePath("../../../../../Node2D/CanvasGroup/LeftFoot")
+
+[node name="right_foot" type="Bone2D" parent="Node2D2/Skeleton2D/body" unique_id=774755491]
+position = Vector2(23, 33)
+rest = Transform2D(1, 0, 0, 1, 23, 33)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Node2D2/Skeleton2D/body/right_foot" unique_id=2052043435]
+scale = Vector2(0.1, 0.1)
+remote_path = NodePath("../../../../../Node2D/CanvasGroup/RightFoot")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Node2D2/Skeleton2D/body" unique_id=1928253223]
+scale = Vector2(0.1, 0.1)
+remote_path = NodePath("../../../../Node2D/CanvasGroup/Body")
 
 [connection signal="area_entered" from="ChaseArea" to="." method="_on_chase_area_area_entered"]
 [connection signal="area_exited" from="ChaseArea" to="." method="_on_chase_area_area_exited"]

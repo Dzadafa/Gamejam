@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://raamloyeiv0x"]
 
-[ext_resource type="Script" uid="uid://dpjrs034p6d5t" path="res://radar.gd" id="1_0d54j"]
+[ext_resource type="Script" uid="uid://dpjrs034p6d5t" path="res://scripts/radar.gd" id="1_0d54j"]
 [ext_resource type="Texture2D" uid="uid://bumh5if4xovdf" path="res://icon.svg" id="2_klbcc"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1420225051]

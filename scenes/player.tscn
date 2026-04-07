@@ -37,24 +37,24 @@ material = SubResource("ShaderMaterial_jej6c")
 
 [node name="LeftFoot" type="Sprite2D" parent="body/CanvasGroup" unique_id=1636483580]
 position = Vector2(-15, 33)
-scale = Vector2(0.09971038, 0.09971038)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_3v2ag")
 offset = Vector2(141.44395, -259.7179)
 
 [node name="RightFoot" type="Sprite2D" parent="body/CanvasGroup" unique_id=593246614]
 position = Vector2(9, 31)
-scale = Vector2(0.09971046, 0.09971046)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("5_jej6c")
 offset = Vector2(-99.253136, -249.68883)
 
 [node name="Body" type="Sprite2D" parent="body/CanvasGroup" unique_id=1850660543]
-scale = Vector2(0.09971038, 0.09971038)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("6_f1ej7")
 offset = Vector2(-8.991725, 71.24065)
 
 [node name="Helmet" type="Sprite2D" parent="body/CanvasGroup" unique_id=623076435]
 position = Vector2(0, -20)
-scale = Vector2(0.099710494, 0.099710494)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("7_oprun")
 offset = Vector2(-8.991725, 281.85065)
 
@@ -114,16 +114,16 @@ position = Vector2(-15, 33)
 rest = Transform2D(1, 0, 0, 1, -15, 33)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="skeleton/Skeleton2D/body/left_foot" unique_id=392110022]
+scale = Vector2(0.1, 0.1)
 remote_path = NodePath("../../../../../body/CanvasGroup/LeftFoot")
-update_scale = false
 
 [node name="right_foot" type="Bone2D" parent="skeleton/Skeleton2D/body" unique_id=1556290087]
 position = Vector2(9, 31)
 rest = Transform2D(1, 0, 0, 1, 9, 31)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="skeleton/Skeleton2D/body/right_foot" unique_id=159375277]
+scale = Vector2(0.1, 0.1)
 remote_path = NodePath("../../../../../body/CanvasGroup/RightFoot")
-update_scale = false
 
 [node name="right_arm" type="Bone2D" parent="skeleton/Skeleton2D/body" unique_id=1285476145]
 position = Vector2(23, 0)
@@ -146,12 +146,12 @@ position = Vector2(0, -20)
 rest = Transform2D(1, 0, 0, 1, 0, -38)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="skeleton/Skeleton2D/body/head" unique_id=396358340]
+scale = Vector2(0.1, 0.1)
 remote_path = NodePath("../../../../../body/CanvasGroup/Helmet")
-update_scale = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="skeleton/Skeleton2D/body" unique_id=228133354]
+scale = Vector2(0.1, 0.1)
 remote_path = NodePath("../../../../body/CanvasGroup/Body")
-update_scale = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=389733270]
 position = Vector2(0, -0.5)

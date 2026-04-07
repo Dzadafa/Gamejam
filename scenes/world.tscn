@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://blxffmmsgextb"]
 
-[ext_resource type="PackedScene" uid="uid://raamloyeiv0x" path="res://radar.tscn" id="1_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://raamloyeiv0x" path="res://scenes/radar.tscn" id="1_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://plsva74qyasj" path="res://scenes/player.tscn" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://dohr5ci2ffcq1" path="res://scenes/enemy.tscn" id="2_rwgxs"]
 
