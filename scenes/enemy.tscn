@@ -79,6 +79,7 @@ texture = ExtResource("7_w8i8w")
 offset = Vector2(-438.95844, 25.674013)
 
 [node name="Node2D2" type="Node2D" parent="." unique_id=1646405937]
+visible = false
 
 [node name="Skeleton2D" type="Skeleton2D" parent="Node2D2" unique_id=323621508]
 
