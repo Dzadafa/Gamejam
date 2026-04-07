@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://raamloyeiv0x"]
+
+[ext_resource type="Script" uid="uid://dpjrs034p6d5t" path="res://radar.gd" id="1_0d54j"]
+[ext_resource type="Texture2D" uid="uid://bumh5if4xovdf" path="res://icon.svg" id="2_klbcc"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1420225051]
+script = ExtResource("1_0d54j")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=783416514]
+anchors_preset = -1
+anchor_left = 0.067
+anchor_top = 0.11100001
+anchor_right = 0.067
+anchor_bottom = 0.11100001
+offset_left = -67.184006
+offset_top = -60.92801
+offset_right = 997.10126
+offset_bottom = 996.2145
+scale = Vector2(0.28000015, 0.28000015)
+metadata/_edit_group_ = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1402700728]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="MinimapCamera" type="Camera2D" parent="SubViewportContainer/SubViewport" unique_id=1734907530]
+zoom = Vector2(0.2, 0.2)
+
+[node name="MinimapPlayerIcon" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=495053773]
+texture = ExtResource("2_klbcc")
+
+[node name="MinimapEnemyIcon" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=1722846299]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("2_klbcc")
+
+[node name="Timer" type="Timer" parent="SubViewportContainer/SubViewport" unique_id=1525015915]
+wait_time = 2.0
+
+[connection signal="timeout" from="SubViewportContainer/SubViewport/Timer" to="." method="_on_timer_timeout"]

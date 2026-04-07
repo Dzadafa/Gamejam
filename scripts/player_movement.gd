@@ -7,7 +7,7 @@ const FRICTION = SPEED * 4
 
 @export var bullet_scene : PackedScene
 @onready var gun_marker = $GunPivot
-@onready var gun = $Gun
+@onready var gun = $body/CanvasGroup/Gun
 
 
 
