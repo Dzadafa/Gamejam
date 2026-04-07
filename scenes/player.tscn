@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://plsva74qyasj"]
 
-[ext_resource type="Texture2D" uid="uid://bumh5if4xovdf" path="res://icon.svg" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://bgk7mkqk58htm" path="res://scripts/player_movement.gd" id="1_onrkg"]
+[ext_resource type="Shader" uid="uid://dlomdyhqp5enj" path="res://shaders/outline-canvas.gdshader" id="3_3v2ag"]
 [ext_resource type="PackedScene" uid="uid://c0lwagco6gir3" path="res://scenes/bullet.tscn" id="3_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://0u2d4a45n7ca" path="res://assets/player/left_foot.png" id="4_3v2ag"]
 [ext_resource type="PackedScene" uid="uid://coju3uru7rrg" path="res://scenes/gun.tscn" id="4_hqtel"]
@@ -13,19 +13,19 @@
 [ext_resource type="Texture2D" uid="uid://coekurtduolla" path="res://assets/player/left_wrist.png" id="11_fulsm"]
 [ext_resource type="Texture2D" uid="uid://d3nlorcmis7ih" path="res://assets/player/right_wrist.png" id="12_4r5pv"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
-size = Vector2(126, 125)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jej6c"]
+shader = ExtResource("3_3v2ag")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/width = 4.00000019
+shader_parameter/sample_count = 16
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d2wvv"]
+radius = 28.0
+height = 114.0
 
 [node name="Player" type="CharacterBody2D" unique_id=529118703]
 script = ExtResource("1_onrkg")
 bullet_scene = ExtResource("3_i3pqv")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1009532515]
-texture = ExtResource("1_4flbx")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=389733270]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_onrkg")
 
 [node name="GunPivot" type="Marker2D" parent="." unique_id=1839506035]
 position = Vector2(61, -1)
@@ -33,6 +33,7 @@ position = Vector2(61, -1)
 [node name="body" type="Node2D" parent="." unique_id=778743502]
 
 [node name="CanvasGroup" type="CanvasGroup" parent="body" unique_id=566607339]
+material = SubResource("ShaderMaterial_jej6c")
 
 [node name="LeftFoot" type="Sprite2D" parent="body/CanvasGroup" unique_id=1636483580]
 position = Vector2(-15, 33)
@@ -151,3 +152,7 @@ update_scale = false
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="skeleton/Skeleton2D/body" unique_id=228133354]
 remote_path = NodePath("../../../../body/CanvasGroup/Body")
 update_scale = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=389733270]
+position = Vector2(0, -0.5)
+shape = SubResource("CapsuleShape2D_d2wvv")

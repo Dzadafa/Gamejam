@@ -15,8 +15,8 @@ var speed_multiplier : float = 1.0
 func _ready() -> void:
 	chasing_timer.wait_time = 0.25
 func _physics_process(delta: float) -> void:
-	print("isChasing" + str(isAttacking))
-	print("isAttacking" + str(isAttacking))
+	#print("isChasing" + str(isAttacking))
+	#print("isAttacking" + str(isAttacking))
 	if isChasing and target_body_player != null:
 		var enemy_direction = (target_body_player.global_position - global_position).normalized()
 		velocity = velocity.move_toward(enemy_direction * SPEED * speed_multiplier, ACCELERATION * delta) 
