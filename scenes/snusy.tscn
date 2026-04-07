@@ -1,0 +1,164 @@
+[gd_scene format=3 uid="uid://dtrknra8jl1rq"]
+
+[ext_resource type="Script" uid="uid://bk3ppj3ol0cq2" path="res://scripts/enemy_movement.gd" id="1_v25sg"]
+[ext_resource type="Texture2D" uid="uid://bumh5if4xovdf" path="res://icon.svg" id="2_25ias"]
+[ext_resource type="Shader" uid="uid://dlomdyhqp5enj" path="res://shaders/outline-canvas.gdshader" id="3_1oqv2"]
+[ext_resource type="Texture2D" uid="uid://mpagypisnjhw" path="res://assets/mr-nosey/left_foot.png" id="4_jh83n"]
+[ext_resource type="Texture2D" uid="uid://bap6egkt17yjt" path="res://assets/mr-nosey/left_arm.png" id="5_p5aau"]
+[ext_resource type="Texture2D" uid="uid://dir1j2cxajvnm" path="res://assets/mr-nosey/body.png" id="6_kcmdc"]
+[ext_resource type="Texture2D" uid="uid://d2uledn4o0aiq" path="res://assets/mr-nosey/head.png" id="7_7d18m"]
+[ext_resource type="Texture2D" uid="uid://dufc1c518ow33" path="res://assets/mr-nosey/right_arm.png" id="8_lb8rd"]
+[ext_resource type="Texture2D" uid="uid://daavhib0vu48y" path="res://assets/mr-nosey/right_foot.png" id="9_ls7ib"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_otmr2"]
+radius = 30.708921
+height = 92.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4gyqm"]
+radius = 407.95343
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nenq2"]
+radius = 63.5
+height = 143.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_njoj8"]
+shader = ExtResource("3_1oqv2")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/width = 4.00000019
+shader_parameter/sample_count = 16
+
+[node name="snusy" type="CharacterBody2D" unique_id=1172907404]
+collision_layer = 2
+script = ExtResource("1_v25sg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=515656335]
+position = Vector2(0, -9)
+rotation = 0.1887001
+shape = SubResource("CapsuleShape2D_otmr2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1845980680]
+visible = false
+modulate = Color(1, 0, 0, 0.9843137)
+texture = ExtResource("2_25ias")
+
+[node name="ChaseArea" type="Area2D" parent="." unique_id=435124335]
+
+[node name="ChaseAreaCollision" type="CollisionShape2D" parent="ChaseArea" unique_id=1670403988]
+shape = SubResource("CircleShape2D_4gyqm")
+
+[node name="Timer" type="Timer" parent="." unique_id=1193657295]
+
+[node name="HitBoxArea" type="Area2D" parent="." unique_id=614488214]
+position = Vector2(0, -16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxArea" unique_id=433899910]
+position = Vector2(4, -0.5)
+shape = SubResource("CapsuleShape2D_nenq2")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1311484848]
+
+[node name="CanvasGroup" type="CanvasGroup" parent="Node2D" unique_id=1870888623]
+material = SubResource("ShaderMaterial_njoj8")
+
+[node name="LeftFoot" type="Sprite2D" parent="Node2D/CanvasGroup" unique_id=555891210]
+position = Vector2(-0.99999905, 41)
+scale = Vector2(0.12526602, 0.12526602)
+texture = ExtResource("4_jh83n")
+offset = Vector2(4.000034, -406.00006)
+
+[node name="LeftArm" type="Sprite2D" parent="Node2D/CanvasGroup" unique_id=431449305]
+position = Vector2(-6.999998, -5.000001)
+rotation = 0.71347475
+scale = Vector2(0.12526603, 0.12526603)
+texture = ExtResource("5_p5aau")
+offset = Vector2(19.554825, 78.26358)
+
+[node name="Body" type="Sprite2D" parent="Node2D/CanvasGroup" unique_id=1251778276]
+position = Vector2(11, 9)
+scale = Vector2(0.12526602, 0.12526602)
+texture = ExtResource("6_kcmdc")
+offset = Vector2(-115.999954, -96.00009)
+
+[node name="Head" type="Sprite2D" parent="Node2D/CanvasGroup" unique_id=1307817118]
+position = Vector2(12, -63)
+scale = Vector2(0.12526602, 0.12526602)
+texture = ExtResource("7_7d18m")
+offset = Vector2(-105.999954, 453.99988)
+
+[node name="RightFoot" type="Sprite2D" parent="Node2D/CanvasGroup" unique_id=1761797232]
+position = Vector2(50, 47.000004)
+rotation = -0.032098472
+scale = Vector2(0.12526603, 0.12526603)
+texture = ExtResource("9_ls7ib")
+offset = Vector2(-370.56207, -384.26645)
+
+[node name="RightArm" type="Sprite2D" parent="Node2D/CanvasGroup" unique_id=1592224272]
+position = Vector2(48, -10.999998)
+rotation = -0.3326721
+scale = Vector2(0.12526603, 0.12526603)
+texture = ExtResource("8_lb8rd")
+offset = Vector2(-355.99994, 63.999893)
+
+[node name="Node2D2" type="Node2D" parent="." unique_id=1646405937]
+
+[node name="Skeleton2D" type="Skeleton2D" parent="Node2D2" unique_id=323621508]
+
+[node name="body" type="Bone2D" parent="Node2D2/Skeleton2D" unique_id=2080496331]
+position = Vector2(11, 9)
+scale = Vector2(1.2526602, 1.2526602)
+rest = Transform2D(1.2526602, 0, 0, 1.2526602, 11, 9)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Node2D2/Skeleton2D/body" unique_id=1928253223]
+scale = Vector2(0.1, 0.1)
+remote_path = NodePath("../../../../Node2D/CanvasGroup/Body")
+
+[node name="left_arm" type="Bone2D" parent="Node2D2/Skeleton2D/body" unique_id=1996400619]
+position = Vector2(-14.369418, -11.176216)
+rotation = 0.7134747
+rest = Transform2D(1, 0, 0, 1, -19.15923, -2.3949032)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Node2D2/Skeleton2D/body/left_arm" unique_id=552621699]
+scale = Vector2(0.1, 0.1)
+remote_path = NodePath("../../../../../Node2D/CanvasGroup/LeftArm")
+
+[node name="right_arm" type="Bone2D" parent="Node2D2/Skeleton2D/body" unique_id=195336823]
+position = Vector2(29.53714, -15.966022)
+rotation = -0.3326721
+scale = Vector2(0.99999994, 0.99999994)
+rest = Transform2D(1, 0, 0, 1, 19.159225, -12.772818)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Node2D2/Skeleton2D/body/right_arm" unique_id=1252864283]
+scale = Vector2(0.1, 0.1)
+remote_path = NodePath("../../../../../Node2D/CanvasGroup/RightArm")
+
+[node name="left_foot" type="Bone2D" parent="Node2D2/Skeleton2D/body" unique_id=99765540]
+position = Vector2(-9.579613, 25.545637)
+rest = Transform2D(1, 0, 0, 1, -9.579613, 25.545637)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Node2D2/Skeleton2D/body/left_foot" unique_id=1718112223]
+scale = Vector2(0.1, 0.1)
+remote_path = NodePath("../../../../../Node2D/CanvasGroup/LeftFoot")
+
+[node name="head" type="Bone2D" parent="Node2D2/Skeleton2D/body" unique_id=1138616887]
+position = Vector2(0.7983011, -57.47768)
+rest = Transform2D(1, 0, 0, 1, 0.7983011, -57.47768)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Node2D2/Skeleton2D/body/head" unique_id=1373392404]
+scale = Vector2(0.1, 0.1)
+remote_path = NodePath("../../../../../Node2D/CanvasGroup/Head")
+
+[node name="right_foot" type="Bone2D" parent="Node2D2/Skeleton2D/body" unique_id=774755491]
+position = Vector2(31.133743, 30.335445)
+rotation = -0.03209847
+rest = Transform2D(1, 0, 0, 1, 15.167721, 25.545637)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Node2D2/Skeleton2D/body/right_foot" unique_id=2052043435]
+scale = Vector2(0.1, 0.1)
+remote_path = NodePath("../../../../../Node2D/CanvasGroup/RightFoot")
+
+[connection signal="area_entered" from="ChaseArea" to="." method="_on_chase_area_area_entered"]
+[connection signal="area_exited" from="ChaseArea" to="." method="_on_chase_area_area_exited"]
+[connection signal="body_entered" from="ChaseArea" to="." method="_on_chase_area_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="HitBoxArea" to="." method="_on_hit_box_area_body_entered"]
+[connection signal="body_exited" from="HitBoxArea" to="." method="_on_hit_box_area_body_exited"]

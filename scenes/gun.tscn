@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cvdeuta4p7fk7" path="res://scripts/gun.gd" id="1_dk5gl"]
 [ext_resource type="PackedScene" uid="uid://c0lwagco6gir3" path="res://scenes/bullet.tscn" id="2_kw0bs"]
+[ext_resource type="Texture2D" uid="uid://di0wvuiya4yn1" path="res://assets/player/glove_left.png" id="4_6b133"]
 [ext_resource type="Texture2D" uid="uid://cu24b5ko0cqtt" path="res://assets/player/gun.png" id="4_qd4js"]
+[ext_resource type="Texture2D" uid="uid://m8gs4oiag6jt" path="res://assets/player/glove_right.png" id="5_haq8l"]
 
 [node name="Gun" type="Node2D" unique_id=1675322956]
 script = ExtResource("1_dk5gl")
@@ -24,5 +26,15 @@ position = Vector2(41, 4.000001)
 rotation = 0.25688925
 scale = Vector2(0.11801092, 0.11801092)
 texture = ExtResource("4_qd4js")
+
+[node name="GloveLeft" type="Sprite2D" parent="Gun" unique_id=758726442]
+position = Vector2(-34.821854, -27.271595)
+rotation = -0.25688928
+texture = ExtResource("4_6b133")
+
+[node name="GloveRight" type="Sprite2D" parent="Gun" unique_id=823834548]
+position = Vector2(64.24508, 44.45229)
+rotation = -0.25688928
+texture = ExtResource("5_haq8l")
 
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_timer_timeout"]
