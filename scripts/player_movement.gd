@@ -8,7 +8,7 @@ const FRICTION = SPEED * 4
 @export var bullet_scene : PackedScene
 @onready var gun_marker = $GunPivot
 @onready var gun = $body/CanvasGroup/Gun
-
+@onready var char = $skeleton/Skeleton2D/body
 
 
 func _physics_process(delta: float) -> void:
@@ -27,5 +27,8 @@ func gun_rotation():
 	gun.look_at(mouse_position)
 	if mouse_position.x < global_position.x:
 		gun.scale.y = -1 # Balik sumbu Y agar tidak upside down
+		char.scale.x = -1
 	else:
 		gun.scale.y = 1
+		char.scale.x = 1
+		
