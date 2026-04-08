@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://x8ork2h2gteg" path="res://assets/gullible/right_arm.png" id="7_w8i8w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nenq2"]
-radius = 96.60745
+radius = 61.000004
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4gyqm"]
 radius = 407.95343
@@ -24,7 +24,7 @@ height = 215.0
 
 [node name="Gullible" type="CharacterBody2D" unique_id=1172907404]
 collision_layer = 4
-collision_mask = 10
+collision_mask = 8
 script = ExtResource("1_4gyqm")
 
 [node name="EnemyCollision" type="CollisionShape2D" parent="." unique_id=515656335]
@@ -39,7 +39,6 @@ modulate = Color(1, 0, 0, 0.9843137)
 texture = ExtResource("2_qi2p4")
 
 [node name="Timer" type="Timer" parent="." unique_id=1193657295]
-wait_time = 2.0
 
 [node name="Body" type="Node2D" parent="." unique_id=2017939641]
 
@@ -125,14 +124,14 @@ remote_path = NodePath("../../../../Node2D/CanvasGroup/Body")
 collision_layer = 4
 collision_mask = 10
 
-[node name="EnemyChaseCollision" type="CollisionShape2D" parent="EnemyChaseArea" unique_id=1670403988]
+[node name="ChaseCollision" type="CollisionShape2D" parent="EnemyChaseArea" unique_id=1670403988]
 shape = SubResource("CircleShape2D_4gyqm")
 
 [node name="EnemyHurtBoxArea" type="Area2D" parent="." unique_id=1123216592 groups=["Enemy"]]
 collision_layer = 4
 collision_mask = 14
 
-[node name="EnemyHurtBoxCollision" type="CollisionShape2D" parent="EnemyHurtBoxArea" unique_id=53305728]
+[node name="HurtBoxCollision" type="CollisionShape2D" parent="EnemyHurtBoxArea" unique_id=53305728]
 modulate = Color(0, 18.328726, 0, 0.99215686)
 shape = SubResource("CapsuleShape2D_md484")
 
@@ -140,7 +139,7 @@ shape = SubResource("CapsuleShape2D_md484")
 collision_layer = 4
 collision_mask = 14
 
-[node name="EnemyHitBoxCollision" type="CollisionShape2D" parent="EnemyHitBoxArea" unique_id=433899910]
+[node name="HitBoxCollision" type="CollisionShape2D" parent="EnemyHitBoxArea" unique_id=433899910]
 modulate = Color(0.9328322, 2.2043883e-05, 0.6410513, 1)
 position = Vector2(1.5, -0.5)
 shape = SubResource("CapsuleShape2D_nenq2")
@@ -160,7 +159,4 @@ tint_progress = Color(0, 1, 0, 1)
 
 [node name="EnemyStats" type="Node2D" parent="." unique_id=2058179100]
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="EnemyHurtBoxArea" to="." method="_on_hurt_box_area_area_entered"]
-[connection signal="area_entered" from="EnemyHitBoxArea" to="." method="_on_enemy_hit_box_area_area_entered"]
-[connection signal="area_exited" from="EnemyHitBoxArea" to="." method="_on_enemy_hit_box_area_area_exited"]

@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://x8ork2h2gteg" path="res://assets/gullible/right_arm.png" id="7_w8i8w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nenq2"]
-radius = 96.60745
+radius = 61.000004
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4gyqm"]
 radius = 407.95343
@@ -162,5 +162,4 @@ tint_progress = Color(0, 1, 0, 1)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="EnemyHurtBoxArea" to="." method="_on_hurt_box_area_area_entered"]
-[connection signal="area_entered" from="EnemyHitBoxArea" to="." method="_on_enemy_hit_box_area_area_entered"]
-[connection signal="area_exited" from="EnemyHitBoxArea" to="." method="_on_enemy_hit_box_area_area_exited"]
+[connection signal="area_exited" from="EnemyHurtBoxArea" to="." method="_on_enemy_hurt_box_area_area_exited"]
