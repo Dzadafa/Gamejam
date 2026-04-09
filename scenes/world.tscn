@@ -2,16 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://raamloyeiv0x" path="res://scenes/radar.tscn" id="1_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://plsva74qyasj" path="res://scenes/player.tscn" id="1_f3sb7"]
-[ext_resource type="PackedScene" uid="uid://dohr5ci2ffcq1" path="res://scenes/enemy.tscn" id="2_rwgxs"]
+[ext_resource type="PackedScene" uid="uid://pp3klnapetqe" path="res://scenes/enemy_spawn.tscn" id="3_4wyf3"]
 
 [node name="World" type="Node2D" unique_id=805106329]
 
-[node name="CanvasLayer" parent="." unique_id=1420225051 node_paths=PackedStringArray("player_sprite", "enemy_sprite") instance=ExtResource("1_4wyf3")]
+[node name="CanvasLayer" parent="." unique_id=1420225051 node_paths=PackedStringArray("player_sprite") instance=ExtResource("1_4wyf3")]
 player_sprite = NodePath("../Player")
-enemy_sprite = NodePath("../Enemy")
 
 [node name="Player" parent="." unique_id=529118703 instance=ExtResource("1_f3sb7")]
 
-[node name="Enemy" parent="." unique_id=1172907404 instance=ExtResource("2_rwgxs")]
-position = Vector2(872, 189)
-metadata/_edit_group_ = true
+[node name="EnemySpawn" parent="." unique_id=1643784166 instance=ExtResource("3_4wyf3")]

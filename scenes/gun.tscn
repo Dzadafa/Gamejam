@@ -8,15 +8,13 @@
 
 [node name="Gun" type="Node2D" unique_id=1675322956]
 script = ExtResource("1_dk5gl")
-bullet_scene = ExtResource("2_kw0bs")
 
-[node name="BulletSpawn" type="Marker2D" parent="." unique_id=1175842860]
+[node name="BulletSpawnPosition" type="Marker2D" parent="." unique_id=1175842860]
 visible = false
 position = Vector2(106, 0)
 gizmo_extents = 159.1
 
-[node name="BulletTarget" type="Marker2D" parent="." unique_id=1101334262]
-visible = false
+[node name="BulletTargetPosition" type="Marker2D" parent="." unique_id=1101334262]
 position = Vector2(107, 0)
 
 [node name="ReloadTimer" type="Timer" parent="." unique_id=311825937]
