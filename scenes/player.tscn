@@ -9,10 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://cbdvij018k3xg" path="res://assets/player/right_foot.png" id="5_jej6c"]
 [ext_resource type="Texture2D" uid="uid://c1pcwr6covd08" path="res://assets/player/body.png" id="6_f1ej7"]
 [ext_resource type="Texture2D" uid="uid://78qt8cq8e1db" path="res://assets/player/helmet.png" id="7_oprun"]
-[ext_resource type="Texture2D" uid="uid://bdf7n7viemflh" path="res://assets/player/left_arm.png" id="8_a8ls1"]
-[ext_resource type="Texture2D" uid="uid://ckgrp4xv8mbqt" path="res://assets/player/right_arm.png" id="9_qfm1y"]
-[ext_resource type="Texture2D" uid="uid://coekurtduolla" path="res://assets/player/left_wrist.png" id="11_fulsm"]
-[ext_resource type="Texture2D" uid="uid://d3nlorcmis7ih" path="res://assets/player/right_wrist.png" id="12_4r5pv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d2wvv"]
+radius = 28.0
+height = 114.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v8qja"]
 radius = 8.0
@@ -148,6 +148,7 @@ update_scale = false
 
 [node name="right_foot" type="Bone2D" parent="Body/Skeleton/Skeleton2D/body" unique_id=1556290087]
 position = Vector2(9, 31)
+scale = Vector2(0.9999998, 0.9999998)
 rest = Transform2D(1, 0, 0, 1, 9, 31)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Body/Skeleton/Skeleton2D/body/right_foot" unique_id=159375277]

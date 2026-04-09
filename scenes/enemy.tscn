@@ -72,7 +72,7 @@ offset = Vector2(-11.998886, -24.556526)
 
 [node name="RightArm" type="Sprite2D" parent="Body/Node2D/CanvasGroup" unique_id=794119485]
 position = Vector2(42.590446, -2.5053203)
-scale = Vector2(0.12526602, 0.12526602)
+scale = Vector2(0.125266, 0.125266)
 texture = ExtResource("7_w8i8w")
 offset = Vector2(-438.95844, 25.674013)
 
@@ -95,6 +95,7 @@ remote_path = NodePath("../../../../../Node2D/CanvasGroup/LeftArm")
 
 [node name="right_arm" type="Bone2D" parent="Body/Node2D2/Skeleton2D/body" unique_id=195336823]
 position = Vector2(34, -2)
+scale = Vector2(0.9999999, 0.9999999)
 rest = Transform2D(1, 0, 0, 1, 34, -2)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Body/Node2D2/Skeleton2D/body/right_arm" unique_id=1252864283]
