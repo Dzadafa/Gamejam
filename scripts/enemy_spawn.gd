@@ -3,10 +3,10 @@ extends Node2D
 
 func _ready() -> void:
 	await get_tree().process_frame
-	for i in range(1):
+	for i in range(100):
 		var enemy = EnemyPoolManager.get_enemy()
 		if enemy == null:
-			print("Pool habis! Tidak bisa memunculkan musuh lagi.")
+			print("Pool enemy habis")
 			break
 
 

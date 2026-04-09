@@ -19,9 +19,9 @@ config/icon="res://icon.svg"
 
 EnemyPoolManager="*uid://cyod506w8ur4t"
 BulletPoolManager="*uid://b7uyvpd5cur1w"
-PlayerManager="*uid://dikx4xln42lx0"
-GameDataManager="*uid://bqy6toyhkq7xs"
-SignalBus="*uid://dapfwed0oqthd"
+PlayerManager="*uid://cnevc07aj545d"
+GameDataManager="*uid://dbp3rc0mx3lum"
+SignalBus="*uid://dhcsipq0ovlf2"
 
 [global_group]
 

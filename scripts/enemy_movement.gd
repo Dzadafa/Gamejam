@@ -15,12 +15,12 @@ const ACCELERATION = SPEED * 5
 const FRICTION = SPEED * 4
 const SPEED : float = 300.0
 const HP : float = 100.0
-const PLAYER_DAMAGE = GameDataManager.DAMAGE
-const KNOCKBACK : float = GameDataManager.KNOCKBACK
 
+var player_knockback : float = GameDataManager.KNOCKBACK
+var player_damage = GameDataManager.DAMAGE
 var isChasing = false
 var isHurting = false
-var isHittingPlayer = true
+var isHittingPlayer = false
 
 var attack_range : float = 50.0
 var attack_damage : float = 15.0
@@ -60,11 +60,13 @@ func _physics_process(delta: float) -> void:
 		timer.stop()
 		
 	if isHurting:
-		player_attacked(bullet_area.global_position)
+		if is_instance_valid(bullet_area):
+			player_attacked(bullet_area.global_position)
 		isHurting = false
 		
 	if isHittingPlayer:
-		attack(player_hurt_box_area.global_position, enemy_size)
+		if is_instance_valid(player_hurt_box_area):
+			attack(player_hurt_box_area.global_position, enemy_size)
 		isHittingPlayer = false
 		
 	if current_hp <= 0:
@@ -98,11 +100,11 @@ func handle_flip(move_direction_x: float):
 		enemy_body.scale.x = 1 * enemy_size
 
 func player_attacked(attacker_position: Vector2):
-	current_hp -= PLAYER_DAMAGE
-	texture_progress_bar.value -= PLAYER_DAMAGE
+	current_hp -= player_damage
+	texture_progress_bar.value -= player_damage
 
 	var enemy_knockback_direction = (global_position - attacker_position).normalized()
-	velocity = enemy_knockback_direction * max(0,(KNOCKBACK - (KNOCKBACK * knockback_multiplier)))
+	velocity = enemy_knockback_direction * max(0,(player_knockback - (player_knockback * knockback_multiplier)))
 	
 func attack(enemy_attack_position: Vector2, enemy_attacker_size : float):
 	SignalBus.enemy_hit.emit(attack_damage, enemy_attack_position, enemy_attacker_size)

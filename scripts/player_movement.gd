@@ -4,7 +4,7 @@ class_name Player
 const SPEED = 400.0
 const ACCELERATION = SPEED * 5
 const FRICTION = SPEED * 4
-const KNOCKBACK = GameDataManager.KNOCKBACK
+var knockback = GameDataManager.KNOCKBACK
 
 @export var bullet_scene : PackedScene
 @onready var gun_marker = $GunPivot
