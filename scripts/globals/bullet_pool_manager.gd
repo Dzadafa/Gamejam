@@ -9,8 +9,9 @@ func _ready() -> void:
 	for i in range(pool_size):
 		var bullet = bullet_scene.instantiate()
 		
-		deactivate_bullet(bullet)
-		
+		if bullet.has_method("deactivate"):
+			bullet.deactivate() 
+			
 		call_deferred("add_to_main_scene", bullet)
 		pool.append(bullet)
 
@@ -22,7 +23,3 @@ func get_bullet() -> Node2D:
 		if not bullet.visible: 
 			return bullet
 	return null
-
-func deactivate_bullet(bullet: Node2D) -> void:
-	bullet.hide()
-	bullet.set_physics_process(false)
