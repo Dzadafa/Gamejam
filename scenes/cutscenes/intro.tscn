@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://g420jufx45dh" path="res://assets/cutscenes/silhouette_black.png" id="5_fcqgi"]
 [ext_resource type="Texture2D" uid="uid://drrrywm1anokd" path="res://assets/cutscenes/blaster.png" id="6_jawte"]
 [ext_resource type="Texture2D" uid="uid://fhefffoxuref" path="res://assets/cutscenes/rocket.png" id="7_xb6c1"]
+[ext_resource type="LabelSettings" uid="uid://c415gamibrrkt" path="res://fonts/sub.tres" id="8_d8bft"]
 [ext_resource type="Texture2D" uid="uid://drnu1mgtll8c" path="res://assets/cutscenes/bg/our_solar_system.png" id="8_h08c8"]
 [ext_resource type="AudioStream" uid="uid://dyq2o13enaaws" path="res://assets/audio/clapping.mp3" id="8_tmct5"]
 [ext_resource type="Texture2D" uid="uid://ydonwo2exjha" path="res://assets/cutscenes/earth_type_shit.png" id="9_fcqgi"]
@@ -14,10 +15,12 @@
 [ext_resource type="Texture2D" uid="uid://cu1fh22qxtnhs" path="res://assets/cutscenes/dragonfly.png" id="11_fcqgi"]
 [ext_resource type="Texture2D" uid="uid://bgriut6h4lpgr" path="res://assets/cutscenes/bg/unknwon_space.png" id="12_xb6c1"]
 [ext_resource type="Texture2D" uid="uid://cj1m5mvjk8fv6" path="res://assets/cutscenes/planet_unknown.png" id="13_2yqj3"]
+[ext_resource type="LabelSettings" uid="uid://bfswf5t1avxwr" path="res://fonts/title.tres" id="13_due0d"]
 [ext_resource type="Texture2D" uid="uid://b6k1v8y4axm4" path="res://assets/cutscenes/text_unknown.png" id="14_2yqj3"]
+[ext_resource type="LabelSettings" uid="uid://dtqrl5s5s88xp" path="res://fonts/subtitle.tres" id="14_kh5pt"]
 [ext_resource type="Texture2D" uid="uid://c6l52qaif1eun" path="res://assets/cutscenes/bg/bg_fixfix.png" id="15_qf1bm"]
 [ext_resource type="Texture2D" uid="uid://cyw21il1yxcmy" path="res://assets/cutscenes/pod/foot.png" id="19_okuu7"]
-[ext_resource type="Shader" path="res://shaders/color_rect_circle_clip.gdshader" id="20_3lxpv"]
+[ext_resource type="Shader" uid="uid://cv0nsbbjoko7c" path="res://shaders/color_rect_circle_clip.gdshader" id="20_3lxpv"]
 [ext_resource type="Texture2D" uid="uid://84xikyg34kdo" path="res://assets/cutscenes/pod/body.png" id="20_n850p"]
 [ext_resource type="AudioStream" uid="uid://r41vowvx3me3" path="res://assets/audio/old city theme by remaxim.ogg" id="21_1bg7y"]
 [ext_resource type="Texture2D" uid="uid://dl3n61iw5c0w4" path="res://assets/cutscenes/pod/left_shi.png" id="21_fe0ub"]
@@ -26,18 +29,6 @@
 [ext_resource type="AudioStream" uid="uid://c1yq8ox4xcapa" path="res://assets/audio/rocket.mp3" id="24_ky6bx"]
 [ext_resource type="AudioStream" uid="uid://2tij8u67mc18" path="res://assets/audio/pod.mp3" id="25_31i3i"]
 [ext_resource type="AudioStream" uid="uid://q7rjr12g536g" path="res://assets/audio/boom.mp3" id="26_okuu7"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_mq02j"]
-outline_size = 5
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 0
-shadow_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_fcqgi"]
-font_size = 30
-
-[sub_resource type="LabelSettings" id="LabelSettings_jawte"]
-font_size = 25
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1bg7y"]
 shader = ExtResource("20_3lxpv")
@@ -1219,7 +1210,7 @@ offset_top = 579.0
 offset_right = 793.0
 offset_bottom = 602.0
 text = "The launch of the first interstellar travel project in human history"
-label_settings = SubResource("LabelSettings_mq02j")
+label_settings = ExtResource("8_d8bft")
 visible_characters = 0
 visible_ratio = 0.0
 
@@ -1263,20 +1254,20 @@ offset_bottom = 694.0
 color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="scene3" unique_id=541836008]
-offset_left = 496.0
-offset_top = 265.0
-offset_right = 685.0
-offset_bottom = 307.0
+offset_left = 476.0
+offset_top = 257.0
+offset_right = 749.0
+offset_bottom = 322.0
 text = "5 Years Later"
-label_settings = SubResource("LabelSettings_fcqgi")
+label_settings = ExtResource("13_due0d")
 
 [node name="Label2" type="Label" parent="scene3" unique_id=1014736624]
 offset_left = 457.0
-offset_top = 307.0
-offset_right = 725.0
-offset_bottom = 349.0
+offset_top = 326.0
+offset_right = 771.0
+offset_bottom = 368.0
 text = "135+ Years Earth Time"
-label_settings = SubResource("LabelSettings_jawte")
+label_settings = ExtResource("14_kh5pt")
 
 [node name="scene4" type="Node2D" parent="." unique_id=404664537]
 visible = false

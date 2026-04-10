@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://dtqrl5s5s88xp"]
+
+[ext_resource type="FontFile" uid="uid://bu2v3e40iaqb2" path="res://assets/fonts/Eraser.ttf" id="1_yqkbg"]
+
+[resource]
+font = ExtResource("1_yqkbg")
+font_size = 25
