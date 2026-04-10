@@ -30,7 +30,6 @@ scale = Vector2(0.18359375, 0.18359375)
 texture = ExtResource("1_v7oki")
 
 [node name="BulletExplosion" type="CPUParticles2D" parent="." unique_id=2145799618]
-modulate = Color(1, 0, 0, 1)
 emitting = false
 amount = 15
 lifetime = 2.0

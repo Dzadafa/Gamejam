@@ -37,6 +37,8 @@ shader = ExtResource("3_3v2ag")
 shader_parameter/outline_color = Color(1, 1, 1, 1)
 shader_parameter/width = 4.00000019
 shader_parameter/sample_count = 16
+shader_parameter/hit_flash_color = Color(1, 1, 1, 1)
+shader_parameter/hit_flash_on = false
 
 [sub_resource type="Animation" id="Animation_smehm"]
 length = 0.001
@@ -159,6 +161,18 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [-0.105000205]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Body/body/CanvasGroup:material")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_jej6c")]
 }
 
 [sub_resource type="Animation" id="Animation_ur7pv"]
@@ -286,10 +300,101 @@ tracks/9/keys = {
 "values": [-0.105000205, -1.8887134, -1.8887134, -3.1334853]
 }
 
+[sub_resource type="Shader" id="Shader_ur7pv"]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+// --- Pengaturan Outline (Kode Milikmu) ---
+uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
+uniform vec4 outline_color : source_color = vec4(1.0);
+uniform float width : hint_range(0, 100) = 1.0;
+uniform int sample_count : hint_range(4, 64) = 16;
+
+// --- Pengaturan Hit Flash (Dari Video YouTube) ---
+uniform vec4 hit_flash_color : source_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform bool hit_flash_on = false;
+
+void fragment() {
+    // 1. Membaca piksel asli menggunakan screen_texture
+    vec4 c = textureLod(screen_texture, SCREEN_UV, 0.0);
+
+    // Mencegah artefak gelap di tepi (pre-multiplied alpha fix)
+    if (c.a > 0.0001) {
+        c.rgb /= c.a;
+    }
+
+    // 2. Logika Hit Flash (Disisipkan di sini)
+    // Jika hit_flash_on diaktifkan melalui script/animasi, timpa warna asli dengan warna flash
+    if (hit_flash_on) {
+        c.rgb = hit_flash_color.rgb;
+    }
+
+    // 3. Kalkulasi Outline (Kode Milikmu)
+    vec2 tex_pixel_size = 1.0 / vec2(textureSize(screen_texture, 0));
+    vec2 size = tex_pixel_size * width;
+    float outline = 0.0;
+
+    for (int i = 0; i < sample_count; i++) {
+        float angle = float(i) * (6.28318530718 / float(sample_count));
+        vec2 offset = vec2(cos(angle), sin(angle)) * size;
+
+        vec4 sample_c = textureLod(screen_texture, SCREEN_UV + offset, 0.0);
+        outline += sample_c.a;
+    }
+
+    // Memastikan nilai opasitas outline tidak melebihi batas 1.0
+    outline = min(outline, 1.0);
+    
+    // 4. Gabungkan sprite (yang sudah terkena efek flash atau normal) dengan warna outline
+    vec4 final_color = mix(c, outline_color, clamp(outline - c.a, 0.0, 1.0));
+
+    COLOR *= final_color;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ur7pv"]
+shader = SubResource("Shader_ur7pv")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/width = 4.00000019
+shader_parameter/sample_count = 16
+shader_parameter/hit_flash_color = Color(1, 1, 1, 1)
+shader_parameter/hit_flash_on = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y4r1p"]
+shader = ExtResource("3_3v2ag")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/width = 4.00000019
+shader_parameter/sample_count = 16
+shader_parameter/hit_flash_color = Color(1, 1, 1, 1)
+shader_parameter/hit_flash_on = false
+
+[sub_resource type="Animation" id="Animation_jej6c"]
+resource_name = "hit_flash"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/body/CanvasGroup:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_ur7pv"), SubResource("ShaderMaterial_y4r1p")]
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d2wvv"]
+shader = SubResource("Shader_ur7pv")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/width = 4.00000019
+shader_parameter/sample_count = 16
+shader_parameter/hit_flash_color = Color(1, 1, 1, 1)
+shader_parameter/hit_flash_on = true
+
 [sub_resource type="Animation" id="Animation_3v2ag"]
 resource_name = "hurt"
-length = 0.5
-loop_mode = 2
+length = 0.25
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -298,7 +403,7 @@ tracks/0/path = NodePath("Body/skeleton/Skeleton2D/body/head:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, -20), Vector2(0, -20)]
@@ -310,7 +415,7 @@ tracks/1/path = NodePath("Body/skeleton/Skeleton2D/body/head:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 0.2276527]
@@ -322,7 +427,7 @@ tracks/2/path = NodePath("Body/skeleton/Skeleton2D/body:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(-4, 0)]
@@ -334,7 +439,7 @@ tracks/3/path = NodePath("Body/skeleton/Skeleton2D/body:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 0.0]
@@ -346,7 +451,7 @@ tracks/4/path = NodePath("Body/skeleton/Skeleton2D/body/left_foot:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-15, 33), Vector2(-15, 33)]
@@ -358,7 +463,7 @@ tracks/5/path = NodePath("Body/skeleton/Skeleton2D/body/left_foot:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, -0.79854107]
@@ -370,7 +475,7 @@ tracks/6/path = NodePath("Body/skeleton/Skeleton2D/body/right_foot:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(9, 31), Vector2(9, 31)]
@@ -382,10 +487,22 @@ tracks/7/path = NodePath("Body/skeleton/Skeleton2D/body/right_foot:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, -0.48345202]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Body/body/CanvasGroup:material")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_d2wvv"), SubResource("ShaderMaterial_ur7pv"), SubResource("ShaderMaterial_ur7pv")]
 }
 
 [sub_resource type="Animation" id="Animation_y4r1p"]
@@ -592,6 +709,7 @@ tracks/7/keys = {
 _data = {
 &"RESET": SubResource("Animation_smehm"),
 &"die": SubResource("Animation_ur7pv"),
+&"hit_flash": SubResource("Animation_jej6c"),
 &"hurt": SubResource("Animation_3v2ag"),
 &"iddle": SubResource("Animation_y4r1p"),
 &"walk": SubResource("Animation_d2wvv")
@@ -601,7 +719,7 @@ _data = {
 radius = 34.0
 height = 146.0
 
-[node name="Player" type="CharacterBody2D" unique_id=529118703]
+[node name="Player" type="CharacterBody2D" unique_id=529118703 groups=["Player"]]
 collision_layer = 2
 collision_mask = 6
 script = ExtResource("1_onrkg")
@@ -620,24 +738,28 @@ shape = SubResource("CapsuleShape2D_d2wvv")
 material = SubResource("ShaderMaterial_jej6c")
 
 [node name="LeftFoot" type="Sprite2D" parent="Body/body/CanvasGroup" unique_id=1636483580]
-position = Vector2(-15, 33)
+position = Vector2(-19, 33)
+rotation = -0.79854107
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_3v2ag")
 offset = Vector2(141.44395, -259.7179)
 
 [node name="RightFoot" type="Sprite2D" parent="Body/body/CanvasGroup" unique_id=593246614]
-position = Vector2(9, 31)
-scale = Vector2(0.09999999, 0.09999999)
+position = Vector2(5, 31)
+rotation = -0.483452
+scale = Vector2(0.09999997, 0.09999997)
 texture = ExtResource("5_jej6c")
 offset = Vector2(-99.253136, -249.68883)
 
 [node name="Body" type="Sprite2D" parent="Body/body/CanvasGroup" unique_id=1850660543]
+position = Vector2(-4, 0)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("6_f1ej7")
 offset = Vector2(-8.991725, 71.24065)
 
 [node name="Helmet" type="Sprite2D" parent="Body/body/CanvasGroup" unique_id=623076435]
-position = Vector2(0, -20)
+position = Vector2(-4, -20)
+rotation = 0.2276527
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("7_oprun")
 offset = Vector2(-8.991725, 281.85065)
@@ -660,7 +782,7 @@ remote_path = NodePath("../../../../../body/CanvasGroup/LeftFoot")
 
 [node name="right_foot" type="Bone2D" parent="Body/skeleton/Skeleton2D/body" unique_id=1556290087]
 position = Vector2(9, 31)
-scale = Vector2(0.9999998, 0.9999998)
+scale = Vector2(0.99999964, 0.99999964)
 rest = Transform2D(1, 0, 0, 1, 9, 31)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Body/skeleton/Skeleton2D/body/right_foot" unique_id=159375277]
@@ -680,7 +802,6 @@ scale = Vector2(0.1, 0.1)
 remote_path = NodePath("../../../../body/CanvasGroup/Body")
 
 [node name="GunPivot" type="Marker2D" parent="." unique_id=1839506035]
-position = Vector2(-11, -5)
 
 [node name="Gun" parent="GunPivot" unique_id=1675322956 instance=ExtResource("4_hqtel")]
 position = Vector2(-37, 4)
@@ -690,14 +811,21 @@ rotation = -0.105000205
 libraries/ = SubResource("AnimationLibrary_3v2ag")
 
 [node name="Timer" type="Timer" parent="." unique_id=2054062454]
+wait_time = 0.2
 
-[node name="PlayerHurtBoxArea" type="Area2D" parent="." unique_id=259576858]
+[node name="PlayerHurtBoxArea" type="Area2D" parent="." unique_id=259576858 groups=["PlayerHurtBox"]]
 collision_layer = 2
-collision_mask = 0
+collision_mask = 4
 
 [node name="PlayerHurtBoxCollision" type="CollisionShape2D" parent="PlayerHurtBoxArea" unique_id=1603237879]
+modulate = Color(1, 1, 0, 1)
 shape = SubResource("CapsuleShape2D_smehm")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=993079262]
+drag_left_margin = 0.0
+drag_top_margin = 0.0
+drag_right_margin = 0.0
+drag_bottom_margin = 0.0
+editor_draw_drag_margin = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
