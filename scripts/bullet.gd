@@ -10,7 +10,7 @@ class_name Bullet
 
 const SPEED = 1500
 var bullet_direction = Vector2.ZERO 
-
+var target_group : String = "PlayerHurtBox"
 
 func _ready() -> void:
 	z_index = 4
@@ -36,9 +36,10 @@ func deactivate():
 	if bullet_area != null:
 		bullet_area.set_deferred("monitoring", false)
 		
-func activate(start_position: Vector2, direction: Vector2):
+func activate(start_position: Vector2, direction: Vector2, position_target_group: String = "EnemyHurtBox"):
 	global_position = start_position
 	bullet_direction = direction
+	target_group = position_target_group
 	
 	if bullet_explosion != null:
 		bullet_explosion.emitting = false
@@ -62,14 +63,7 @@ func activate(start_position: Vector2, direction: Vector2):
 
 func _on_bullet_area_area_entered(area: Area2D) -> void:	
 	#print("menabrak Area: ", area.name, "grup Enemy? ", area.is_in_group("Enemy"))
-	if area.is_in_group("EnemyHurtBox"):
-		#bullet_explosion.emitting = true
-		#bullet_explosion.one_shot = true
-		#print("peluru mengenai target")
-		#deactivate()
-		
-	#==
-	
+	if area.is_in_group(target_group):
 		print("peluru mengenai target")
 			
 		set_physics_process(false)

@@ -17,7 +17,7 @@ var knockback = GameDataManager.KNOCKBACK
 var knockback_multiplier : float
 var isKnockbacked = false
 var isMoving = true
-var isHurt = null
+var is_animation_hurt = null
 
 func _ready() -> void:
 	z_index = 2
@@ -31,23 +31,23 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	#print(GameDataManager.curssrent_hp)
-	isHurt = animation_player.current_animation == "hurt"
+	is_animation_hurt = animation_player.current_animation == "hurt"
 	
 	if isMoving:
 		var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 		if direction != Vector2.ZERO:
 			velocity = velocity.move_toward(direction * SPEED, ACCELERATION * delta)
-			if not isHurt:
+			if not is_animation_hurt:
 				animation_player.play_backwards("walk")
 				
 		else:
 			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-			if not isHurt:
+			if not is_animation_hurt:
 				animation_player.play("iddle")
 				
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, (FRICTION * 0.1) * delta)
-		if not isHurt and animation_player.current_animation != "hurt":
+		if not is_animation_hurt and animation_player.current_animation != "hurt":
 			animation_player.play("iddle")
 	
 	gun_rotation()
@@ -59,7 +59,7 @@ func gun_rotation():
 	if mouse_position.x < global_position.x:
 		gun.scale.y = -1 
 		player_body.scale.x = -1
-		if not isHurt and velocity != Vector2.ZERO: 
+		if not is_animation_hurt and velocity != Vector2.ZERO: 
 			animation_player.play("walk")
 	else:
 		gun.scale.y = 1
@@ -69,14 +69,14 @@ func _exit_tree() -> void:
 	if PlayerManager.player == self:
 		PlayerManager.player = null
 		
-func take_damage(amount: int):
-	GameDataManager.current_hp -= amount
-	if GameDataManager.current_hp <= 0:
-		die()
-
-func shoot():
-	if GameDataManager.ammo > 0:
-		GameDataManager.ammo -= 1
+#func take_damage(amount: int):
+	#GameDataManager.current_hp -= amount
+	#if GameDataManager.current_hp <= 0:
+		#die()
+#
+#func shoot():
+	#if GameDataManager.ammo > 0:
+		#GameDataManager.ammo -= 1
 
 func die():
 	SignalBus.player_died.emit()
@@ -106,14 +106,26 @@ func _knockback(damage, attacker_position, attacker_size):
 
 func _on_player_hit_flash(knockback : bool) -> void:
 	if knockback:
-		#await animation_player.animation_finished
 		animation_player.play("hurt")
-		#await animation_player.animation_finished
 	else:
-		await animation_player.animation_finished
+		if animation_player.current_animation == "hurt":
+			await animation_player.animation_finished
 		animation_player.play("RESET")
 	
 func _on_timer_timeout() -> void:
 	isMoving = true
 	on_hit_flash.emit(false)
+	pass # Replace with function body.
+
+
+func _on_player_hurt_box_area_area_entered(area: Area2D) -> void:
+	if area.name == "BulletArea":
+		var bullet = area.get_parent()
+		if bullet is Bullet and bullet.target_group == "PlayerHurtBox":
+			print("kena peluru woi")
+			var damage = 10.0
+			var attacker_position = area.global_position
+			var attacker_size = 1.0
+			_knockback(damage, attacker_position, attacker_size)
+
 	pass # Replace with function body.

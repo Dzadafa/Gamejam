@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dmp8rrohgr55t" path="res://assets/gullible/left_arm.png" id="5_ipns3"]
 [ext_resource type="Texture2D" uid="uid://bvda1855tw327" path="res://assets/gullible/body.png" id="6_8qclf"]
 [ext_resource type="Texture2D" uid="uid://x8ork2h2gteg" path="res://assets/gullible/right_arm.png" id="7_w8i8w"]
+[ext_resource type="PackedScene" uid="uid://coju3uru7rrg" path="res://scenes/gun.tscn" id="9_ipns3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_otmr2"]
 radius = 30.708921
@@ -783,14 +784,14 @@ _data = {
 &"walk": SubResource("Animation_8qclf")
 }
 
-[sub_resource type="Curve" id="Curve_md484"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
 [node name="Gullible" type="CharacterBody2D" unique_id=1172907404]
 collision_layer = 4
 collision_mask = 10
 script = ExtResource("1_4gyqm")
+
+[node name="EnemyPivot" type="Marker2D" parent="." unique_id=1467561798]
+
+[node name="Gun" parent="EnemyPivot" unique_id=1675322956 instance=ExtResource("9_ipns3")]
 
 [node name="GullibleCollision" type="CollisionShape2D" parent="." unique_id=515656335]
 position = Vector2(0, -9)
@@ -933,26 +934,10 @@ offset_right = 184.0
 offset_bottom = -163.0
 theme_override_font_sizes/font_size = 32
 
-[node name="EnemyDieParticle" type="CPUParticles2D" parent="." unique_id=1930219195]
-emitting = false
-amount = 20
-explosiveness = 1.0
-randomness = 1.0
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 404.58
-initial_velocity_max = 404.58
-scale_amount_min = 5.0
-scale_amount_max = 50.0
-scale_amount_curve = SubResource("Curve_md484")
-
-[node name="ShootTimer" type="Timer" parent="." unique_id=912511941]
-
-[node name="ShootPosition" type="Marker2D" parent="." unique_id=299138628]
+[node name="ShooterTimer" type="Timer" parent="." unique_id=963659358]
 
 [connection signal="body_entered" from="EnemyChaseArea" to="." method="_on_enemy_chase_area_body_entered"]
 [connection signal="body_exited" from="EnemyChaseArea" to="." method="_on_enemy_chase_area_body_exited"]
 [connection signal="area_entered" from="EnemyHitBoxArea" to="." method="_on_enemy_hit_box_area_area_entered"]
 [connection signal="area_exited" from="EnemyHitBoxArea" to="." method="_on_enemy_hit_box_area_area_exited"]
 [connection signal="area_entered" from="EnemyHurtBoxArea" to="." method="_on_enemy_hurt_box_area_area_entered"]
-[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

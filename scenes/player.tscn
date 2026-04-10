@@ -1,32 +1,12 @@
 [gd_scene format=3 uid="uid://plsva74qyasj"]
 
 [ext_resource type="Script" uid="uid://bgk7mkqk58htm" path="res://scripts/player_movement.gd" id="1_onrkg"]
-[ext_resource type="Script" uid="uid://befhm832rm3go" path="res://scripts/bullet.gd" id="2_jej6c"]
 [ext_resource type="Shader" uid="uid://dlomdyhqp5enj" path="res://shaders/outline-canvas.gdshader" id="3_3v2ag"]
-[ext_resource type="Texture2D" uid="uid://bumh5if4xovdf" path="res://icon.svg" id="3_f1ej7"]
 [ext_resource type="Texture2D" uid="uid://0u2d4a45n7ca" path="res://assets/player/left_foot.png" id="4_3v2ag"]
 [ext_resource type="PackedScene" uid="uid://coju3uru7rrg" path="res://scenes/gun.tscn" id="4_hqtel"]
 [ext_resource type="Texture2D" uid="uid://cbdvij018k3xg" path="res://assets/player/right_foot.png" id="5_jej6c"]
 [ext_resource type="Texture2D" uid="uid://c1pcwr6covd08" path="res://assets/player/body.png" id="6_f1ej7"]
 [ext_resource type="Texture2D" uid="uid://78qt8cq8e1db" path="res://assets/player/helmet.png" id="7_oprun"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_v8qja"]
-radius = 7.0
-
-[sub_resource type="PackedScene" id="PackedScene_ur7pv"]
-_bundled = {
-"conn_count": 1,
-"conns": PackedInt32Array(3, 0, 11, 10, 2, 0, 0),
-"editable_instances": [],
-"id_paths": [],
-"names": PackedStringArray("BulletAre22", "script", "Area2D", "Sprite2D", "scale", "texture", "BulletCollision", "shape", "CollisionShape2D", "VisibleOnScreenNotifier2D", "_on_visible_on_screen_notifier_2d_screen_exited", "screen_exited"),
-"node_count": 4,
-"node_ids": PackedInt32Array(1383348448, 543253917, 1734565146, 94260277),
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 2, 0, -1, 1, 1, 0, 0, 0, 0, 3, 3, -1, 2, 4, 1, 5, 2, 0, 0, 0, 8, 6, -1, 1, 7, 3, 0, 0, 0, 9, 9, -1, 0, 0),
-"variants": [ExtResource("2_jej6c"), Vector2(0.1, 0.1), ExtResource("3_f1ej7"), SubResource("CircleShape2D_v8qja")],
-"version": 3
-}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d2wvv"]
 radius = 28.0
@@ -723,7 +703,6 @@ height = 146.0
 collision_layer = 2
 collision_mask = 6
 script = ExtResource("1_onrkg")
-bullet_scene = SubResource("PackedScene_ur7pv")
 metadata/_edit_horizontal_guides_ = [74.0, 15.0]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=389733270]
@@ -738,28 +717,24 @@ shape = SubResource("CapsuleShape2D_d2wvv")
 material = SubResource("ShaderMaterial_jej6c")
 
 [node name="LeftFoot" type="Sprite2D" parent="Body/body/CanvasGroup" unique_id=1636483580]
-position = Vector2(-19, 33)
-rotation = -0.79854107
+position = Vector2(-15, 33)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_3v2ag")
 offset = Vector2(141.44395, -259.7179)
 
 [node name="RightFoot" type="Sprite2D" parent="Body/body/CanvasGroup" unique_id=593246614]
-position = Vector2(5, 31)
-rotation = -0.483452
-scale = Vector2(0.09999997, 0.09999997)
+position = Vector2(9, 31)
+scale = Vector2(0.099999964, 0.099999964)
 texture = ExtResource("5_jej6c")
 offset = Vector2(-99.253136, -249.68883)
 
 [node name="Body" type="Sprite2D" parent="Body/body/CanvasGroup" unique_id=1850660543]
-position = Vector2(-4, 0)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("6_f1ej7")
 offset = Vector2(-8.991725, 71.24065)
 
 [node name="Helmet" type="Sprite2D" parent="Body/body/CanvasGroup" unique_id=623076435]
-position = Vector2(-4, -20)
-rotation = 0.2276527
+position = Vector2(0, -20)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("7_oprun")
 offset = Vector2(-8.991725, 281.85065)
@@ -815,7 +790,7 @@ wait_time = 0.2
 
 [node name="PlayerHurtBoxArea" type="Area2D" parent="." unique_id=259576858 groups=["PlayerHurtBox"]]
 collision_layer = 2
-collision_mask = 4
+collision_mask = 12
 
 [node name="PlayerHurtBoxCollision" type="CollisionShape2D" parent="PlayerHurtBoxArea" unique_id=1603237879]
 modulate = Color(1, 1, 0, 1)
@@ -829,3 +804,4 @@ drag_bottom_margin = 0.0
 editor_draw_drag_margin = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="PlayerHurtBoxArea" to="." method="_on_player_hurt_box_area_area_entered"]
