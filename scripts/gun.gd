@@ -36,9 +36,6 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("klik_kiri_mouse"):
 			shoot()
 			
-		if Input.is_action_pressed("klik_kiri_mouse") and isShooting:
-			shoot()
-			
 	else:
 		if Input.is_action_pressed("klik_kanan_mouse") and isShooting:
 			shoot()
