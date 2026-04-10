@@ -4,3 +4,7 @@
 
 [node name="EnemySpawn" type="Node2D" unique_id=1643784166]
 script = ExtResource("1_k74x0")
+
+[node name="Timer" type="Timer" parent="." unique_id=1208062616]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

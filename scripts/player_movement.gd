@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
+signal on_hit_flash(knockback : bool)
+
 const SPEED = 400.0
 const ACCELERATION = SPEED * 5
 const FRICTION = SPEED * 4
@@ -12,25 +14,41 @@ var knockback = GameDataManager.KNOCKBACK
 @onready var player_body = $Body
 @onready var timer = $Timer
 @onready var animation_player = $AnimationPlayer
-
 var knockback_multiplier : float
 var isKnockbacked = false
 var isMoving = true
+var isHurt = null
 
 func _ready() -> void:
+	z_index = 2
 	#mendaftarkan diri sebagaii player
 	PlayerManager.player = self
 	SignalBus.enemy_hit.connect(_knockback)
+	
+	on_hit_flash.connect(gun._on_gun_hit_flash)
+	on_hit_flash.connect(_on_player_hit_flash)
+	
 
 func _physics_process(delta: float) -> void:
+	#print(GameDataManager.curssrent_hp)
+	isHurt = animation_player.current_animation == "hurt"
+	
 	if isMoving:
 		var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 		if direction != Vector2.ZERO:
 			velocity = velocity.move_toward(direction * SPEED, ACCELERATION * delta)
+			if not isHurt:
+				animation_player.play_backwards("walk")
+				
 		else:
 			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+			if not isHurt:
+				animation_player.play("iddle")
+				
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, (FRICTION * 0.1) * delta)
+		if not isHurt and animation_player.current_animation != "hurt":
+			animation_player.play("iddle")
 	
 	gun_rotation()
 	move_and_slide()
@@ -41,6 +59,8 @@ func gun_rotation():
 	if mouse_position.x < global_position.x:
 		gun.scale.y = -1 
 		player_body.scale.x = -1
+		if not isHurt and velocity != Vector2.ZERO: 
+			animation_player.play("walk")
 	else:
 		gun.scale.y = 1
 		player_body.scale.x = 1
@@ -62,6 +82,10 @@ func die():
 	SignalBus.player_died.emit()
 	
 func _knockback(damage, attacker_position, attacker_size):
+	on_hit_flash.emit(true) 
+	#animation_player.play("hurt")
+	#await animation_player.animation_finished
+	#animation_player.play("RESET")
 	GameDataManager.current_hp -= damage
 	isMoving = false
 
@@ -74,12 +98,19 @@ func _knockback(damage, attacker_position, attacker_size):
 
 	var base_knockback = GameDataManager.KNOCKBACK
 	var strength = base_knockback * (1.0 + size_factor * 2.0)
-	strength = clamp(strength, 200.0, 1200.0)
+	strength = clamp(strength, 200.0, 800.0)
 	velocity = knockback_direction * strength
 	velocity *= 1.1
 	timer.wait_time = 0.1 + (0.1 * size_factor)
 	timer.start()
+
+func _on_player_hit_flash(knockback : bool) -> void:
+	if knockback:
+		animation_player.play("hurt")
+	else:
+		animation_player.play("RESET")
 	
 func _on_timer_timeout() -> void:
 	isMoving = true
+	on_hit_flash.emit(false)
 	pass # Replace with function body.

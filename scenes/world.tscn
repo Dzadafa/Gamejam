@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://raamloyeiv0x" path="res://scenes/radar.tscn" id="1_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://plsva74qyasj" path="res://scenes/player.tscn" id="1_f3sb7"]
+[ext_resource type="Texture2D" uid="uid://diqjpqqblmyye" path="res://assets/bg_play.jpg" id="1_k0juu"]
 [ext_resource type="PackedScene" uid="uid://pp3klnapetqe" path="res://scenes/enemy_spawn.tscn" id="3_4wyf3"]
 
 [node name="World" type="Node2D" unique_id=805106329]
@@ -12,3 +13,12 @@ player_sprite = NodePath("../Player")
 [node name="Player" parent="." unique_id=529118703 instance=ExtResource("1_f3sb7")]
 
 [node name="EnemySpawn" parent="." unique_id=1643784166 instance=ExtResource("3_4wyf3")]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=1374629536]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1330193014]
+motion_mirroring = Vector2(1280, 720)
+
+[node name="BgPlay" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1162240219]
+position = Vector2(607, 342)
+texture = ExtResource("1_k0juu")
