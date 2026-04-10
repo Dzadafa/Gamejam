@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://ydonwo2exjha" path="res://assets/cutscenes/earth_type_shit.png" id="9_fcqgi"]
 [ext_resource type="Texture2D" uid="uid://cuu4b0vqe5j6n" path="res://assets/cutscenes/rocket_scene2.png" id="10_jawte"]
 [ext_resource type="Texture2D" uid="uid://cu1fh22qxtnhs" path="res://assets/cutscenes/dragonfly.png" id="11_fcqgi"]
+[ext_resource type="Texture2D" uid="uid://bgriut6h4lpgr" path="res://assets/cutscenes/bg/unknwon_space.png" id="12_xb6c1"]
+[ext_resource type="Texture2D" uid="uid://cj1m5mvjk8fv6" path="res://assets/cutscenes/planet_unknown.png" id="13_2yqj3"]
+[ext_resource type="Texture2D" uid="uid://b6k1v8y4axm4" path="res://assets/cutscenes/text_unknown.png" id="14_2yqj3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mq02j"]
 outline_size = 5
@@ -314,10 +317,82 @@ tracks/23/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("scene4:visible")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("scene4/PlanetUnknown:position")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(563.065, 324.065)]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("scene4/PlanetUnknown:rotation")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("scene4/Rocket:position")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(873.00006, 642)]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("scene4/Rocket:rotation")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("scene4/TextUnknown:modulate")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_e8mld"]
 resource_name = "scene1"
-length = 15.0
+length = 20.0
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -545,7 +620,7 @@ tracks/18/keys = {
 "times": PackedFloat32Array(7, 10),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.5411765)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.6784314)]
 }
 tracks/19/type = "value"
 tracks/19/imported = false
@@ -602,10 +677,82 @@ tracks/23/path = NodePath("scene3:visible")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/keys = {
-"times": PackedFloat32Array(5.05, 10),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(5.05, 10, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [false, true]
+"values": [false, true, false]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("scene4:visible")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(11.75, 12, 15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("scene4/PlanetUnknown:position")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(12, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(563.065, 324.065), Vector2(563.065, 324.065)]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("scene4/PlanetUnknown:rotation")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(12, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.05235988, 0.0]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("scene4/Rocket:position")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(12, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(873.00006, 642), Vector2(893.00006, 617)]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("scene4/Rocket:rotation")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(12, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("scene4/TextUnknown:modulate")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(12, 13.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8ryfb"]
@@ -728,6 +875,32 @@ offset_right = 725.0
 offset_bottom = 349.0
 text = "135+ Years Earth Time"
 label_settings = SubResource("LabelSettings_jawte")
+
+[node name="scene4" type="Node2D" parent="." unique_id=404664537]
+visible = false
+
+[node name="UnknwonSpace" type="Sprite2D" parent="scene4" unique_id=2055238384]
+position = Vector2(563.065, 324.065)
+scale = Vector2(0.6504541, 0.6504541)
+texture = ExtResource("12_xb6c1")
+
+[node name="PlanetUnknown" type="Sprite2D" parent="scene4" unique_id=484216309]
+position = Vector2(563.065, 324.065)
+scale = Vector2(0.6504541, 0.6504541)
+texture = ExtResource("13_2yqj3")
+
+[node name="Rocket" type="Sprite2D" parent="scene4" unique_id=647002541]
+position = Vector2(873.00006, 642)
+scale = Vector2(0.08478363, 0.08478363)
+texture = ExtResource("7_xb6c1")
+
+[node name="TextUnknown" type="Sprite2D" parent="scene4" unique_id=196895495]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(539.00006, 341.00003)
+scale = Vector2(0.5388889, 0.5388889)
+texture = ExtResource("14_2yqj3")
+
+[node name="scene5" type="Node2D" parent="." unique_id=1824273831]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=342491239]
 libraries/ = SubResource("AnimationLibrary_8ryfb")
