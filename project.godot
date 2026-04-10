@@ -25,6 +25,7 @@ SignalBus="*uid://dhcsipq0ovlf2"
 
 [global_group]
 
+Enemy=""
 PlayerHurtBox=""
 EnemyHurtBox=""
 Player=""
