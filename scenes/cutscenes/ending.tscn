@@ -187,7 +187,7 @@ tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
@@ -235,7 +235,7 @@ tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
@@ -621,6 +621,30 @@ tracks/47/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/48/type = "value"
+tracks/48/imported = false
+tracks/48/enabled = true
+tracks/48/path = NodePath("Label:visible")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/49/type = "value"
+tracks/49/imported = false
+tracks/49/enabled = true
+tracks/49/path = NodePath("scene7:visible")
+tracks/49/interp = 1
+tracks/49/loop_wrap = true
+tracks/49/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_m21dw"]
 resource_name = "dna_scan"
@@ -805,6 +829,18 @@ tracks/14/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["why do this alien has the same dna as human"]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Label:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0.15, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_d7l6k"]
@@ -1002,6 +1038,30 @@ tracks/15/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 0.0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("scene7:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(3.75, 4.5, 7.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Label:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 7.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_i5d2a"]
@@ -1327,10 +1387,22 @@ tracks/26/path = NodePath("scene6:visible")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/keys = {
-"times": PackedFloat32Array(0, 8.6, 9),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 8.6, 9, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [false, false, true]
+"values": [false, false, true, false]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("Label:visible")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(1.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mh0x8"]
@@ -1379,8 +1451,8 @@ offset = Vector2(-8.991725, 71.24065)
 
 [node name="Helmet" type="Sprite2D" parent="scene2/Body/body/CanvasGroup" unique_id=780091157]
 position = Vector2(0, -20.000008)
-rotation = -0.21920913
-scale = Vector2(0.09999998, 0.09999998)
+rotation = -0.031887878
+scale = Vector2(0.09999997, 0.09999997)
 texture = ExtResource("6_tlad1")
 offset = Vector2(-8.991725, 281.85065)
 
@@ -1411,7 +1483,7 @@ remote_path = NodePath("../../../../../body/CanvasGroup/RightFoot")
 [node name="head" type="Bone2D" parent="scene2/Body/skeleton/Skeleton2D/body" unique_id=132380933]
 position = Vector2(0, -20)
 rotation = -0.03188788
-scale = Vector2(0.9999998, 0.9999998)
+scale = Vector2(0.9999997, 0.9999997)
 rest = Transform2D(1, 0, 0, 1, 0, -38)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="scene2/Body/skeleton/Skeleton2D/body/head" unique_id=538269389]
@@ -1579,6 +1651,7 @@ scale = Vector2(0.7357716, 0.7357716)
 texture = ExtResource("14_b7dy5")
 
 [node name="scene7" type="Node2D" parent="." unique_id=2050842301]
+visible = false
 
 [node name="BgFixfix" type="Sprite2D" parent="scene7" unique_id=287752359]
 visible = false
@@ -1602,6 +1675,7 @@ texture = ExtResource("14_b7dy5")
 libraries/ = SubResource("AnimationLibrary_mh0x8")
 
 [node name="Label" type="Label" parent="." unique_id=1623564371]
+visible = false
 offset_left = 416.0
 offset_top = 581.0
 offset_right = 768.0
@@ -1613,8 +1687,6 @@ visible_characters = 0
 visible_ratio = 0.0
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=406617917]
-visible = false
-modulate = Color(1, 1, 1, 0)
 offset_right = 1165.0
 offset_bottom = 684.0
 color = Color(0, 0, 0, 1)

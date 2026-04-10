@@ -3,7 +3,13 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#$AnimationPlayer.play("flashback")
+	$AnimationPlayer.play("dna_scan")
+	await $AnimationPlayer.animation_finished
+	$AnimationPlayer.play("RESET")
+	$AnimationPlayer.play("reveal")
+	await $AnimationPlayer.animation_finished
+	$AnimationPlayer.play("RESET")
+	$AnimationPlayer.play("lose")
 	pass
 
 
