@@ -3,56 +3,153 @@
 [ext_resource type="PackedScene" uid="uid://raamloyeiv0x" path="res://scenes/radar.tscn" id="1_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://plsva74qyasj" path="res://scenes/player.tscn" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://pp3klnapetqe" path="res://scenes/enemy_spawn.tscn" id="3_4wyf3"]
-[ext_resource type="Texture2D" uid="uid://bx7llchrrv8y1" path="res://assets/cutscenes/bg/bg.png" id="4_i7141"]
-[ext_resource type="Texture2D" uid="uid://bq6khqbhqlvwp" path="res://assets/cutscenes/bg/bg_texture.png" id="5_4mrxx"]
-[ext_resource type="Texture2D" uid="uid://cfj6xoh4cbd67" path="res://assets/cutscenes/bg/bg_texture_texture.png" id="6_7r4gi"]
-[ext_resource type="Texture2D" uid="uid://c8468iucekr6m" path="res://assets/cutscenes/bg/bg_lines.png" id="7_w7kh3"]
+[ext_resource type="Texture2D" uid="uid://c6l52qaif1eun" path="res://assets/cutscenes/bg/bg_fixfix.png" id="4_k0juu"]
+[ext_resource type="Texture2D" uid="uid://bumh5if4xovdf" path="res://icon.svg" id="8_4mrxx"]
 
 [node name="World" type="Node2D" unique_id=805106329]
 
-[node name="CanvasLayer" parent="." unique_id=1420225051 node_paths=PackedStringArray("player_sprite") instance=ExtResource("1_4wyf3")]
+[node name="CanvasBgMinimap" type="CanvasLayer" parent="." unique_id=1009113213]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasBgMinimap" unique_id=1145349918]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1.2799996, 1.3200002)
+texture = ExtResource("8_4mrxx")
+
+[node name="RadarMinimap" parent="." unique_id=1420225051 node_paths=PackedStringArray("player_sprite") instance=ExtResource("1_4wyf3")]
 player_sprite = NodePath("../Player")
-
-[node name="Node2D" type="Node2D" parent="." unique_id=1688228006]
-position = Vector2(0, -1)
-
-[node name="Parallax2D" type="Parallax2D" parent="Node2D" unique_id=1142355182]
-repeat_size = Vector2(1080, 1920)
-
-[node name="Bg" type="Sprite2D" parent="Node2D/Parallax2D" unique_id=1158912722]
-position = Vector2(31.236877, 33.13327)
-rotation = -1.5707964
-scale = Vector2(0.7264556, 0.7264556)
-texture = ExtResource("4_i7141")
-
-[node name="Parallax2D2" type="Parallax2D" parent="Node2D" unique_id=456602761]
-repeat_size = Vector2(1080, 1920)
-
-[node name="BgTexture" type="Sprite2D" parent="Node2D/Parallax2D2" unique_id=751644739]
-position = Vector2(31.236877, 33.13327)
-rotation = -1.5775267
-scale = Vector2(0.86052585, 0.86052585)
-texture = ExtResource("5_4mrxx")
-
-[node name="Parallax2D3" type="Parallax2D" parent="Node2D" unique_id=243915161]
-repeat_size = Vector2(1080, 1920)
-
-[node name="BgTextureTexture" type="Sprite2D" parent="Node2D/Parallax2D3" unique_id=1524112380]
-position = Vector2(31.236877, 33.13327)
-rotation = -1.5707964
-scale = Vector2(0.8907439, 0.8907439)
-texture = ExtResource("6_7r4gi")
-
-[node name="Parallax2D4" type="Parallax2D" parent="Node2D" unique_id=1643724016]
-repeat_size = Vector2(1080, 1920)
-
-[node name="BgLines" type="Sprite2D" parent="Node2D/Parallax2D4" unique_id=1699676364]
-position = Vector2(31.236877, 33.13327)
-rotation = -1.5707964
-scale = Vector2(0.7264556, 0.7264556)
-texture = ExtResource("7_w7kh3")
 
 [node name="Player" parent="." unique_id=529118703 instance=ExtResource("1_f3sb7")]
 position = Vector2(-3, 3)
 
 [node name="EnemySpawn" parent="." unique_id=1643784166 instance=ExtResource("3_4wyf3")]
+
+[node name="BgFixfix" type="Sprite2D" parent="." unique_id=895746547]
+position = Vector2(578, 161)
+texture = ExtResource("4_k0juu")
+
+[node name="CanvasUIPlayer" type="CanvasLayer" parent="." unique_id=1854109003]
+
+[node name="TPBHealthBarPlayer" type="TextureProgressBar" parent="CanvasUIPlayer" unique_id=149955767]
+offset_left = 181.00002
+offset_top = 13.0
+offset_right = 309.0
+offset_bottom = 141.0
+scale = Vector2(2.6, 0.23999947)
+texture_under = ExtResource("8_4mrxx")
+
+[node name="TPBDNAEnemy" type="TextureProgressBar" parent="CanvasUIPlayer" unique_id=115850784]
+offset_left = 179.0
+offset_top = 72.0
+offset_right = 307.0
+offset_bottom = 200.0
+scale = Vector2(2.6, 0.27999997)
+texture_under = ExtResource("8_4mrxx")
+
+[node name="TextureButtonMenuPause" type="TextureButton" parent="CanvasUIPlayer" unique_id=1870478829]
+offset_left = 1012.0
+offset_top = 11.0
+offset_right = 1140.0
+offset_bottom = 139.0
+texture_normal = ExtResource("8_4mrxx")
+
+[node name="LabelTimerEndGame" type="Label" parent="CanvasUIPlayer" unique_id=749441753]
+offset_left = 879.0
+offset_top = 22.0
+offset_right = 1005.0
+offset_bottom = 65.0
+theme_override_font_sizes/font_size = 32
+text = "23.59"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasMenuPause" type="CanvasLayer" parent="." unique_id=1282388377]
+visible = false
+
+[node name="BgMenuPause" type="TextureRect" parent="CanvasMenuPause" unique_id=615711263]
+offset_left = 281.0
+offset_top = 149.0
+offset_right = 409.0
+offset_bottom = 277.0
+scale = Vector2(4.999999, 3.6400006)
+texture = ExtResource("8_4mrxx")
+
+[node name="TextureButtonExit" type="TextureButton" parent="CanvasMenuPause" unique_id=2090287299]
+offset_left = 539.0
+offset_top = 443.0
+offset_right = 667.0
+offset_bottom = 571.0
+scale = Vector2(1, 0.44000244)
+texture_normal = ExtResource("8_4mrxx")
+
+[node name="ButtonExitMenuPause" type="TextureButton" parent="CanvasMenuPause" unique_id=1986086272]
+offset_left = 779.0
+offset_top = 160.0
+offset_right = 907.0
+offset_bottom = 288.0
+texture_normal = ExtResource("8_4mrxx")
+
+[node name="CheckButton" type="CheckButton" parent="CanvasMenuPause" unique_id=692404887]
+offset_left = 513.0
+offset_top = 275.0
+offset_right = 557.0
+offset_bottom = 299.0
+scale = Vector2(3.8000047, 3.8000047)
+
+[node name="CheckButton2" type="CheckButton" parent="CanvasMenuPause" unique_id=697240899]
+offset_left = 520.0
+offset_top = 354.0
+offset_right = 564.0
+offset_bottom = 378.0
+scale = Vector2(3.8000047, 3.8000047)
+
+[node name="CanvasMenuMain" type="CanvasLayer" parent="." unique_id=1305880565]
+visible = false
+
+[node name="LabelTitleGame" type="Label" parent="CanvasMenuMain" unique_id=309188428]
+offset_left = 434.0
+offset_top = 87.0
+offset_right = 768.0
+offset_bottom = 186.0
+theme_override_font_sizes/font_size = 64
+text = "Aberration"
+
+[node name="LabelTagGame" type="Label" parent="CanvasMenuMain" unique_id=45470097]
+offset_left = 451.0
+offset_top = 174.0
+offset_right = 757.0
+offset_bottom = 219.0
+theme_override_font_sizes/font_size = 32
+text = "Unknown or Known"
+
+[node name="TextureButtonPlay" type="TextureButton" parent="CanvasMenuMain" unique_id=1570680559]
+offset_left = 471.99997
+offset_top = 270.99997
+offset_right = 600.0
+offset_bottom = 398.99997
+scale = Vector2(2.2000012, 0.6106431)
+texture_normal = ExtResource("8_4mrxx")
+
+[node name="TextureButtonSettings" type="TextureButton" parent="CanvasMenuMain" unique_id=739809472]
+offset_left = 475.99997
+offset_top = 366.99997
+offset_right = 604.0
+offset_bottom = 494.99997
+scale = Vector2(2.2000012, 0.6106431)
+texture_normal = ExtResource("8_4mrxx")
+
+[node name="TextureButtonCredits" type="TextureButton" parent="CanvasMenuMain" unique_id=1008880833]
+offset_left = 475.99997
+offset_top = 458.99997
+offset_right = 604.0
+offset_bottom = 587.0
+scale = Vector2(2.2000012, 0.6106431)
+texture_normal = ExtResource("8_4mrxx")
+
+[node name="TextureButtonTutorial" type="TextureButton" parent="CanvasMenuMain" unique_id=1603352804]
+offset_left = 478.99997
+offset_top = 545.0
+offset_right = 607.0
+offset_bottom = 673.0
+scale = Vector2(2.2000012, 0.6106431)
+texture_normal = ExtResource("8_4mrxx")

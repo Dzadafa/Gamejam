@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://blxffmmsgextb"]
+
+[ext_resource type="Script" uid="uid://bptkc0nenod3u" path="res://scripts/world.gd" id="1_4mrxx"]
+[ext_resource type="PackedScene" uid="uid://raamloyeiv0x" path="res://scenes/radar.tscn" id="1_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://plsva74qyasj" path="res://scenes/player.tscn" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://pp3klnapetqe" path="res://scenes/enemy_spawn.tscn" id="3_4wyf3"]
+[ext_resource type="Texture2D" uid="uid://bx7llchrrv8y1" path="res://assets/cutscenes/bg/bg.png" id="4_i7141"]
+[ext_resource type="Texture2D" uid="uid://bq6khqbhqlvwp" path="res://assets/cutscenes/bg/bg_texture.png" id="5_4mrxx"]
+[ext_resource type="Texture2D" uid="uid://cfj6xoh4cbd67" path="res://assets/cutscenes/bg/bg_texture_texture.png" id="6_7r4gi"]
+[ext_resource type="Texture2D" uid="uid://c8468iucekr6m" path="res://assets/cutscenes/bg/bg_lines.png" id="7_w7kh3"]
+
+[node name="World" type="Node2D" unique_id=805106329]
+script = ExtResource("1_4mrxx")
+
+[node name="CanvasLayer" parent="." unique_id=1420225051 node_paths=PackedStringArray("player_sprite") instance=ExtResource("1_4wyf3")]
+player_sprite = NodePath("../Player")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1688228006]
+position = Vector2(0, -1)
+
+[node name="Parallax2D" type="Parallax2D" parent="Node2D" unique_id=1142355182]
+repeat_size = Vector2(1080, 1920)
+
+[node name="Bg" type="Sprite2D" parent="Node2D/Parallax2D" unique_id=1158912722]
+position = Vector2(31.236877, 33.13327)
+rotation = -1.5707964
+scale = Vector2(0.7264556, 0.7264556)
+texture = ExtResource("4_i7141")
+
+[node name="Parallax2D2" type="Parallax2D" parent="Node2D" unique_id=456602761]
+repeat_size = Vector2(1080, 1920)
+
+[node name="BgTexture" type="Sprite2D" parent="Node2D/Parallax2D2" unique_id=751644739]
+position = Vector2(31.236877, 33.13327)
+rotation = -1.5775267
+scale = Vector2(0.86052585, 0.86052585)
+texture = ExtResource("5_4mrxx")
+
+[node name="Parallax2D3" type="Parallax2D" parent="Node2D" unique_id=243915161]
+repeat_size = Vector2(1080, 1920)
+
+[node name="BgTextureTexture" type="Sprite2D" parent="Node2D/Parallax2D3" unique_id=1524112380]
+position = Vector2(31.236877, 33.13327)
+rotation = -1.5707964
+scale = Vector2(0.8907439, 0.8907439)
+texture = ExtResource("6_7r4gi")
+
+[node name="Parallax2D4" type="Parallax2D" parent="Node2D" unique_id=1643724016]
+repeat_size = Vector2(1080, 1920)
+
+[node name="BgLines" type="Sprite2D" parent="Node2D/Parallax2D4" unique_id=1699676364]
+position = Vector2(31.236877, 33.13327)
+rotation = -1.5707964
+scale = Vector2(0.7264556, 0.7264556)
+texture = ExtResource("7_w7kh3")
+
+[node name="Player" parent="." unique_id=529118703 instance=ExtResource("1_f3sb7")]
+position = Vector2(-3, 3)
+
+[node name="EnemySpawn" parent="." unique_id=1643784166 instance=ExtResource("3_4wyf3")]

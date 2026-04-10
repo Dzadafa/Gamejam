@@ -4,6 +4,7 @@ extends Node2D
 @onready var bullet_target_position = $BulletTargetPosition
 @onready var timer = $ReloadTimer
 @onready var animation_gun = $AnimationGun
+@onready var click_particle = $ClickParticleMouse
 
 var isShooting : bool = true
 var isScanning: bool = false
@@ -24,16 +25,15 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("klik_kiri_mouse"):
 		isScanning = false
 		on_scan.emit(isScanning)
+		spawn_particle()
 		
 	if Input.is_action_just_pressed("klik_kanan_mouse"):
 		isScanning = true
 		on_scan.emit(isScanning)
+		spawn_particle()
 	
 	if not isScanning:
 		if Input.is_action_just_pressed("klik_kiri_mouse"):
-			shoot()
-			
-		if Input.is_action_pressed("klik_kiri_mouse") and isShooting:
 			shoot()
 			
 	else:
@@ -53,7 +53,7 @@ func shoot() -> void:
 		isShooting = false
 		GameDataManager.current_ammo -= 1
 		
-		print("Peluru aktif : " + str(n) + " | Sisa: " + str(GameDataManager.current_ammo))
+		print("Peluru aktif : " + str(n) + "Sisa: " + str(GameDataManager.current_ammo))
 		n += 1
 		
 		bullet.activate(bullet_spawn_position.global_position, shoot_direction)
@@ -86,5 +86,11 @@ func _on_gun_hit_flash(knockback: bool) -> void:
 		await animation_gun.animation_finished
 		animation_gun.play("RESET")
 		
+func spawn_particle():
+	click_particle.global_position = get_global_mouse_position()
+	click_particle.restart()
+	click_particle.one_shot = true
+	#click_particle.emitting = true
+	
 func _on_timer_timeout() -> void:
 	isShooting = true
