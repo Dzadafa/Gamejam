@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://douy3cuphhb6s"]
+
+[ext_resource type="Script" uid="uid://bkmbcsw6p144p" path="res://scenes/click_particle.gd" id="1_51osr"]
+
+[sub_resource type="Curve" id="Curve_xcvpm"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="ClickParticle" type="Node2D" unique_id=282005928]
+script = ExtResource("1_51osr")
+
+[node name="ClickParticleMouse" type="CPUParticles2D" parent="." unique_id=289309203]
+amount = 5
+lifetime = 0.5
+speed_scale = 2.0
+explosiveness = 1.0
+randomness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 263.36
+initial_velocity_max = 431.3
+scale_amount_min = 5.0
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_xcvpm")

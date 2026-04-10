@@ -14,6 +14,7 @@ var knockback = GameDataManager.KNOCKBACK
 @onready var player_body = $Body
 @onready var timer = $Timer
 @onready var animation_player = $AnimationPlayer
+
 var knockback_multiplier : float
 var isKnockbacked = false
 var isMoving = true
@@ -111,6 +112,8 @@ func _on_player_hit_flash(knockback : bool) -> void:
 		if animation_player.current_animation == "hurt":
 			await animation_player.animation_finished
 		animation_player.play("RESET")
+		
+
 	
 func _on_timer_timeout() -> void:
 	isMoving = true
