@@ -106,8 +106,11 @@ func _knockback(damage, attacker_position, attacker_size):
 
 func _on_player_hit_flash(knockback : bool) -> void:
 	if knockback:
+		#await animation_player.animation_finished
 		animation_player.play("hurt")
+		#await animation_player.animation_finished
 	else:
+		await animation_player.animation_finished
 		animation_player.play("RESET")
 	
 func _on_timer_timeout() -> void:

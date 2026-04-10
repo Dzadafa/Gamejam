@@ -126,12 +126,11 @@ func attack(enemy_attack_position: Vector2, enemy_attacker_size : float):
 	pass
 	
 func enemy_die():
-	#print("enemy mati")
+	await animation_enemy.animation_finished
 	animation_enemy.play("die")
 	await animation_enemy.animation_finished
 	await get_tree().create_timer(1.0).timeout
 	deactivate()
-	print("enemy mati")
 	pass
 	
 func deactivate():
