@@ -14,6 +14,12 @@
 [ext_resource type="Texture2D" uid="uid://bgriut6h4lpgr" path="res://assets/cutscenes/bg/unknwon_space.png" id="12_xb6c1"]
 [ext_resource type="Texture2D" uid="uid://cj1m5mvjk8fv6" path="res://assets/cutscenes/planet_unknown.png" id="13_2yqj3"]
 [ext_resource type="Texture2D" uid="uid://b6k1v8y4axm4" path="res://assets/cutscenes/text_unknown.png" id="14_2yqj3"]
+[ext_resource type="Texture2D" uid="uid://c6l52qaif1eun" path="res://assets/cutscenes/bg/bg_fixfix.png" id="15_qf1bm"]
+[ext_resource type="Texture2D" uid="uid://cyw21il1yxcmy" path="res://assets/cutscenes/pod/foot.png" id="19_okuu7"]
+[ext_resource type="Shader" uid="uid://cv0nsbbjoko7c" path="res://shaders/color_rect_circle_clip.gdshader" id="20_3lxpv"]
+[ext_resource type="Texture2D" uid="uid://84xikyg34kdo" path="res://assets/cutscenes/pod/body.png" id="20_n850p"]
+[ext_resource type="Texture2D" uid="uid://dl3n61iw5c0w4" path="res://assets/cutscenes/pod/left_shi.png" id="21_fe0ub"]
+[ext_resource type="Texture2D" uid="uid://bjsup8w7ffy4j" path="res://assets/cutscenes/pod/right_shi.png" id="22_d8bft"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mq02j"]
 outline_size = 5
@@ -26,6 +32,11 @@ font_size = 30
 
 [sub_resource type="LabelSettings" id="LabelSettings_jawte"]
 font_size = 25
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1bg7y"]
+shader = ExtResource("20_3lxpv")
+shader_parameter/radius = 0.0
+shader_parameter/smoothing = 0.0
 
 [sub_resource type="Animation" id="Animation_8ryfb"]
 length = 0.001
@@ -389,6 +400,102 @@ tracks/29/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("scene5/Node2D2:position")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(673, 249)]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("scene5/Node2D2:rotation")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("scene5/Node2D2/Foot:position")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -545.45447)]
+}
+tracks/33/type = "value"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("scene5/Node2D2/Foot:rotation")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/34/type = "value"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("scene5:visible")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/35/type = "value"
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/path = NodePath("scene5/Node2D:rotation")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/36/type = "value"
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/path = NodePath("scene5/Node2D:position")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(289, 81)]
+}
+tracks/37/type = "value"
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/path = NodePath("scene5/ColorRect:material:shader_parameter/radius")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_e8mld"]
 resource_name = "scene1"
@@ -557,10 +664,10 @@ tracks/13/path = NodePath("ColorRect:modulate")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0, 4.5, 5, 5.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 4.5, 5, 5.5, 19.35, 20),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
@@ -754,6 +861,102 @@ tracks/29/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("scene5/Node2D2:position")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(15, 18, 19.05),
+"transitions": PackedFloat32Array(1, 1, 4.2870927),
+"update": 0,
+"values": [Vector2(673, -1649), Vector2(673, 80.99997), Vector2(673, 249)]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("scene5/Node2D2:rotation")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(15, 18, 19.05),
+"transitions": PackedFloat32Array(1, 1, 4.2870927),
+"update": 0,
+"values": [0.0, 0.0, 0.0]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("scene5/Node2D2/Foot:position")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(15, 17.75, 18.65),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -545.45447), Vector2(0, -545.45447), Vector2(0, -0.0006713867)]
+}
+tracks/33/type = "value"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("scene5/Node2D2/Foot:rotation")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"times": PackedFloat32Array(15, 17.75, 18.65),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0]
+}
+tracks/34/type = "value"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("scene5:visible")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
+"times": PackedFloat32Array(0, 14.85, 15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/35/type = "value"
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/path = NodePath("scene5/Node2D:rotation")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/keys = {
+"times": PackedFloat32Array(15, 17.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/36/type = "value"
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/path = NodePath("scene5/Node2D:position")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/keys = {
+"times": PackedFloat32Array(15, 17.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(289, 185.99997), Vector2(289, 81)]
+}
+tracks/37/type = "value"
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/path = NodePath("scene5/ColorRect:material:shader_parameter/radius")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/keys = {
+"times": PackedFloat32Array(17, 18, 19),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.3810000180975, 0.47600002261]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8ryfb"]
 _data = {
@@ -901,6 +1104,40 @@ scale = Vector2(0.5388889, 0.5388889)
 texture = ExtResource("14_2yqj3")
 
 [node name="scene5" type="Node2D" parent="." unique_id=1824273831]
+
+[node name="Node2D" type="Node2D" parent="scene5" unique_id=569394100]
+position = Vector2(289, 81)
+scale = Vector2(0.6681479, 0.6681479)
+
+[node name="BgFixfix" type="Sprite2D" parent="scene5/Node2D" unique_id=41933739]
+position = Vector2(556.76294, 266.40826)
+scale = Vector2(1.7849067, 1.7849067)
+texture = ExtResource("15_qf1bm")
+
+[node name="ColorRect" type="ColorRect" parent="scene5" unique_id=274556001]
+material = SubResource("ShaderMaterial_1bg7y")
+offset_left = 557.0
+offset_top = 379.0
+offset_right = 804.0
+offset_bottom = 465.00003
+color = Color(0.54509807, 0.08235294, 0.40392157, 1)
+
+[node name="Node2D2" type="Node2D" parent="scene5" unique_id=57322516]
+position = Vector2(673, 249)
+scale = Vector2(0.18277717, 0.18277717)
+
+[node name="Foot" type="Sprite2D" parent="scene5/Node2D2" unique_id=422872245]
+position = Vector2(0, -545.45447)
+texture = ExtResource("19_okuu7")
+
+[node name="Body" type="Sprite2D" parent="scene5/Node2D2" unique_id=1519774535]
+texture = ExtResource("20_n850p")
+
+[node name="LeftShi" type="Sprite2D" parent="scene5/Node2D2" unique_id=913943435]
+texture = ExtResource("21_fe0ub")
+
+[node name="RightShi" type="Sprite2D" parent="scene5/Node2D2" unique_id=1674811194]
+texture = ExtResource("22_d8bft")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=342491239]
 libraries/ = SubResource("AnimationLibrary_8ryfb")
