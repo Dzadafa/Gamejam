@@ -823,30 +823,36 @@ shape = SubResource("CapsuleShape2D_nenq2")
 material = SubResource("ShaderMaterial_ipns3")
 
 [node name="LeftArm" type="Sprite2D" parent="Body/Node2D/CanvasGroup" unique_id=1432847223]
-position = Vector2(-48.853745, 0)
+position = Vector2(-48.7567, 35.077766)
+rotation = -0.32375157
 scale = Vector2(0.12526602, 0.12526602)
 texture = ExtResource("5_ipns3")
 offset = Vector2(477.74884, 0.55874723)
 
 [node name="LeftFoot" type="Sprite2D" parent="Body/Node2D/CanvasGroup" unique_id=22295791]
-position = Vector2(-36.327145, 37.579803)
-scale = Vector2(0.12526602, 0.12526602)
+position = Vector2(-34.06878, 68.92152)
+rotation = 1.3256637
+scale = Vector2(0.12526603, 0.12526603)
 texture = ExtResource("3_nenq2")
 offset = Vector2(352.1725, -376.17026)
 
 [node name="RightFoot" type="Sprite2D" parent="Body/Node2D/CanvasGroup" unique_id=434789095]
-position = Vector2(28.811184, 41.337784)
+position = Vector2(31.176905, 68.568344)
+rotation = -1.3452816
 scale = Vector2(0.12526602, 0.12526602)
 texture = ExtResource("4_md484")
 offset = Vector2(-313.38208, -388.7279)
 
 [node name="Body" type="Sprite2D" parent="Body/Node2D/CanvasGroup" unique_id=1896565775]
+position = Vector2(0, 32)
+rotation = -0.06304136
 scale = Vector2(0.12526602, 0.12526602)
 texture = ExtResource("6_8qclf")
 offset = Vector2(-11.998886, -24.556526)
 
 [node name="RightArm" type="Sprite2D" parent="Body/Node2D/CanvasGroup" unique_id=794119485]
-position = Vector2(42.590446, -2.5053203)
+position = Vector2(42.34801, 77)
+rotation = -1.1089323
 scale = Vector2(0.12526599, 0.12526599)
 texture = ExtResource("7_w8i8w")
 offset = Vector2(-438.95844, 25.674013)

@@ -20,9 +20,11 @@ const HP : float = 100.0
 
 var player_knockback : float = GameDataManager.KNOCKBACK
 var player_damage = GameDataManager.DAMAGE
+
 var isChasing = false
 var isHurting = false
 var isHittingPlayer = false
+var isDead = false
 
 var attack_range : float = 50.0
 var attack_damage : float = 15.0
@@ -60,7 +62,11 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	#print("darah : "+ str(GameDataManager.current_hp))
-	
+	if isDead:
+		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+		move_and_slide()
+		return
+		
 	if GameDataManager.isRestart:
 		isHittingPlayer = false
 		timer.stop()
@@ -75,7 +81,8 @@ func _physics_process(delta: float) -> void:
 			attack(global_position, enemy_size)
 		isHittingPlayer = false
 		
-	if current_hp <= 0:
+	if current_hp <= 0 and not isDead:
+		isDead = true 
 		enemy_die()
 		return
 		
@@ -98,6 +105,8 @@ func _physics_process(delta: float) -> void:
 func chase_player(direction: Vector2, delta: float):
 	var target_velocity = direction * SPEED * speed_multiplier
 	velocity = velocity.move_toward(target_velocity, ACCELERATION * delta)
+	if animation_enemy.current_animation != "hit_flash":
+		animation_enemy.play("walk")
 
 func handle_flip(move_direction_x: float):
 	if move_direction_x > 0.1:
@@ -118,6 +127,9 @@ func attack(enemy_attack_position: Vector2, enemy_attacker_size : float):
 	
 func enemy_die():
 	#print("enemy mati")
+	animation_enemy.play("die")
+	await animation_enemy.animation_finished
+	await get_tree().create_timer(1.0).timeout
 	deactivate()
 	print("enemy mati")
 	pass
@@ -137,6 +149,7 @@ func deactivate():
 		enemy_hit_box_area.set_deferred("monitorable", false)
 
 func activate(spawn_position: Vector2):
+	isDead = false
 	global_position = spawn_position
 	
 	_ready()
