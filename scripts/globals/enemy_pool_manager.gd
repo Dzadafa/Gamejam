@@ -3,7 +3,7 @@ extends Node2D
 signal pool_ready
 
 @export var enemy_scene : PackedScene = preload("res://scenes/enemy.tscn")
-@export var pool_size : int = 20
+@export var pool_size : int = 2
 
 @export var min_x : float = -1500.0
 @export var max_x : float = 1500.0

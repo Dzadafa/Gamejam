@@ -104,12 +104,13 @@ func _physics_process(delta: float) -> void:
 			shoot_at_player()
 			can_shoot = false
 			shoot_timer.start()
-				
+		
+		var is_busy = animation_enemy.is_playing() and (animation_enemy.current_animation == "hit_flash" or animation_enemy.current_animation == "throw_foot")
 		if distance_to_player > attack_range:
 			chase_player(direction, delta)
 		else:
 			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-			if animation_enemy.current_animation != "hit_flash":
+			if not is_busy:
 				animation_enemy.play("iddle")
 				
 		handle_flip(direction.x)
@@ -121,9 +122,11 @@ func _physics_process(delta: float) -> void:
 			animation_enemy.play("iddle")
 		
 func chase_player(direction: Vector2, delta: float):
+	print(animation_enemy.current_animation)
 	var target_velocity = direction * SPEED * speed_multiplier
 	velocity = velocity.move_toward(target_velocity, ACCELERATION * delta)
-	if animation_enemy.current_animation != "hit_flash":
+	var is_busy = animation_enemy.is_playing() and (animation_enemy.current_animation == "hit_flash" or animation_enemy.current_animation == "throw_foot")
+	if not is_busy:
 		animation_enemy.play("walk")
 
 func handle_flip(move_direction_x: float):
@@ -172,9 +175,9 @@ func shoot_at_player():
 	
 	direction += Vector2(randf_range(-0.1, 0.1), randf_range(-0.1, 0.1))
 	direction = direction.normalized()
-	animation_enemy.play("throw_foot")
 	bullet.activate(shoot_position.global_position, direction, "PlayerHurtBox")
 	bullet.look_at(player_position)
+	animation_enemy.play("throw_foot")
 	
 func enemy_die():
 	await animation_enemy.animation_finished
@@ -230,7 +233,7 @@ func _on_timer_timeout() -> void:
 	isHittingPlayer = true
 
 func _on_enemy_hurt_box_area_area_entered(area: Area2D) -> void:
-	if area.name == "BulletArea":
+	if area.name == "BulletArea" and not BulletPoolManager.isScanning:
 		var bullet = area.get_parent() 
 		if bullet is Bullet and bullet.target_group == "EnemyHurtBox":
 			isHurting = true

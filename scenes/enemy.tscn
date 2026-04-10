@@ -950,6 +950,8 @@ scale_amount_curve = SubResource("Curve_md484")
 
 [node name="ShootPosition" type="Marker2D" parent="." unique_id=299138628]
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=970420139]
+
 [connection signal="body_entered" from="EnemyChaseArea" to="." method="_on_enemy_chase_area_body_entered"]
 [connection signal="body_exited" from="EnemyChaseArea" to="." method="_on_enemy_chase_area_body_exited"]
 [connection signal="area_entered" from="EnemyHitBoxArea" to="." method="_on_enemy_hit_box_area_area_entered"]

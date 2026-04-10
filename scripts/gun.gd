@@ -5,6 +5,11 @@ extends Node2D
 @onready var timer = $ReloadTimer
 @onready var animation_gun = $AnimationGun
 @onready var click_particle = $ClickParticleMouse
+@onready var gun_sprite = $CanvasGroup/Gun
+
+var shoot_gun = preload("res://assets/player/gun.png") 
+var ray_gun = preload("res://assets/player/ray_gun.png") 
+
 
 var isShooting : bool = true
 var isScanning: bool = false
@@ -17,27 +22,31 @@ signal on_scan(scan : bool)
 func _ready() -> void:
 	timer.wait_time = 0.25
 	on_scan.connect(BulletPoolManager.get_scanning_gun)
+	gun_sprite.texture = shoot_gun
 	
 func _physics_process(delta: float) -> void:
 	if isReloading:
 		return
 		
-	if Input.is_action_just_pressed("klik_kiri_mouse"):
-		isScanning = false
+	#if Input.is_action_just_pressed("klik_kiri_mouse"):
+		#isScanning = false
+		#on_scan.emit(isScanning)
+	
+	if Input.is_action_just_pressed("switch_weapon"):
+		isScanning = not isScanning
+		print(isScanning)
 		on_scan.emit(isScanning)
-		spawn_particle()
-		
-	if Input.is_action_just_pressed("klik_kanan_mouse"):
-		isScanning = true
-		on_scan.emit(isScanning)
-		spawn_particle()
 	
 	if not isScanning:
+		gun_sprite.texture = shoot_gun
 		if Input.is_action_just_pressed("klik_kiri_mouse"):
+			spawn_particle()
 			shoot()
 			
 	else:
-		if Input.is_action_pressed("klik_kanan_mouse") and isShooting:
+		gun_sprite.texture = ray_gun
+		if Input.is_action_pressed("klik_kiri_mouse") and isShooting:
+			spawn_particle()
 			shoot()
 
 var n = 0
