@@ -21,6 +21,7 @@ var isKnockbacked = false
 var isMoving = true
 var is_animation_hurt = null
 var is_invisible : bool = false
+var isDead = false
 
 func _ready() -> void:
 	z_index = 2
@@ -39,6 +40,12 @@ func _ready() -> void:
 	activate_invisible(2.0)
 
 func _physics_process(delta: float) -> void:
+	if isDead:
+		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+		move_and_slide()
+		return 
+		
+	is_animation_hurt = animation_player.current_animation == "hurt"
 	#print(GameDataManager.curssrent_hp)
 	is_animation_hurt = animation_player.current_animation == "hurt"
 	
@@ -85,15 +92,35 @@ func activate_invisible(duration: float) -> void:
 	player_body.modulate.a = 1.0
 
 func die():
+	if isDead: 
+		return
+		
+	isDead = true
+	isMoving = false
+	on_hit_flash.emit(false)
+	
+	if is_instance_valid(gun):
+		gun.hide() 
+	
+	animation_player.play("die")
+	
 	SignalBus.player_died.emit()
 	
 func _knockback(damage, attacker_position, attacker_size):
-	if is_invisible:
+	if is_invisible or isDead:
 		return
+		
+	activate_invisible(0.5)
+	
+	
 	on_hit_flash.emit(true) 
+
 	GameDataManager.current_hp -= damage
 	isMoving = false
-
+	if GameDataManager.current_hp <= 0:
+		die()
+		return
+		
 	var knockback_direction = (global_position - attacker_position).normalized()
 
 	var size_factor = clamp(attacker_size, 0.5, 3.0)
@@ -110,6 +137,9 @@ func _knockback(damage, attacker_position, attacker_size):
 	timer.start()
 
 func _on_player_hit_flash(knockback : bool) -> void:
+	if isDead:
+		return
+		
 	if knockback:
 		animation_player.play("hurt")
 	else:

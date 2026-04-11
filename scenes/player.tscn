@@ -720,26 +720,23 @@ material = SubResource("ShaderMaterial_jej6c")
 
 [node name="LeftFoot" type="Sprite2D" parent="Body/body/CanvasGroup" unique_id=1636483580]
 position = Vector2(-15, 33)
-rotation = -0.35086927
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_3v2ag")
 offset = Vector2(141.44395, -259.7179)
 
 [node name="RightFoot" type="Sprite2D" parent="Body/body/CanvasGroup" unique_id=593246614]
 position = Vector2(9, 31)
-rotation = 0.18676718
-scale = Vector2(0.099999964, 0.099999964)
+scale = Vector2(0.09999996, 0.09999996)
 texture = ExtResource("5_jej6c")
 offset = Vector2(-99.253136, -249.68883)
 
 [node name="Body" type="Sprite2D" parent="Body/body/CanvasGroup" unique_id=1850660543]
-position = Vector2(0, 3.9748895)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("6_f1ej7")
 offset = Vector2(-8.991725, 71.24065)
 
 [node name="Helmet" type="Sprite2D" parent="Body/body/CanvasGroup" unique_id=623076435]
-position = Vector2(0, -16.02511)
+position = Vector2(0, -20)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("7_oprun")
 offset = Vector2(-8.991725, 281.85065)

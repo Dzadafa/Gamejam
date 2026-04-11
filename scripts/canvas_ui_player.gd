@@ -18,6 +18,7 @@ func _ready() -> void:
 	
 	SignalBus.hp_changed.connect(_on_player_hp_changed)
 	SignalBus.dna_changed.connect(_on_enemy_dna_changed)
+	SignalBus.reload_status.connect(_on_weapon_reload_status)
 
 func _on_player_hp_changed(new_hp: float) -> void:
 	TPB_health_bar_player.value = new_hp
@@ -38,7 +39,15 @@ func _physics_process(delta: float) -> void:
 	GameDataManager.current_time += delta
 
 
+func _on_weapon_reload_status(is_reloading: bool) -> void:
+	if is_reloading:
+		texture_ammo.modulate = Color(0.5, 0.0, 0.0)
+	else:
+		texture_ammo.modulate = Color(1.0, 1.0, 1.0)
+
 func _on_texture_button_menu_pause_pressed() -> void:
 	canvas_menu_pause.show()
 	world.pause_game()
 	pass # Replace with function body.
+	
+	
