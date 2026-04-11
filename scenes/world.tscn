@@ -1,20 +1,21 @@
 [gd_scene format=3 uid="uid://blxffmmsgextb"]
 
 [ext_resource type="PackedScene" uid="uid://raamloyeiv0x" path="res://scenes/radar.tscn" id="1_4wyf3"]
-[ext_resource type="Script" path="res://scripts/world.gd" id="1_dss4m"]
+[ext_resource type="Script" uid="uid://bptkc0nenod3u" path="res://scripts/world.gd" id="1_dss4m"]
 [ext_resource type="PackedScene" uid="uid://plsva74qyasj" path="res://scenes/player.tscn" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://pp3klnapetqe" path="res://scenes/enemy_spawn.tscn" id="3_4wyf3"]
 [ext_resource type="Texture2D" uid="uid://c6l52qaif1eun" path="res://assets/cutscenes/bg/bg_fixfix.png" id="4_k0juu"]
-[ext_resource type="Script" path="res://scripts/canvas_ui_player.gd" id="6_qfnet"]
+[ext_resource type="Script" uid="uid://b5jj6sw7xxf0m" path="res://scripts/canvas_ui_player.gd" id="6_qfnet"]
 [ext_resource type="Shader" path="res://shaders/sprite_outline.gdshader" id="7_4mrxx"]
 [ext_resource type="Texture2D" uid="uid://x21653afs3f6" path="res://assets/UI/Pause_Button.png" id="7_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://drl0krskisoov" path="res://assets/UI/Frame 1.png" id="9_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://bf1mn5m0dtaru" path="res://assets/UI/Frame.png" id="10_e3hyu"]
-[ext_resource type="Script" path="res://scripts/canvas_menu_pause.gd" id="10_jhx03"]
+[ext_resource type="Script" uid="uid://dgqp4kma6ylc5" path="res://scripts/canvas_menu_pause.gd" id="10_jhx03"]
 [ext_resource type="Texture2D" uid="uid://dnaw15l4x17vo" path="res://assets/UI/Button_02.png" id="11_q5onr"]
 [ext_resource type="Texture2D" uid="uid://cu58km7lkaqbx" path="res://assets/UI/Switch_Off.png" id="13_o8fc1"]
 [ext_resource type="Texture2D" uid="uid://dbengqd6e8il2" path="res://assets/UI/Button_01.png" id="14_o8fc1"]
-[ext_resource type="Script" path="res://scripts/canvas_menu_main.gd" id="14_xo05s"]
+[ext_resource type="Script" uid="uid://cc1nvupcuk2d1" path="res://scripts/canvas_menu_main.gd" id="14_xo05s"]
+[ext_resource type="Script" uid="uid://4xi0q5n0nh0r" path="res://scripts/canvas_restart_game.gd" id="16_dss4m"]
 
 [sub_resource type="Gradient" id="Gradient_4mrxx"]
 offsets = PackedFloat32Array(0.014851485, 1)
@@ -215,6 +216,7 @@ texture_normal = ExtResource("13_o8fc1")
 [node name="CanvasMenuMain" type="CanvasLayer" parent="." unique_id=1305880565]
 process_mode = 3
 layer = 2
+visible = false
 script = ExtResource("14_xo05s")
 
 [node name="LabelTitleGame" type="Label" parent="CanvasMenuMain" unique_id=309188428]
@@ -295,13 +297,74 @@ text = "Credits"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LabelExit" type="Label" parent="CanvasMenuMain" unique_id=1337109676]
+[node name="LabelTutorial" type="Label" parent="CanvasMenuMain" unique_id=1337109676]
 offset_left = 499.0
 offset_top = 556.0
 offset_right = 684.0
 offset_bottom = 608.0
 theme_override_font_sizes/font_size = 32
 text = "Tutorial"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasRestartGame" type="CanvasLayer" parent="." unique_id=2113994995]
+process_mode = 3
+layer = 2
+script = ExtResource("16_dss4m")
+
+[node name="LabelTitleGame" type="Label" parent="CanvasRestartGame" unique_id=2114146121]
+offset_left = 372.0
+offset_top = 87.0
+offset_right = 830.0
+offset_bottom = 186.0
+theme_override_font_sizes/font_size = 64
+text = "Gitu aja Kalah?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelTagGame" type="Label" parent="CanvasRestartGame" unique_id=622718950]
+offset_left = 451.0
+offset_top = 174.0
+offset_right = 757.0
+offset_bottom = 219.0
+theme_override_font_sizes/font_size = 32
+text = "main yang seirus"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButtonPlay" type="TextureButton" parent="CanvasRestartGame" unique_id=761074335]
+offset_left = 477.0
+offset_top = 271.0
+offset_right = 1295.0
+offset_bottom = 539.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("11_q5onr")
+
+[node name="TextureButtonExit" type="TextureButton" parent="CanvasRestartGame" unique_id=837135098]
+offset_left = 477.0
+offset_top = 380.0
+offset_right = 1295.0
+offset_bottom = 648.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("14_o8fc1")
+
+[node name="LabelPlay" type="Label" parent="CanvasRestartGame" unique_id=949949179]
+offset_left = 506.0
+offset_top = 287.0
+offset_right = 691.0
+offset_bottom = 339.0
+theme_override_font_sizes/font_size = 32
+text = "Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelExit" type="Label" parent="CanvasRestartGame" unique_id=2088717821]
+offset_left = 505.0
+offset_top = 391.0
+offset_right = 690.0
+offset_bottom = 443.0
+theme_override_font_sizes/font_size = 32
+text = "Exit"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -314,7 +377,7 @@ layer = 3
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1049263035]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1913394289]
-position = Vector2(572.5, -1081)
+position = Vector2(573, -1085)
 shape = SubResource("RectangleShape2D_xo05s")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1620016052]
@@ -341,3 +404,5 @@ shape = SubResource("RectangleShape2D_xo05s")
 [connection signal="pressed" from="CanvasMenuMain/TextureButtonSettings" to="CanvasMenuMain" method="_on_texture_button_settings_pressed"]
 [connection signal="pressed" from="CanvasMenuMain/TextureButtonCredits" to="CanvasMenuMain" method="_on_texture_button_credits_pressed"]
 [connection signal="pressed" from="CanvasMenuMain/TextureButtonTutorial" to="CanvasMenuMain" method="_on_texture_button_tutorial_pressed"]
+[connection signal="pressed" from="CanvasRestartGame/TextureButtonPlay" to="CanvasRestartGame" method="_on_texture_button_play_pressed"]
+[connection signal="pressed" from="CanvasRestartGame/TextureButtonExit" to="CanvasRestartGame" method="_on_texture_button_exit_pressed"]

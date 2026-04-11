@@ -614,7 +614,7 @@ height = 192.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="Blue-ging" type="CharacterBody2D" unique_id=1172907404 node_paths=PackedStringArray("timer", "enemy_body", "enemy_collision", "enemy_hurt_box_area", "enemy_hit_box_area", "animation_enemy", "texture_progress_bar", "label", "enemy_hurt_box_collision", "enemy_hit_box_collision", "enemy_chase_area_collision", "enemy_die_particle", "audio_stream_enemy")]
+[node name="Blue-ging" type="CharacterBody2D" unique_id=1172907404 node_paths=PackedStringArray("timer", "enemy_body", "enemy_collision", "enemy_hurt_box_area", "enemy_hit_box_area", "animation_enemy", "enemy_hurt_box_collision", "enemy_hit_box_collision", "enemy_chase_area_collision", "enemy_die_particle", "audio_stream_enemy")]
 collision_layer = 2
 script = ExtResource("1_5wor7")
 behavior = 1
@@ -624,8 +624,6 @@ enemy_collision = NodePath("CollisionShape2D")
 enemy_hurt_box_area = NodePath("EnemyHurtBoxArea")
 enemy_hit_box_area = NodePath("EnemyHitBoxArea")
 animation_enemy = NodePath("AnimationPlayer")
-texture_progress_bar = NodePath("TextureProgressBar")
-label = NodePath("Label")
 enemy_hurt_box_collision = NodePath("EnemyHurtBoxArea/EnemyHurtBoxCollision")
 enemy_hit_box_collision = NodePath("EnemyHitBoxArea/EnemyHitBoxCollision")
 enemy_chase_area_collision = NodePath("EnemyChaseArea/ChaseAreaCollision")
@@ -664,7 +662,7 @@ offset = Vector2(-95.79613, -199.57529)
 
 [node name="RightArm" type="Sprite2D" parent="Body/Node2D/CanvasGroup" unique_id=775968289]
 position = Vector2(19, -33)
-rotation = -0.14875588
+rotation = -0.14875585
 scale = Vector2(0.12526594, 0.12526594)
 texture = ExtResource("3_imvrp")
 offset = Vector2(-159.66022, 295.37137)
@@ -754,27 +752,6 @@ collision_mask = 10
 shape = SubResource("CapsuleShape2D_xg1ki")
 
 [node name="Timer" type="Timer" parent="." unique_id=211504824]
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1046706249]
-offset_left = -189.0
-offset_top = -156.99997
-offset_right = -61.0
-offset_bottom = -28.99997
-scale = Vector2(2.9999986, 0.2400006)
-max_value = 0.0
-step = 0.0
-texture_under = ExtResource("2_xg1ki")
-texture_progress = ExtResource("2_xg1ki")
-tint_progress = Color(0, 1, 0, 1)
-
-[node name="Label" type="Label" parent="." unique_id=1636779456]
-offset_left = -165.0
-offset_top = -233.0
-offset_right = 184.0
-offset_bottom = -163.0
-theme_override_font_sizes/font_size = 32
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="EnemyDieParticle" type="CPUParticles2D" parent="." unique_id=1939648965]
 emitting = false

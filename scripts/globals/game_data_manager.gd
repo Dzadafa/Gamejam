@@ -13,9 +13,6 @@ var current_hp: float = 100.0:
 	set(value):
 		current_hp = clamp(value, 0, MAX_HP)
 		SignalBus.hp_changed.emit(current_hp)
-		
-		if current_hp <= 0:
-			restart_game()
 			
 var current_dna : float = 0.0:
 	set(value):
@@ -35,16 +32,3 @@ var current_ammo: int = MAG_SIZE:
 	set(value):
 		current_ammo = max(0, value)
 		SignalBus.ammo_changed.emit(current_ammo)
-
-func restart_game():
-	if isRestart:
-		return
-		
-	isRestart = true
-	print("mati")
-	self.current_hp = MAX_HP
-	self.current_ammo = MAG_SIZE
-	await get_tree().create_timer(1.0).timeout
-	
-	isRestart = false
-	SceneManager.switch_scene(SceneManager.GameState.GAMEPLAY)

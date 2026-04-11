@@ -10,8 +10,6 @@ enum Behavior { AGGRESSIVE, PASSIVE }
 @export var enemy_hurt_box_area : Area2D
 @export var enemy_hit_box_area : Area2D
 @export var animation_enemy : AnimationPlayer 
-@export var texture_progress_bar : TextureProgressBar
-@export var label : Label
 @export var enemy_hurt_box_collision : CollisionShape2D
 @export var enemy_hit_box_collision : CollisionShape2D
 @export var enemy_chase_area_collision : CollisionShape2D
@@ -228,8 +226,6 @@ func setup_enemy():
 	speed_multiplier = randf_range(0.2, 1.0) 
 	hp_multiplier = randf_range(0.1, 0.3)
 	current_hp = base_hp * hp_multiplier
-	texture_progress_bar.max_value = current_hp
-	texture_progress_bar.value = current_hp
 	enemy_size = current_hp / 100
 	enemy_body.scale = Vector2(enemy_size, enemy_size)
 	
@@ -258,8 +254,6 @@ func player_attacked(attacker_position: Vector2):
 		
 	current_hp -= player_damage
 	
-	if texture_progress_bar != null:
-		texture_progress_bar.value -= player_damage
 		
 	var enemy_knockback_direction = (global_position - attacker_position).normalized()
 	velocity = enemy_knockback_direction * max(0,(player_knockback - (player_knockback * knockback_multiplier)))

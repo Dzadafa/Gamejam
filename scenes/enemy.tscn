@@ -801,7 +801,7 @@ height = 192.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="Gullible" type="CharacterBody2D" unique_id=1172907404 node_paths=PackedStringArray("timer", "enemy_body", "enemy_collision", "enemy_hurt_box_area", "enemy_hit_box_area", "animation_enemy", "texture_progress_bar", "label", "enemy_hurt_box_collision", "enemy_hit_box_collision", "enemy_chase_area_collision", "enemy_die_particle", "shoot_timer", "shoot_position", "audio_stream_enemy")]
+[node name="Gullible" type="CharacterBody2D" unique_id=1172907404 node_paths=PackedStringArray("timer", "enemy_body", "enemy_collision", "enemy_hurt_box_area", "enemy_hit_box_area", "animation_enemy", "enemy_hurt_box_collision", "enemy_hit_box_collision", "enemy_chase_area_collision", "enemy_die_particle", "shoot_timer", "shoot_position", "audio_stream_enemy")]
 collision_layer = 4
 collision_mask = 10
 script = ExtResource("1_4gyqm")
@@ -811,8 +811,6 @@ enemy_collision = NodePath("GullibleCollision")
 enemy_hurt_box_area = NodePath("EnemyHurtBoxArea")
 enemy_hit_box_area = NodePath("EnemyHitBoxArea")
 animation_enemy = NodePath("AnimationEnemy")
-texture_progress_bar = NodePath("TextureProgressBar")
-label = NodePath("Label")
 enemy_hurt_box_collision = NodePath("EnemyHurtBoxArea/EnemyHurtBoxCollision")
 enemy_hit_box_collision = NodePath("EnemyHitBoxArea/EnemyHitBoxCollision")
 enemy_chase_area_collision = NodePath("EnemyChaseArea/ChaseAreaCollision")
@@ -944,27 +942,6 @@ collision_mask = 10
 shape = SubResource("CapsuleShape2D_md484")
 
 [node name="Timer" type="Timer" parent="." unique_id=1193657295]
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=433630234]
-offset_left = -189.0
-offset_top = -156.99997
-offset_right = -61.0
-offset_bottom = -28.99997
-scale = Vector2(2.9999986, 0.2400006)
-max_value = 0.0
-step = 0.0
-texture_under = ExtResource("2_qi2p4")
-texture_progress = ExtResource("2_qi2p4")
-tint_progress = Color(0, 1, 0, 1)
-
-[node name="Label" type="Label" parent="." unique_id=887440579]
-offset_left = -165.0
-offset_top = -233.0
-offset_right = 184.0
-offset_bottom = -163.0
-theme_override_font_sizes/font_size = 32
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="EnemyDieParticle" type="CPUParticles2D" parent="." unique_id=1930219195]
 emitting = false
