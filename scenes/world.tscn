@@ -5,17 +5,24 @@
 [ext_resource type="PackedScene" uid="uid://plsva74qyasj" path="res://scenes/player.tscn" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://pp3klnapetqe" path="res://scenes/enemy_spawn.tscn" id="3_4wyf3"]
 [ext_resource type="Texture2D" uid="uid://c6l52qaif1eun" path="res://assets/cutscenes/bg/bg_fixfix.png" id="4_k0juu"]
-[ext_resource type="Script" uid="uid://b5jj6sw7xxf0m" path="res://scripts/canvas_ui_player.gd" id="6_qfnet"]
+[ext_resource type="Script" path="res://scripts/canvas_ui_player.gd" id="6_qfnet"]
 [ext_resource type="Shader" path="res://shaders/sprite_outline.gdshader" id="7_4mrxx"]
 [ext_resource type="Texture2D" uid="uid://x21653afs3f6" path="res://assets/UI/Pause_Button.png" id="7_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://drl0krskisoov" path="res://assets/UI/Frame 1.png" id="9_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://bf1mn5m0dtaru" path="res://assets/UI/Frame.png" id="10_e3hyu"]
-[ext_resource type="Script" uid="uid://dgqp4kma6ylc5" path="res://scripts/canvas_menu_pause.gd" id="10_jhx03"]
+[ext_resource type="Script" path="res://scripts/canvas_menu_pause.gd" id="10_jhx03"]
+[ext_resource type="FontFile" uid="uid://kj78a1a10xqv" path="res://assets/fonts/erasdust.ttf" id="10_oo54l"]
 [ext_resource type="Texture2D" uid="uid://dnaw15l4x17vo" path="res://assets/UI/Button_02.png" id="11_q5onr"]
 [ext_resource type="Texture2D" uid="uid://cu58km7lkaqbx" path="res://assets/UI/Switch_Off.png" id="13_o8fc1"]
 [ext_resource type="Texture2D" uid="uid://dbengqd6e8il2" path="res://assets/UI/Button_01.png" id="14_o8fc1"]
-[ext_resource type="Script" uid="uid://cc1nvupcuk2d1" path="res://scripts/canvas_menu_main.gd" id="14_xo05s"]
-[ext_resource type="Script" uid="uid://4xi0q5n0nh0r" path="res://scripts/canvas_restart_game.gd" id="16_dss4m"]
+[ext_resource type="Script" path="res://scripts/canvas_menu_main.gd" id="14_xo05s"]
+[ext_resource type="PackedScene" uid="uid://ct1cds5d54rwj" path="res://scenes/main_menu_background.tscn" id="15_pm21f"]
+[ext_resource type="FontFile" uid="uid://bu2v3e40iaqb2" path="res://assets/fonts/Eraser.ttf" id="16_7iits"]
+[ext_resource type="Script" path="res://scripts/canvas_restart_game.gd" id="16_dss4m"]
+[ext_resource type="AudioStream" uid="uid://r41vowvx3me3" path="res://assets/audio/bgm/old_city_theme_by_remaxim.ogg" id="17_7t5mc"]
+[ext_resource type="AudioStream" uid="uid://ddbual243kolw" path="res://assets/audio/bgm/delon_boomkin-tense-music-from-game-show-460826.mp3" id="18_lakw3"]
+[ext_resource type="Texture2D" uid="uid://dpos23jrgmkrm" path="res://assets/UI/title.png" id="18_oo54l"]
+[ext_resource type="LabelSettings" uid="uid://dtqrl5s5s88xp" path="res://fonts/subtitle.tres" id="21_kpybi"]
 
 [sub_resource type="Gradient" id="Gradient_4mrxx"]
 offsets = PackedFloat32Array(0.014851485, 1)
@@ -29,19 +36,43 @@ shader = ExtResource("7_4mrxx")
 shader_parameter/outline_color = Color(0, 0, 0, 1)
 shader_parameter/width = 5.0000002375
 
+[sub_resource type="LabelSettings" id="LabelSettings_xgqkh"]
+font = ExtResource("10_oo54l")
+font_size = 35
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7r4gi"]
 shader = ExtResource("7_4mrxx")
 shader_parameter/outline_color = Color(0, 0, 0, 1)
 shader_parameter/width = 5.0000002375
 
 [sub_resource type="LabelSettings" id="LabelSettings_jhx03"]
+font = ExtResource("16_7iits")
 font_size = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_o8fc1"]
+font = ExtResource("10_oo54l")
 font_size = 24
 
 [sub_resource type="LabelSettings" id="LabelSettings_xo05s"]
+font = ExtResource("10_oo54l")
 font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_kpybi"]
+font = ExtResource("16_7iits")
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_ctatt"]
+font = ExtResource("16_7iits")
+font_size = 25
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xgqkh"]
+shader = ExtResource("7_4mrxx")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/width = 5.0000002375
+
+[sub_resource type="LabelSettings" id="LabelSettings_munwf"]
+font = ExtResource("10_oo54l")
+font_size = 50
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xo05s"]
 size = Vector2(3483, 559)
@@ -112,12 +143,13 @@ scale = Vector2(0.1358043, 0.1358043)
 texture_normal = ExtResource("7_7r4gi")
 
 [node name="LabelTimerEndGame" type="Label" parent="CanvasUIPlayer" unique_id=749441753]
-offset_left = 878.0
+offset_left = 895.0
 offset_top = 43.0
-offset_right = 1004.0
-offset_bottom = 88.0
+offset_right = 1021.0
+offset_bottom = 89.0
 theme_override_font_sizes/font_size = 32
 text = "23.59"
+label_settings = SubResource("LabelSettings_xgqkh")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -171,9 +203,9 @@ offset_bottom = 304.0
 scale = Vector2(0.6560872, 0.63847107)
 
 [node name="LabelPause" type="Label" parent="CanvasMenuPause" unique_id=1340870356]
-offset_left = 532.0
+offset_left = 518.0
 offset_top = 188.0
-offset_right = 657.0
+offset_right = 660.0
 offset_bottom = 243.0
 text = "PAUSE"
 label_settings = SubResource("LabelSettings_jhx03")
@@ -189,9 +221,9 @@ label_settings = SubResource("LabelSettings_o8fc1")
 horizontal_alignment = 1
 
 [node name="LabelSFX" type="Label" parent="CanvasMenuPause" unique_id=753144620]
-offset_left = 495.0
+offset_left = 500.0
 offset_top = 387.0
-offset_right = 545.0
+offset_right = 550.0
 offset_bottom = 422.0
 text = "SFX"
 label_settings = SubResource("LabelSettings_xo05s")
@@ -219,13 +251,8 @@ layer = 2
 visible = false
 script = ExtResource("14_xo05s")
 
-[node name="LabelTitleGame" type="Label" parent="CanvasMenuMain" unique_id=309188428]
-offset_left = 434.0
-offset_top = 87.0
-offset_right = 768.0
-offset_bottom = 186.0
-theme_override_font_sizes/font_size = 64
-text = "Aberration"
+[node name="MainMenuBackground" parent="CanvasMenuMain" unique_id=2136661801 instance=ExtResource("15_pm21f")]
+position = Vector2(4, -11)
 
 [node name="LabelTagGame" type="Label" parent="CanvasMenuMain" unique_id=45470097]
 offset_left = 451.0
@@ -234,6 +261,8 @@ offset_right = 757.0
 offset_bottom = 219.0
 theme_override_font_sizes/font_size = 32
 text = "Unknown or Known"
+label_settings = SubResource("LabelSettings_kpybi")
+horizontal_alignment = 1
 
 [node name="TextureButtonPlay" type="TextureButton" parent="CanvasMenuMain" unique_id=1570680559]
 offset_left = 471.99997
@@ -274,36 +303,46 @@ offset_right = 693.0
 offset_bottom = 339.0
 theme_override_font_sizes/font_size = 32
 text = "Play"
+label_settings = SubResource("LabelSettings_ctatt")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="LabelSettings" type="Label" parent="CanvasMenuMain" unique_id=158564507]
-offset_left = 507.0
-offset_top = 384.0
-offset_right = 692.0
-offset_bottom = 436.0
+offset_left = 505.0
+offset_top = 381.0
+offset_right = 690.0
+offset_bottom = 433.0
 theme_override_font_sizes/font_size = 32
 text = "Settings"
+label_settings = SubResource("LabelSettings_ctatt")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="LabelCredits" type="Label" parent="CanvasMenuMain" unique_id=1258543840]
-offset_left = 507.0
-offset_top = 476.0
-offset_right = 692.0
-offset_bottom = 528.0
+offset_left = 505.0
+offset_top = 470.0
+offset_right = 690.0
+offset_bottom = 522.0
 theme_override_font_sizes/font_size = 32
 text = "Credits"
+label_settings = SubResource("LabelSettings_ctatt")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Title" type="Sprite2D" parent="CanvasMenuMain" unique_id=265095305]
+material = SubResource("ShaderMaterial_xgqkh")
+position = Vector2(606, 110)
+scale = Vector2(0.24322459, 0.24322459)
+texture = ExtResource("18_oo54l")
+
 [node name="LabelTutorial" type="Label" parent="CanvasMenuMain" unique_id=1337109676]
-offset_left = 499.0
-offset_top = 556.0
-offset_right = 684.0
-offset_bottom = 608.0
+offset_left = 508.0
+offset_top = 559.0
+offset_right = 693.0
+offset_bottom = 611.0
 theme_override_font_sizes/font_size = 32
 text = "Tutorial"
+label_settings = SubResource("LabelSettings_ctatt")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -319,6 +358,7 @@ offset_right = 830.0
 offset_bottom = 186.0
 theme_override_font_sizes/font_size = 64
 text = "Gitu aja Kalah?"
+label_settings = SubResource("LabelSettings_munwf")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -329,6 +369,7 @@ offset_right = 757.0
 offset_bottom = 219.0
 theme_override_font_sizes/font_size = 32
 text = "main yang seirus"
+label_settings = ExtResource("21_kpybi")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -355,6 +396,7 @@ offset_right = 691.0
 offset_bottom = 339.0
 theme_override_font_sizes/font_size = 32
 text = "Play"
+label_settings = ExtResource("21_kpybi")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -365,6 +407,7 @@ offset_right = 690.0
 offset_bottom = 443.0
 theme_override_font_sizes/font_size = 32
 text = "Exit"
+label_settings = ExtResource("21_kpybi")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -396,6 +439,14 @@ unique_name_in_owner = true
 position = Vector2(2571, -61)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_xo05s")
+
+[node name="MenuBGM" type="AudioStreamPlayer" parent="." unique_id=909697609]
+process_mode = 3
+stream = ExtResource("17_7t5mc")
+
+[node name="GameBGM" type="AudioStreamPlayer" parent="." unique_id=222213005]
+process_mode = 3
+stream = ExtResource("18_lakw3")
 
 [connection signal="pressed" from="CanvasUIPlayer/TextureButtonMenuPause" to="CanvasUIPlayer" method="_on_texture_button_menu_pause_pressed"]
 [connection signal="pressed" from="CanvasMenuPause/TextureButtonExit" to="CanvasMenuPause" method="_on_texture_button_exit_pressed"]

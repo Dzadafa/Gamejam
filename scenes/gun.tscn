@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://di0wvuiya4yn1" path="res://assets/player/glove_left.png" id="4_6b133"]
 [ext_resource type="Texture2D" uid="uid://cu24b5ko0cqtt" path="res://assets/player/gun.png" id="4_qd4js"]
 [ext_resource type="Texture2D" uid="uid://m8gs4oiag6jt" path="res://assets/player/glove_right.png" id="5_haq8l"]
+[ext_resource type="AudioStream" uid="uid://orow5axlmdfk" path="res://assets/audio/sfx/laser_hit.mp3" id="6_haq8l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_haq8l"]
 shader = ExtResource("2_6b133")
@@ -176,5 +177,8 @@ initial_velocity_max = 431.3
 scale_amount_min = 5.0
 scale_amount_max = 20.0
 scale_amount_curve = SubResource("Curve_6b133")
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="." unique_id=461954191]
+stream = ExtResource("6_haq8l")
 
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_timer_timeout"]
