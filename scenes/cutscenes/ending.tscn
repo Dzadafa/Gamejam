@@ -25,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://c6l52qaif1eun" path="res://assets/cutscenes/bg/bg_fixfix.png" id="22_tyjoo"]
 [ext_resource type="Texture2D" uid="uid://c6wuwpg5g0fy" path="res://assets/cutscenes/silhouette_monster_gray.png" id="23_e4l7o"]
 [ext_resource type="Texture2D" uid="uid://bwsy35uh1wsai" path="res://assets/cutscenes/meme_remake.png" id="23_jq2n5"]
-[ext_resource type="Shader" uid="uid://cv0nsbbjoko7c" path="res://shaders/color_rect_circle_clip.gdshader" id="24_0rqhc"]
+[ext_resource type="Shader" path="res://shaders/color_rect_circle_clip.gdshader" id="24_0rqhc"]
 [ext_resource type="Texture2D" uid="uid://bgriut6h4lpgr" path="res://assets/cutscenes/bg/unknwon_space.png" id="24_4xupt"]
 [ext_resource type="AudioStream" uid="uid://br7yeraypylun" path="res://assets/audio/sfx/pod's_lab.mp3" id="24_jq2n5"]
 [ext_resource type="AudioStream" uid="uid://cb2m4xlp3s7a6" path="res://assets/audio/bgm/space_by_lasercheese.mp3" id="25_e00l0"]
@@ -41,6 +41,10 @@
 [ext_resource type="Texture2D" uid="uid://drrrywm1anokd" path="res://assets/cutscenes/blaster.png" id="31_op7y4"]
 [ext_resource type="AudioStream" uid="uid://bfdij5leebduk" path="res://assets/audio/sfx/change.mp3" id="31_xob3v"]
 [ext_resource type="Texture2D" uid="uid://fhefffoxuref" path="res://assets/cutscenes/rocket.png" id="32_0xh4g"]
+[ext_resource type="AudioStream" uid="uid://2tij8u67mc18" path="res://assets/audio/sfx/pod.mp3" id="35_0xh4g"]
+[ext_resource type="AudioStream" uid="uid://dgajxpcvichpu" path="res://assets/audio/sfx/abort.mp3" id="36_op7y4"]
+[ext_resource type="AudioStream" uid="uid://dw7lhytommn7i" path="res://assets/audio/sfx/whatisthat.mp3" id="39_gyiy6"]
+[ext_resource type="AudioStream" uid="uid://ddbgtuu3auun" path="res://assets/audio/sfx/lose.mp3" id="40_s6nhm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0xh4g"]
 shader = ExtResource("24_0rqhc")
@@ -703,7 +707,7 @@ tracks/52/keys = {
 tracks/53/type = "value"
 tracks/53/imported = false
 tracks/53/enabled = true
-tracks/53/path = NodePath("scene7/Rise:volume_db")
+tracks/53/path = NodePath("scene7/What:volume_db")
 tracks/53/interp = 1
 tracks/53/loop_wrap = true
 tracks/53/keys = {
@@ -927,6 +931,30 @@ tracks/71/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [-2.9802319e-08]
+}
+tracks/72/type = "value"
+tracks/72/imported = false
+tracks/72/enabled = true
+tracks/72/path = NodePath("scene8/Node2D2:rotation")
+tracks/72/interp = 1
+tracks/72/loop_wrap = true
+tracks/72/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/73/type = "value"
+tracks/73/imported = false
+tracks/73/enabled = true
+tracks/73/path = NodePath("scene7/Lose:volume_db")
+tracks/73/interp = 1
+tracks/73/loop_wrap = true
+tracks/73/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-20.0]
 }
 
 [sub_resource type="Animation" id="Animation_m21dw"]
@@ -1179,10 +1207,10 @@ tracks/0/path = NodePath("scene8:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 4, 7),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 4, 6.95, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [false, true, false]
+"values": [false, true, true, false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1194,7 +1222,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(5, 6.25, 7),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(673, 295.99988), Vector2(673, -164.57153), Vector2(673, -1316)]
+"values": [Vector2(673, 295.99985), Vector2(673, -164.57153), Vector2(673, -1316)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1215,7 +1243,7 @@ tracks/3/path = NodePath("scene8/Node2D2/Foot:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(5, 6.25),
+"times": PackedFloat32Array(5, 5.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 21.885315), Vector2(0, -489.2758)]
@@ -1460,6 +1488,78 @@ tracks/23/keys = {
 "update": 0,
 "values": [-2.9802319e-08, -2.9802319e-08, -2.9802319e-08, -2.9802319e-08]
 }
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("scene8/Node2D2:rotation")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/25/type = "audio"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Space")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 21.716457,
+"stream": ExtResource("25_e00l0")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/25/use_blend = true
+tracks/26/type = "audio"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("scene2/LabNoise")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"clips": [{
+"end_offset": 1.5403278,
+"start_offset": 0.8288006,
+"stream": ExtResource("24_jq2n5")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/26/use_blend = true
+tracks/27/type = "audio"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("scene8/Pod")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"clips": [{
+"end_offset": 0.25392652,
+"start_offset": 0.0,
+"stream": ExtResource("35_0xh4g")
+}],
+"times": PackedFloat32Array(5.1)
+}
+tracks/27/use_blend = true
+tracks/28/type = "audio"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("scene4/Rocket")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 14.108359,
+"stream": ExtResource("29_d7l6k")
+}],
+"times": PackedFloat32Array(7.5047817)
+}
+tracks/28/use_blend = true
 
 [sub_resource type="Animation" id="Animation_d7l6k"]
 resource_name = "lose"
@@ -1726,7 +1826,7 @@ tracks/20/keys = {
 tracks/21/type = "audio"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("scene7/Rise")
+tracks/21/path = NodePath("scene7/What")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
@@ -1741,7 +1841,7 @@ tracks/21/use_blend = true
 tracks/22/type = "value"
 tracks/22/imported = false
 tracks/22/enabled = true
-tracks/22/path = NodePath("scene7/Rise:volume_db")
+tracks/22/path = NodePath("scene7/What:volume_db")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = {
@@ -1750,6 +1850,21 @@ tracks/22/keys = {
 "update": 0,
 "values": [-50.0, -15.0]
 }
+tracks/23/type = "audio"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("scene2/Abort")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("36_op7y4")
+}],
+"times": PackedFloat32Array(2.55)
+}
+tracks/23/use_blend = true
 
 [sub_resource type="Animation" id="Animation_0rqhc"]
 resource_name = "loser"
@@ -1773,7 +1888,7 @@ tracks/1/path = NodePath("scene9/Label:text")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4666667, 0.5, 2),
+"times": PackedFloat32Array(0, 0.6666667, 0.7, 2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": ["You ran out of time", "", "Control: \"Abort the mission!!\"", ""]
@@ -1785,7 +1900,7 @@ tracks/2/path = NodePath("scene9/Label:label_settings")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [SubResource("LabelSettings_jq2n5"), ExtResource("27_e00l0")]
@@ -1797,7 +1912,7 @@ tracks/3/path = NodePath("scene9/Label:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.4666667, 0.5),
+"times": PackedFloat32Array(0, 0.6666667, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(382, 296), Vector2(382, 296), Vector2(382, 554)]
@@ -1809,7 +1924,7 @@ tracks/4/path = NodePath("scene9/Label:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.4666667, 0.5),
+"times": PackedFloat32Array(0, 0.6666667, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0, 0.0]
@@ -1873,6 +1988,48 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("scene7/What")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 6.4042206,
+"start_offset": 1.711085,
+"stream": ExtResource("39_gyiy6")
+}],
+"times": PackedFloat32Array(2.2333333)
+}
+tracks/10/use_blend = true
+tracks/11/type = "audio"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("scene7/Lose")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"clips": [{
+"end_offset": 0.94037014,
+"start_offset": 4.914656,
+"stream": ExtResource("40_s6nhm")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/11/use_blend = true
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("scene7/Lose:volume_db")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.6333332, 3.9333334, 5),
+"transitions": PackedFloat32Array(0.36602145, 0.36602145, 2.9281712, 2.9281712),
+"update": 0,
+"values": [-60.0, -20.0, -20.0, -60.0]
 }
 
 [sub_resource type="Animation" id="Animation_i5d2a"]
@@ -2309,6 +2466,56 @@ _data = {
 [node name="ending" type="Node2D" unique_id=1752505302]
 script = ExtResource("1_i5d2a")
 
+[node name="scene10" type="Node2D" parent="." unique_id=1030510148]
+
+[node name="UnknwonSpace" type="Sprite2D" parent="scene10" unique_id=944479803]
+position = Vector2(563.065, 324.065)
+scale = Vector2(0.6504541, 0.6504541)
+texture = ExtResource("24_4xupt")
+
+[node name="PlanetUnknown" type="Sprite2D" parent="scene10" unique_id=1252550737]
+position = Vector2(563.065, 324.065)
+scale = Vector2(0.6504541, 0.6504541)
+texture = ExtResource("21_erbx5")
+
+[node name="TextUnknown" type="Sprite2D" parent="scene10" unique_id=1249576525]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(539.00006, 341.00003)
+scale = Vector2(0.5388889, 0.5388889)
+texture = ExtResource("30_h36wm")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="scene10" unique_id=1369456149]
+position = Vector2(828, 640)
+rotation = 0.28742957
+scale = Vector2(0.077012405, 0.077012405)
+
+[node name="Blaster" type="Sprite2D" parent="scene10/CanvasGroup" unique_id=1049603074]
+visible = false
+position = Vector2(137.52045, -176.05725)
+scale = Vector2(1.0000001, 1.0000001)
+texture = ExtResource("31_op7y4")
+offset = Vector2(250.9231, -520.715)
+
+[node name="Blaster2" type="Sprite2D" parent="scene10/CanvasGroup/Blaster" unique_id=595010784]
+position = Vector2(-158.65552, -324.3413)
+rotation = 0.14406347
+scale = Vector2(0.49372962, 0.49372962)
+texture = ExtResource("31_op7y4")
+offset = Vector2(250.9231, -520.715)
+
+[node name="Blaster3" type="Sprite2D" parent="scene10/CanvasGroup/Blaster" unique_id=315716189]
+position = Vector2(326.792, 33.00293)
+rotation = 0.14406347
+scale = Vector2(0.49372962, 0.49372962)
+texture = ExtResource("31_op7y4")
+offset = Vector2(250.9231, -520.715)
+
+[node name="Rocket" type="Sprite2D" parent="scene10/CanvasGroup" unique_id=168217286]
+position = Vector2(228.02686, -518.4971)
+rotation = 0.013704536
+scale = Vector2(1.0570326, 1.0570326)
+texture = ExtResource("32_0xh4g")
+
 [node name="scene8" type="Node2D" parent="." unique_id=1777514084]
 
 [node name="Node2D" type="Node2D" parent="scene8" unique_id=1525567526]
@@ -2384,8 +2591,8 @@ offset = Vector2(-8.991725, 71.24065)
 
 [node name="Helmet" type="Sprite2D" parent="scene2/Body/body/CanvasGroup" unique_id=780091157]
 position = Vector2(0, -20.000008)
-rotation = -0.031887878
-scale = Vector2(0.09999997, 0.09999997)
+rotation = -0.07516125
+scale = Vector2(0.09999998, 0.09999998)
 texture = ExtResource("6_tlad1")
 offset = Vector2(-8.991725, 281.85065)
 
@@ -2448,6 +2655,9 @@ offset = Vector2(-259.47095, 16.888672)
 
 [node name="LabNoise" type="AudioStreamPlayer" parent="scene2" unique_id=1253224049]
 volume_db = -35.0
+
+[node name="Abort" type="AudioStreamPlayer" parent="scene2" unique_id=274917197]
+volume_db = -20.0
 
 [node name="scene1" type="Node2D" parent="." unique_id=1101638297]
 visible = false
@@ -2576,6 +2786,7 @@ scale = Vector2(0.62966657, 0.62966657)
 texture = ExtResource("11_ax4gs")
 
 [node name="PlanetUnknown" type="Sprite2D" parent="scene6" unique_id=864856927]
+visible = false
 position = Vector2(544, 428.00003)
 scale = Vector2(0.68335724, 0.68335724)
 texture = ExtResource("21_erbx5")
@@ -2613,8 +2824,11 @@ modulate = Color(1, 1, 1, 0.3254902)
 position = Vector2(635, 1190)
 texture = ExtResource("14_b7dy5")
 
-[node name="Rise" type="AudioStreamPlayer" parent="scene7" unique_id=347956524]
+[node name="What" type="AudioStreamPlayer" parent="scene7" unique_id=347956524]
 volume_db = -15.0
+
+[node name="Lose" type="AudioStreamPlayer" parent="scene7" unique_id=42021390]
+volume_db = -20.0
 
 [node name="scene9" type="Node2D" parent="." unique_id=764369547]
 visible = false
@@ -2632,56 +2846,6 @@ offset_bottom = 361.0
 text = "You ran out of time"
 label_settings = SubResource("LabelSettings_jq2n5")
 horizontal_alignment = 1
-
-[node name="scene10" type="Node2D" parent="." unique_id=1030510148]
-
-[node name="UnknwonSpace" type="Sprite2D" parent="scene10" unique_id=944479803]
-position = Vector2(563.065, 324.065)
-scale = Vector2(0.6504541, 0.6504541)
-texture = ExtResource("24_4xupt")
-
-[node name="PlanetUnknown" type="Sprite2D" parent="scene10" unique_id=1252550737]
-position = Vector2(563.065, 324.065)
-scale = Vector2(0.6504541, 0.6504541)
-texture = ExtResource("21_erbx5")
-
-[node name="TextUnknown" type="Sprite2D" parent="scene10" unique_id=1249576525]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(539.00006, 341.00003)
-scale = Vector2(0.5388889, 0.5388889)
-texture = ExtResource("30_h36wm")
-
-[node name="CanvasGroup" type="CanvasGroup" parent="scene10" unique_id=1369456149]
-position = Vector2(828, 640)
-rotation = 0.28742957
-scale = Vector2(0.077012405, 0.077012405)
-
-[node name="Blaster" type="Sprite2D" parent="scene10/CanvasGroup" unique_id=1049603074]
-visible = false
-position = Vector2(137.52045, -176.05725)
-scale = Vector2(1.0000001, 1.0000001)
-texture = ExtResource("31_op7y4")
-offset = Vector2(250.9231, -520.715)
-
-[node name="Blaster2" type="Sprite2D" parent="scene10/CanvasGroup/Blaster" unique_id=595010784]
-position = Vector2(-158.65552, -324.3413)
-rotation = 0.14406347
-scale = Vector2(0.49372962, 0.49372962)
-texture = ExtResource("31_op7y4")
-offset = Vector2(250.9231, -520.715)
-
-[node name="Blaster3" type="Sprite2D" parent="scene10/CanvasGroup/Blaster" unique_id=315716189]
-position = Vector2(326.792, 33.00293)
-rotation = 0.14406347
-scale = Vector2(0.49372962, 0.49372962)
-texture = ExtResource("31_op7y4")
-offset = Vector2(250.9231, -520.715)
-
-[node name="Rocket" type="Sprite2D" parent="scene10/CanvasGroup" unique_id=168217286]
-position = Vector2(228.02686, -518.4971)
-rotation = 0.013704536
-scale = Vector2(1.0570326, 1.0570326)
-texture = ExtResource("32_0xh4g")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1356750981]
 libraries/ = SubResource("AnimationLibrary_mh0x8")
