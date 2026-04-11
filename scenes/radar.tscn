@@ -1,7 +1,18 @@
 [gd_scene format=3 uid="uid://raamloyeiv0x"]
 
 [ext_resource type="Script" uid="uid://dpjrs034p6d5t" path="res://scripts/radar.gd" id="1_0d54j"]
-[ext_resource type="Texture2D" uid="uid://bumh5if4xovdf" path="res://icon.svg" id="2_klbcc"]
+
+[sub_resource type="Gradient" id="Gradient_vnohn"]
+colors = PackedColorArray(0.1560941, 0.3550761, 0.7152159, 1, 0.1560941, 0.3550761, 0.7152159, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_23uor"]
+gradient = SubResource("Gradient_vnohn")
+
+[sub_resource type="Gradient" id="Gradient_g0dnf"]
+colors = PackedColorArray(0.82042634, 0.40097094, 5.7756904e-07, 1, 0.82042634, 0.40097094, 5.7756904e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5eocc"]
+gradient = SubResource("Gradient_g0dnf")
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1420225051]
 script = ExtResource("1_0d54j")
@@ -27,11 +38,14 @@ render_target_update_mode = 4
 zoom = Vector2(0.3, 0.3)
 
 [node name="MinimapPlayerIcon" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=495053773]
-texture = ExtResource("2_klbcc")
+position = Vector2(0, 1)
+scale = Vector2(2.0171669, 2.0171669)
+texture = SubResource("GradientTexture2D_23uor")
 
-[node name="MinimapEnemyIcon" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=1722846299]
-modulate = Color(1, 0, 0, 1)
-texture = ExtResource("2_klbcc")
+[node name="MinimapEnemyIcon" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=1203759580]
+position = Vector2(0, 1)
+scale = Vector2(2.0171669, 2.0171669)
+texture = SubResource("GradientTexture2D_5eocc")
 
 [node name="Timer" type="Timer" parent="SubViewportContainer/SubViewport" unique_id=1525015915]
 wait_time = 2.0
