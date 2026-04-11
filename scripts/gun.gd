@@ -6,6 +6,8 @@ extends Node2D
 @onready var animation_gun = $AnimationGun
 @onready var click_particle = $ClickParticleMouse
 @onready var gun_sprite = $CanvasGroup/Gun
+@onready var ray_gun_particle = $RayGunParticle
+
 
 var shoot_gun = preload("res://assets/player/gun.png") 
 var ray_gun = preload("res://assets/player/ray_gun.png") 
@@ -18,36 +20,51 @@ var isReloading: bool = false
 const RELOAD_TIME: float = 1.5 
 
 signal on_scan(scan : bool)
+signal reload_status(is_reloading : bool)
 
 func _ready() -> void:
 	timer.wait_time = 0.25
 	on_scan.connect(BulletPoolManager.get_scanning_gun)
 	gun_sprite.texture = shoot_gun
+	ray_gun_particle.emitting = false
 	
 func _physics_process(delta: float) -> void:
 	if isReloading:
+		ray_gun_particle.emitting = false
 		return
 		
-	#if Input.is_action_just_pressed("klik_kiri_mouse"):
-		#isScanning = false
-		#on_scan.emit(isScanning)
+	var is_anybody_chasing = GameDataManager.chasing_count > 0
 	
-	if Input.is_action_just_pressed("switch_weapon"):
-		isScanning = not isScanning
-		print(isScanning)
-		on_scan.emit(isScanning)
-	
+	if is_anybody_chasing:
+		if Input.is_action_just_pressed("switch_weapon"):
+			isScanning = not isScanning
+			on_scan.emit(isScanning)
+	else:
+		if isScanning:
+			isScanning = false
+			on_scan.emit(isScanning)
+			print("Shoot Gun")
+		if Input.is_action_just_pressed("switch_weapon"):
+			print("tolong aku, aku butuh medkit")
 	if not isScanning:
 		gun_sprite.texture = shoot_gun
+		ray_gun_particle.emitting = false
 		if Input.is_action_just_pressed("klik_kiri_mouse"):
 			spawn_particle()
 			shoot()
-			
 	else:
 		gun_sprite.texture = ray_gun
-		if Input.is_action_pressed("klik_kiri_mouse") and isShooting:
-			spawn_particle()
-			shoot()
+		if Input.is_action_pressed("klik_kiri_mouse"):
+			ray_gun_particle.global_position = get_global_mouse_position()
+			var direction_to_gun = bullet_spawn_position.global_position - ray_gun_particle.global_position
+			ray_gun_particle.gravity = direction_to_gun.normalized() * 1500.0
+			
+			ray_gun_particle.emitting = true
+			if isShooting:
+				spawn_particle()
+				shoot()
+		else:
+			ray_gun_particle.emitting = false
 
 var n = 0
 func shoot() -> void:
@@ -61,8 +78,6 @@ func shoot() -> void:
 
 		isShooting = false
 		GameDataManager.current_ammo -= 1
-		
-		print("Peluru aktif : " + str(n) + "Sisa: " + str(GameDataManager.current_ammo))
 		n += 1
 		
 		bullet.activate(bullet_spawn_position.global_position, shoot_direction)
@@ -77,14 +92,19 @@ func reload() -> void:
 		return
 		
 	isReloading = true
-	print("Ammo habis! Auto-reloading...")
+	SignalBus.reload_status.emit(true)
+	print("ada ammo lagi ngga bang? oh ada")
 	
+	reload_status.emit(true) 
 	
 	await get_tree().create_timer(RELOAD_TIME).timeout
 	
 	GameDataManager.current_ammo = GameDataManager.MAG_SIZE
 	isReloading = false
-	print("Reload selesai! Ammo kembali 30.")
+	print("ammo kembali 30")
+	
+	reload_status.emit(false)
+	SignalBus.reload_status.emit(false)
 
 func _on_gun_hit_flash(knockback: bool) -> void:
 	if knockback:

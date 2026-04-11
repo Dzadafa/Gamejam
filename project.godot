@@ -22,6 +22,11 @@ BulletPoolManager="*uid://b7uyvpd5cur1w"
 PlayerManager="*uid://cnevc07aj545d"
 GameDataManager="*uid://dbp3rc0mx3lum"
 SignalBus="*uid://dhcsipq0ovlf2"
+SceneManager="*uid://dfgre3lyioul2"
+
+[display]
+
+window/stretch/aspect="expand"
 
 [global_group]
 

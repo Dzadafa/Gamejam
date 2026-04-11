@@ -7,21 +7,29 @@ class_name Bullet
 @onready var bullet_explosion = $BulletExplosion
 @onready var bullet_sprite = $BulletSprite
 
+var throw_foot_sprite = preload("res://assets/gullible/right_foot.png")
+var default_sprite_texture: Texture2D 
 
 const SPEED = 1500
 var bullet_direction = Vector2.ZERO 
 var target_group : String = "PlayerHurtBox"
+var rotation_speed: float = 15.0
 
 func _ready() -> void:
 	z_index = 4
 	if bullet_explosion != null:
 		bullet_explosion.emitting = false 
+		
+	if bullet_sprite != null:
+		default_sprite_texture = bullet_sprite.texture
+
 	pass
 
 func _physics_process(delta: float) -> void:
 	global_position += bullet_direction * SPEED * delta
 	on_scanning_gun()
 	
+	rotation += rotation_speed * delta
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	deactivate()
@@ -36,10 +44,20 @@ func deactivate():
 	if bullet_area != null:
 		bullet_area.set_deferred("monitoring", false)
 		
-func activate(start_position: Vector2, direction: Vector2, position_target_group: String = "EnemyHurtBox"):
+func activate(start_position: Vector2, direction: Vector2, position_target_group: String = "EnemyHurtBox", source_size: float = 1.0):
 	global_position = start_position
 	bullet_direction = direction
 	target_group = position_target_group
+	
+	if bullet_sprite != null:
+		if target_group == "PlayerHurtBox":
+			bullet_sprite.texture = throw_foot_sprite
+			bullet_sprite.scale = Vector2(source_size * 0.2, source_size * 0.2)
+			bullet_collision.scale = Vector2(source_size * 0.2 , source_size * 0.2) 
+		else:
+			bullet_collision.scale = Vector2(0.1, 0.1)
+			bullet_sprite.scale = Vector2(0.1, 0.1)
+			bullet_sprite.texture = default_sprite_texture
 	
 	if bullet_explosion != null:
 		bullet_explosion.emitting = false

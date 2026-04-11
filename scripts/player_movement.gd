@@ -3,7 +3,7 @@ class_name Player
 
 signal on_hit_flash(knockback : bool)
 
-const SPEED = 400.0
+const SPEED = 300.0
 const ACCELERATION = SPEED * 5
 const FRICTION = SPEED * 4
 var knockback = GameDataManager.KNOCKBACK
@@ -14,14 +14,18 @@ var knockback = GameDataManager.KNOCKBACK
 @onready var player_body = $Body
 @onready var timer = $Timer
 @onready var animation_player = $AnimationPlayer
+@onready var label = $Label
 
 var knockback_multiplier : float
 var isKnockbacked = false
 var isMoving = true
 var is_animation_hurt = null
+var is_invisible : bool = false
+var isDead = false
 
 func _ready() -> void:
 	z_index = 2
+	label.z_index = 2
 	#mendaftarkan diri sebagaii player
 	PlayerManager.player = self
 	SignalBus.enemy_hit.connect(_knockback)
@@ -29,8 +33,19 @@ func _ready() -> void:
 	on_hit_flash.connect(gun._on_gun_hit_flash)
 	on_hit_flash.connect(_on_player_hit_flash)
 	
+	if label != null:
+		label.hide()
+		
+	gun.reload_status.connect(_on_gun_reload_status)
+	activate_invisible(2.0)
 
 func _physics_process(delta: float) -> void:
+	if isDead:
+		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+		move_and_slide()
+		return 
+		
+	is_animation_hurt = animation_player.current_animation == "hurt"
 	#print(GameDataManager.curssrent_hp)
 	is_animation_hurt = animation_player.current_animation == "hurt"
 	
@@ -70,26 +85,42 @@ func _exit_tree() -> void:
 	if PlayerManager.player == self:
 		PlayerManager.player = null
 		
-#func take_damage(amount: int):
-	#GameDataManager.current_hp -= amount
-	#if GameDataManager.current_hp <= 0:
-		#die()
-#
-#func shoot():
-	#if GameDataManager.ammo > 0:
-		#GameDataManager.ammo -= 1
+func activate_invisible(duration: float) -> void:
+	is_invisible = true
+	await get_tree().create_timer(duration).timeout
+	is_invisible = false
+	player_body.modulate.a = 1.0
 
 func die():
+	if isDead: 
+		return
+		
+	isDead = true
+	isMoving = false
+	on_hit_flash.emit(false)
+	
+	if is_instance_valid(gun):
+		gun.hide() 
+	
+	animation_player.play("die")
+	
 	SignalBus.player_died.emit()
 	
 func _knockback(damage, attacker_position, attacker_size):
+	if is_invisible or isDead:
+		return
+		
+	activate_invisible(0.5)
+	
+	
 	on_hit_flash.emit(true) 
-	#animation_player.play("hurt")
-	#await animation_player.animation_finished
-	#animation_player.play("RESET")
+
 	GameDataManager.current_hp -= damage
 	isMoving = false
-
+	if GameDataManager.current_hp <= 0:
+		die()
+		return
+		
 	var knockback_direction = (global_position - attacker_position).normalized()
 
 	var size_factor = clamp(attacker_size, 0.5, 3.0)
@@ -106,6 +137,9 @@ func _knockback(damage, attacker_position, attacker_size):
 	timer.start()
 
 func _on_player_hit_flash(knockback : bool) -> void:
+	if isDead:
+		return
+		
 	if knockback:
 		animation_player.play("hurt")
 	else:
@@ -113,7 +147,16 @@ func _on_player_hit_flash(knockback : bool) -> void:
 			await animation_player.animation_finished
 		animation_player.play("RESET")
 		
-
+func _on_gun_reload_status(is_reloading: bool) -> void:
+	print("status relaod: ", is_reloading)
+	if label == null:
+		return
+		
+	if is_reloading:
+		label.text = "Reloading..."
+		label.show()
+	else:
+		label.hide()
 	
 func _on_timer_timeout() -> void:
 	isMoving = true

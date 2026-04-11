@@ -587,6 +587,7 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_d2wvv"]
 resource_name = "walk"
+length = 1.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -700,6 +701,7 @@ radius = 34.0
 height = 146.0
 
 [node name="Player" type="CharacterBody2D" unique_id=529118703 groups=["Player"]]
+scale = Vector2(0.5, 0.5)
 collision_layer = 2
 collision_mask = 6
 script = ExtResource("1_onrkg")
@@ -724,7 +726,7 @@ offset = Vector2(141.44395, -259.7179)
 
 [node name="RightFoot" type="Sprite2D" parent="Body/body/CanvasGroup" unique_id=593246614]
 position = Vector2(9, 31)
-scale = Vector2(0.099999964, 0.099999964)
+scale = Vector2(0.09999996, 0.09999996)
 texture = ExtResource("5_jej6c")
 offset = Vector2(-99.253136, -249.68883)
 
@@ -757,7 +759,7 @@ remote_path = NodePath("../../../../../body/CanvasGroup/LeftFoot")
 
 [node name="right_foot" type="Bone2D" parent="Body/skeleton/Skeleton2D/body" unique_id=1556290087]
 position = Vector2(9, 31)
-scale = Vector2(0.99999964, 0.99999964)
+scale = Vector2(0.9999996, 0.9999996)
 rest = Transform2D(1, 0, 0, 1, 9, 31)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Body/skeleton/Skeleton2D/body/right_foot" unique_id=159375277]
@@ -797,11 +799,27 @@ modulate = Color(1, 1, 0, 1)
 shape = SubResource("CapsuleShape2D_smehm")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=993079262]
+zoom = Vector2(1.5, 1.5)
+limit_left = -1130
+limit_top = -800
+limit_right = 2280
+limit_bottom = 1050
 drag_left_margin = 0.0
 drag_top_margin = 0.0
 drag_right_margin = 0.0
 drag_bottom_margin = 0.0
+editor_draw_limits = true
 editor_draw_drag_margin = true
+
+[node name="Label" type="Label" parent="." unique_id=543070262]
+offset_left = -84.0
+offset_top = -128.0
+offset_right = 95.0
+offset_bottom = -83.0
+theme_override_font_sizes/font_size = 32
+text = "Reloading..."
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="PlayerHurtBoxArea" to="." method="_on_player_hurt_box_area_area_entered"]
