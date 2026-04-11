@@ -3,6 +3,7 @@ extends Node2D
 @onready var menu_main = $CanvasMenuMain
 @onready var menu_pause = $CanvasMenuPause
 @onready var menu_tutorial = $CanvasTutorial
+@onready var menu_credit = $CanvasCredits
 @onready var ui_player = $CanvasUIPlayer
 @onready var menu_restart_game = $CanvasRestartGame
 @onready var player = $Player
@@ -50,3 +51,9 @@ func _on_player_died() -> void:
 	RadarMinimap.hide()
 	menu_restart_game.show()
 	get_tree().paused = true
+
+func tutorial_game() -> void:
+	menu_tutorial.show()
+	
+func credit_game() -> void:
+	menu_credit.show()

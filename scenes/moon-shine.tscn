@@ -776,6 +776,7 @@ texture = ExtResource("6_jro0i")
 offset = Vector2(44.00001, -35.999924)
 
 [node name="Node2D2" type="Node2D" parent="Body" unique_id=1646405937]
+visible = false
 
 [node name="Skeleton2D" type="Skeleton2D" parent="Body/Node2D2" unique_id=323621508]
 
@@ -829,6 +830,7 @@ scale = Vector2(0.1, 0.1)
 remote_path = NodePath("../../../../Node2D/CanvasGroup/Body")
 
 [node name="EnemyCollision" type="CollisionShape2D" parent="." unique_id=515656335]
+visible = false
 position = Vector2(0, -9)
 rotation = 0.1887001
 shape = SubResource("CapsuleShape2D_otmr2")
@@ -842,32 +844,39 @@ texture = ExtResource("2_6w7x4")
 libraries/ = SubResource("AnimationLibrary_pspg1")
 
 [node name="EnemyChaseArea" type="Area2D" parent="." unique_id=893282828]
+visible = false
 collision_layer = 4
 collision_mask = 10
 
 [node name="ChaseAreaCollision" type="CollisionShape2D" parent="EnemyChaseArea" unique_id=1997386043]
+visible = false
 rotation = -0.06813157
 shape = SubResource("CircleShape2D_6w7x4")
 
 [node name="EnemyHitBoxArea" type="Area2D" parent="." unique_id=177082187]
+visible = false
 modulate = Color(0, 1, 0, 1)
 collision_layer = 4
 collision_mask = 10
 
 [node name="EnemyHitBoxCollision" type="CollisionShape2D" parent="EnemyHitBoxArea" unique_id=1973566237]
+visible = false
 shape = SubResource("CapsuleShape2D_7hjkn")
 
 [node name="EnemyHurtBoxArea" type="Area2D" parent="." unique_id=1541571131 groups=["EnemyHurtBox"]]
+visible = false
 modulate = Color(1, 0, 1, 1)
 collision_layer = 4
 collision_mask = 10
 
 [node name="EnemyHurtBoxCollision" type="CollisionShape2D" parent="EnemyHurtBoxArea" unique_id=78245765]
+visible = false
 shape = SubResource("CapsuleShape2D_j230b")
 
 [node name="Timer" type="Timer" parent="." unique_id=1403352087]
 
 [node name="EnemyDieParticle" type="CPUParticles2D" parent="." unique_id=2089415729]
+visible = false
 emitting = false
 amount = 20
 explosiveness = 1.0
@@ -883,6 +892,7 @@ scale_amount_curve = SubResource("Curve_jro0i")
 [node name="ShootTimer" type="Timer" parent="." unique_id=527221128]
 
 [node name="AudioStreamEnemy" type="AudioStreamPlayer2D" parent="." unique_id=1776174711]
+visible = false
 
 [connection signal="body_entered" from="EnemyChaseArea" to="." method="_on_enemy_chase_area_body_entered"]
 [connection signal="body_exited" from="EnemyChaseArea" to="." method="_on_enemy_chase_area_body_exited"]

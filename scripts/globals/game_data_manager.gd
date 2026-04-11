@@ -6,7 +6,7 @@ const MAG_SIZE: int = 60
 const MAX_TIME: float = 10.0
 const DAMAGE : float = 10.0
 const KNOCKBACK : float = 500.0
-
+var is_game_over : bool = false
 var chasing_count : int = 0
 var isRestart :bool = false
 var current_hp: float = 100.0:
@@ -16,8 +16,18 @@ var current_hp: float = 100.0:
 			
 var current_dna : float = 0.0:
 	set(value):
+		if is_game_over:
+			return
 		current_dna = clamp(value, 0, MAX_DNA)
 		SignalBus.dna_changed.emit(current_dna)
+		if current_dna >= MAX_DNA:
+			is_game_over = true
+			var time_left = MAX_TIME - current_time
+			
+			if time_left >= 60.0:
+				SignalBus.game_ended.emit("easter_egg")
+			else:
+				SignalBus.game_ended.emit("normal_ending")
 
 var current_time : float = 0.0:
 	set(value):

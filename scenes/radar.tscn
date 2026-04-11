@@ -18,15 +18,8 @@ gradient = SubResource("Gradient_g0dnf")
 script = ExtResource("1_0d54j")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=783416514]
-anchors_preset = -1
-anchor_left = 0.067
-anchor_top = 0.11100001
-anchor_right = 0.067
-anchor_bottom = 0.11100001
-offset_left = -67.184006
-offset_top = -60.92801
-offset_right = 997.10126
-offset_bottom = 996.2145
+offset_right = 1064.2853
+offset_bottom = 1057.1425
 scale = Vector2(0.28000015, 0.28000015)
 metadata/_edit_group_ = true
 

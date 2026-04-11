@@ -1,8 +1,5 @@
 extends CanvasLayer
 
-@onready var canvas_menu_pause = $"../CanvasMenuPause"
-@onready var canvas_tutorial = $"../CanvasTutorial"
-@onready var canvas_credit = $"../CanvasCredits"
 @onready var world = $".." 
 
 func _ready() -> void:
@@ -20,7 +17,9 @@ func _on_texture_button_settings_pressed() -> void:
 	world.pause_game()
 
 func _on_texture_button_credits_pressed() -> void:
+	world.credit_game()
 	pass 
 
 func _on_texture_button_tutorial_pressed() -> void:
+	world.tutorial_game()
 	pass

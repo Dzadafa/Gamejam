@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ddsoiimmsgkej"]
+[gd_scene format=3 uid="uid://ctsh1prrqv0ft"]
 
 [ext_resource type="Script" uid="uid://dquvh6j7w3kk7" path="res://scripts/cutscenes/ending.gd" id="1_i5d2a"]
 [ext_resource type="Texture2D" uid="uid://sdd11kk30cfk" path="res://assets/cutscenes/bg/pod.png" id="2_10303"]
@@ -25,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://c6l52qaif1eun" path="res://assets/cutscenes/bg/bg_fixfix.png" id="22_tyjoo"]
 [ext_resource type="Texture2D" uid="uid://c6wuwpg5g0fy" path="res://assets/cutscenes/silhouette_monster_gray.png" id="23_e4l7o"]
 [ext_resource type="Texture2D" uid="uid://bwsy35uh1wsai" path="res://assets/cutscenes/meme_remake.png" id="23_jq2n5"]
-[ext_resource type="Shader" uid="uid://cv0nsbbjoko7c" path="res://shaders/color_rect_circle_clip.gdshader" id="24_0rqhc"]
+[ext_resource type="Shader" path="res://shaders/color_rect_circle_clip.gdshader" id="24_0rqhc"]
 [ext_resource type="Texture2D" uid="uid://bgriut6h4lpgr" path="res://assets/cutscenes/bg/unknwon_space.png" id="24_4xupt"]
 [ext_resource type="AudioStream" uid="uid://br7yeraypylun" path="res://assets/audio/sfx/pod's_lab.mp3" id="24_jq2n5"]
 [ext_resource type="AudioStream" uid="uid://cb2m4xlp3s7a6" path="res://assets/audio/bgm/space_by_lasercheese.mp3" id="25_e00l0"]
@@ -2593,7 +2593,7 @@ offset = Vector2(-8.991725, 71.24065)
 
 [node name="Helmet" type="Sprite2D" parent="scene2/Body/body/CanvasGroup" unique_id=780091157]
 position = Vector2(0, -20.000008)
-rotation = -0.031887863
+rotation = -0.031887837
 scale = Vector2(0.09999997, 0.09999997)
 texture = ExtResource("6_tlad1")
 offset = Vector2(-8.991725, 281.85065)

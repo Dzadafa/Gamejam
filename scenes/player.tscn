@@ -703,7 +703,7 @@ height = 146.0
 [node name="Player" type="CharacterBody2D" unique_id=529118703 groups=["Player"]]
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
-collision_mask = 6
+collision_mask = 7
 script = ExtResource("1_onrkg")
 metadata/_edit_horizontal_guides_ = [74.0, 15.0]
 

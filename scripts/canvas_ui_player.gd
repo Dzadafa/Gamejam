@@ -27,6 +27,8 @@ func _on_enemy_dna_changed(new_dna: float) -> void:
 	TPB_DNA_enemy.value = new_dna
 
 func _physics_process(delta: float) -> void:
+	if get_tree().paused:
+		return
 	time_elapsed -= delta
 	
 	if time_elapsed < 0:
