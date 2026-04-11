@@ -553,4 +553,4 @@ stream = ExtResource("18_lakw3")
 [connection signal="pressed" from="CanvasMenuPause/ButtonExitMenuPause" to="CanvasMenuPause" method="_on_button_exit_menu_pause_pressed"]
 [connection signal="pressed" from="CanvasMenuMain/TextureButtonPlay" to="CanvasMenuMain" method="_on_texture_button_play_pressed"]
 [connection signal="pressed" from="CanvasMenuMain/TextureButtonSettings" to="CanvasMenuMain" method="_on_texture_button_settings_pressed"]
-[connection signal
+[connection signal="pressed" from="CanvasTutorial/TextureButton" to="CanvasTutorial" method="_on_texture_button_pressed"]
