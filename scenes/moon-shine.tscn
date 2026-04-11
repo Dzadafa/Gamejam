@@ -844,7 +844,6 @@ texture = ExtResource("2_6w7x4")
 libraries/ = SubResource("AnimationLibrary_pspg1")
 
 [node name="EnemyChaseArea" type="Area2D" parent="." unique_id=893282828]
-visible = false
 collision_layer = 4
 collision_mask = 10
 

@@ -41,7 +41,8 @@ func _on_texture_butto_nextn_pressed() -> void:
 	pass # Replace with function body.
 
 
-func _on_texture_butto_nextn_2_pressed() -> void:
+
+func _on_texture_buttonpreview_pressed() -> void:
 	texture_tutorial.texture = tutorial_1
 	button_previews.hide()
 	button_next.show()

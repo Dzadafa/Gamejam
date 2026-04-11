@@ -8,16 +8,33 @@ extends Node2D
 @onready var menu_restart_game = $CanvasRestartGame
 @onready var player = $Player
 @onready var RadarMinimap = $RadarMinimap
-
+@onready var intro_canvas = $intro
 @onready var menu_bgm = $MenuBGM
 @onready var game_bgm = $GameBGM
+
+var intro = preload("res://scenes/cutscenes/intro.tscn")
 
 var is_game_started: bool = false 
 var is_ending: bool = false 
 
 func _ready() -> void:
-	show_main_menu()
+	get_tree().paused = true
+	menu_main.hide()
+	menu_pause.hide()
+	menu_tutorial.hide()
+	ui_player.hide()
 	RadarMinimap.hide()
+	
+	var intro_instance = intro.instantiate()
+	intro_instance.process_mode = Node.PROCESS_MODE_ALWAYS
+	add_child(intro_instance)
+	
+	var anim_player = intro_instance.get_node("AnimationPlayer")
+	await anim_player.animation_finished
+	intro_instance.queue_free()
+	intro_canvas.hide()
+	call_deferred("show_main_menu")
+	
 	SignalBus.player_died.connect(_on_player_died)
 	SignalBus.game_ended.connect(_on_game_ended_ui_hide)
 
@@ -90,3 +107,11 @@ func _on_game_ended_ui_hide(ending_type: String) -> void:
 	RadarMinimap.hide()
 	
 	menu_pause.hide()
+
+
+func _on_texture_button_credits_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_texture_button_tutorial_pressed() -> void:
+	pass # Replace with function body.
