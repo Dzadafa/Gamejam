@@ -1,20 +1,20 @@
 [gd_scene format=3 uid="uid://blxffmmsgextb"]
 
 [ext_resource type="PackedScene" uid="uid://raamloyeiv0x" path="res://scenes/radar.tscn" id="1_4wyf3"]
-[ext_resource type="Script" uid="uid://bptkc0nenod3u" path="res://scripts/world.gd" id="1_dss4m"]
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_dss4m"]
 [ext_resource type="PackedScene" uid="uid://plsva74qyasj" path="res://scenes/player.tscn" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://pp3klnapetqe" path="res://scenes/enemy_spawn.tscn" id="3_4wyf3"]
 [ext_resource type="Texture2D" uid="uid://c6l52qaif1eun" path="res://assets/cutscenes/bg/bg_fixfix.png" id="4_k0juu"]
-[ext_resource type="Script" uid="uid://b5jj6sw7xxf0m" path="res://scripts/canvas_ui_player.gd" id="6_qfnet"]
+[ext_resource type="Script" path="res://scripts/canvas_ui_player.gd" id="6_qfnet"]
 [ext_resource type="Shader" path="res://shaders/sprite_outline.gdshader" id="7_4mrxx"]
 [ext_resource type="Texture2D" uid="uid://x21653afs3f6" path="res://assets/UI/Pause_Button.png" id="7_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://drl0krskisoov" path="res://assets/UI/Frame 1.png" id="9_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://bf1mn5m0dtaru" path="res://assets/UI/Frame.png" id="10_e3hyu"]
-[ext_resource type="Script" uid="uid://dgqp4kma6ylc5" path="res://scripts/canvas_menu_pause.gd" id="10_jhx03"]
+[ext_resource type="Script" path="res://scripts/canvas_menu_pause.gd" id="10_jhx03"]
 [ext_resource type="Texture2D" uid="uid://dnaw15l4x17vo" path="res://assets/UI/Button_02.png" id="11_q5onr"]
 [ext_resource type="Texture2D" uid="uid://cu58km7lkaqbx" path="res://assets/UI/Switch_Off.png" id="13_o8fc1"]
 [ext_resource type="Texture2D" uid="uid://dbengqd6e8il2" path="res://assets/UI/Button_01.png" id="14_o8fc1"]
-[ext_resource type="Script" uid="uid://cc1nvupcuk2d1" path="res://scripts/canvas_menu_main.gd" id="14_xo05s"]
+[ext_resource type="Script" path="res://scripts/canvas_menu_main.gd" id="14_xo05s"]
 
 [sub_resource type="Gradient" id="Gradient_4mrxx"]
 offsets = PackedFloat32Array(0.014851485, 1)
@@ -42,11 +42,8 @@ font_size = 24
 [sub_resource type="LabelSettings" id="LabelSettings_xo05s"]
 font_size = 24
 
-[sub_resource type="Environment" id="Environment_e3hyu"]
-glow_enabled = true
-glow_intensity = 1.35
-glow_bloom = 0.08
-adjustment_brightness = 2.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xo05s"]
+size = Vector2(3483, 559)
 
 [node name="World" type="Node2D" unique_id=805106329]
 script = ExtResource("1_dss4m")
@@ -106,10 +103,10 @@ scale = Vector2(0.1358043, 0.1358043)
 texture_normal = ExtResource("7_7r4gi")
 
 [node name="LabelTimerEndGame" type="Label" parent="CanvasUIPlayer" unique_id=749441753]
-offset_left = 879.0
-offset_top = 22.0
-offset_right = 1005.0
-offset_bottom = 65.0
+offset_left = 878.0
+offset_top = 43.0
+offset_right = 1004.0
+offset_bottom = 88.0
 theme_override_font_sizes/font_size = 32
 text = "23.59"
 horizontal_alignment = 1
@@ -306,8 +303,28 @@ layer = 3
 [node name="CanvasTutorial" type="CanvasLayer" parent="." unique_id=14447821]
 layer = 3
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2045445139]
-environment = SubResource("Environment_e3hyu")
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1049263035]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1913394289]
+position = Vector2(572.5, -1081)
+shape = SubResource("RectangleShape2D_xo05s")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1620016052]
+unique_name_in_owner = true
+position = Vector2(615, 1399)
+shape = SubResource("RectangleShape2D_xo05s")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1873588660]
+unique_name_in_owner = true
+position = Vector2(-1404, 238.5)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_xo05s")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=1540726487]
+unique_name_in_owner = true
+position = Vector2(2571, -61)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_xo05s")
 
 [connection signal="pressed" from="CanvasUIPlayer/TextureButtonMenuPause" to="CanvasUIPlayer" method="_on_texture_button_menu_pause_pressed"]
 [connection signal="pressed" from="CanvasMenuPause/TextureButtonExit" to="CanvasMenuPause" method="_on_texture_button_exit_pressed"]
