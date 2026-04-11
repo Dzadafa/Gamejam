@@ -1,10 +1,13 @@
-extends Node2D
+extends CanvasLayer
 class_name ending
 
-var animation_player 
+@onready var animation_player  = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	self.hide() 
+	self.process_mode = Node.PROCESS_MODE_ALWAYS
+	animation_player.process_mode = Node.PROCESS_MODE_ALWAYS
 	SignalBus.game_ended.connect(_on_game_ended)
 	pass
 

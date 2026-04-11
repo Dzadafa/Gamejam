@@ -10,13 +10,17 @@ extends Node2D
 @onready var RadarMinimap = $RadarMinimap
 
 var is_game_started: bool = false 
+var is_ending: bool = false 
 
 func _ready() -> void:
 	show_main_menu()
 	RadarMinimap.hide()
 	SignalBus.player_died.connect(_on_player_died)
+	SignalBus.game_ended.connect(_on_game_ended_ui_hide)
+
 func show_main_menu() -> void:
 	is_game_started = false 
+	is_ending = false
 	
 	menu_main.show()
 	menu_pause.hide()
@@ -27,6 +31,7 @@ func show_main_menu() -> void:
 
 func start_game() -> void:
 	is_game_started = true 
+	is_ending = false
 	
 	menu_main.hide()
 	ui_player.show()
@@ -34,6 +39,9 @@ func start_game() -> void:
 	get_tree().paused = false
 
 func pause_game() -> void:
+	if is_ending:
+		return 
+		
 	menu_pause.show()
 	get_tree().paused = true
 
@@ -46,7 +54,14 @@ func resume_game() -> void:
 		get_tree().paused = true
 
 func _on_player_died() -> void:
+	if is_ending:
+		return 
+		
 	await get_tree().create_timer(1.5, true, false, true).timeout 
+	
+	if is_ending:
+		return
+		
 	ui_player.hide()
 	RadarMinimap.hide()
 	menu_restart_game.show()
@@ -57,3 +72,11 @@ func tutorial_game() -> void:
 	
 func credit_game() -> void:
 	menu_credit.show()
+
+func _on_game_ended_ui_hide(ending_type: String) -> void:
+	is_ending = true 
+	
+	ui_player.hide()
+	RadarMinimap.hide()
+	
+	menu_pause.hide()

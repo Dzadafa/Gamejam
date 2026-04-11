@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://raamloyeiv0x" path="res://scenes/radar.tscn" id="1_4wyf3"]
 [ext_resource type="Script" uid="uid://bptkc0nenod3u" path="res://scripts/world.gd" id="1_dss4m"]
 [ext_resource type="PackedScene" uid="uid://plsva74qyasj" path="res://scenes/player.tscn" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://ctsh1prrqv0ft" path="res://scenes/cutscenes/ending.tscn" id="2_7iits"]
 [ext_resource type="PackedScene" uid="uid://pp3klnapetqe" path="res://scenes/enemy_spawn.tscn" id="3_4wyf3"]
 [ext_resource type="Texture2D" uid="uid://c6l52qaif1eun" path="res://assets/cutscenes/bg/bg_fixfix.png" id="4_k0juu"]
 [ext_resource type="Script" uid="uid://b5jj6sw7xxf0m" path="res://scripts/canvas_ui_player.gd" id="6_qfnet"]
@@ -58,6 +59,8 @@ script = ExtResource("1_dss4m")
 metadata/_edit_horizontal_guides_ = [1132.0, 59.0, 521.0]
 metadata/_edit_vertical_guides_ = [1035.0, 602.0, 232.0]
 
+[node name="ending" parent="." unique_id=1752505302 instance=ExtResource("2_7iits")]
+
 [node name="RadarMinimap" parent="." unique_id=1420225051 node_paths=PackedStringArray("player_sprite") instance=ExtResource("1_4wyf3")]
 offset = Vector2(60, 83)
 scale = Vector2(0.8, 0.8)
@@ -75,7 +78,6 @@ texture = ExtResource("4_k0juu")
 
 [node name="CanvasUIPlayer" type="CanvasLayer" parent="." unique_id=1854109003]
 process_mode = 3
-visible = false
 script = ExtResource("6_qfnet")
 
 [node name="TextureRectAmmo" type="TextureRect" parent="CanvasUIPlayer" unique_id=785384923]
@@ -416,9 +418,11 @@ texture_normal = ExtResource("18_pm21f")
 [node name="CanvasTutorial" type="CanvasLayer" parent="." unique_id=14447821]
 process_mode = 3
 layer = 3
+visible = false
 script = ExtResource("19_pm21f")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasTutorial" unique_id=952653309]
+visible = false
 offset_left = 85.0
 offset_top = 33.0
 offset_right = 2885.0
