@@ -47,4 +47,4 @@ func restart_game():
 	await get_tree().create_timer(1.0).timeout
 	
 	isRestart = false
-a	SceneManager.switch_scene(SceneManager.GameState.GAMEPLAY)
+	SceneManager.switch_scene(SceneManager.GameState.GAMEPLAY)

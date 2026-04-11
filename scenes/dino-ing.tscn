@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://chteddsvjc5ut" path="res://assets/dino-ish/head.png" id="7_rq23g"]
 [ext_resource type="Texture2D" uid="uid://d0vrcm8ss2tpv" path="res://assets/dino-ish/right_foot.png" id="8_yh6em"]
 [ext_resource type="Texture2D" uid="uid://ual1nsbcrpt0" path="res://assets/dino-ish/right_arm.png" id="9_auxvx"]
+[ext_resource type="Shader" uid="uid://dlomdyhqp5enj" path="res://shaders/outline-canvas.gdshader" id="10_bislg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vgasa"]
 radius = 30.708921
@@ -528,6 +529,89 @@ tracks/13/keys = {
 "values": [0.0, -0.2980585, -1.1313949]
 }
 
+[sub_resource type="Shader" id="Shader_ur7pv"]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+// --- Pengaturan Outline (Kode Milikmu) ---
+uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
+uniform vec4 outline_color : source_color = vec4(1.0);
+uniform float width : hint_range(0, 100) = 1.0;
+uniform int sample_count : hint_range(4, 64) = 16;
+
+// --- Pengaturan Hit Flash (Dari Video YouTube) ---
+uniform vec4 hit_flash_color : source_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform bool hit_flash_on = false;
+
+void fragment() {
+    // 1. Membaca piksel asli menggunakan screen_texture
+    vec4 c = textureLod(screen_texture, SCREEN_UV, 0.0);
+
+    // Mencegah artefak gelap di tepi (pre-multiplied alpha fix)
+    if (c.a > 0.0001) {
+        c.rgb /= c.a;
+    }
+
+    // 2. Logika Hit Flash (Disisipkan di sini)
+    // Jika hit_flash_on diaktifkan melalui script/animasi, timpa warna asli dengan warna flash
+    if (hit_flash_on) {
+        c.rgb = hit_flash_color.rgb;
+    }
+
+    // 3. Kalkulasi Outline (Kode Milikmu)
+    vec2 tex_pixel_size = 1.0 / vec2(textureSize(screen_texture, 0));
+    vec2 size = tex_pixel_size * width;
+    float outline = 0.0;
+
+    for (int i = 0; i < sample_count; i++) {
+        float angle = float(i) * (6.28318530718 / float(sample_count));
+        vec2 offset = vec2(cos(angle), sin(angle)) * size;
+
+        vec4 sample_c = textureLod(screen_texture, SCREEN_UV + offset, 0.0);
+        outline += sample_c.a;
+    }
+
+    // Memastikan nilai opasitas outline tidak melebihi batas 1.0
+    outline = min(outline, 1.0);
+    
+    // 4. Gabungkan sprite (yang sudah terkena efek flash atau normal) dengan warna outline
+    vec4 final_color = mix(c, outline_color, clamp(outline - c.a, 0.0, 1.0));
+
+    COLOR *= final_color;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ur7pv"]
+shader = SubResource("Shader_ur7pv")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/width = 4.00000019
+shader_parameter/sample_count = 16
+shader_parameter/hit_flash_color = Color(1, 1, 1, 1)
+shader_parameter/hit_flash_on = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y4r1p"]
+shader = ExtResource("10_bislg")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/width = 4.00000019
+shader_parameter/sample_count = 16
+shader_parameter/hit_flash_color = Color(1, 1, 1, 1)
+shader_parameter/hit_flash_on = false
+
+[sub_resource type="Animation" id="Animation_auxvx"]
+resource_name = "hit_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Node2D/CanvasGroup:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_ur7pv"), SubResource("ShaderMaterial_y4r1p")]
+}
+
 [sub_resource type="Animation" id="Animation_bislg"]
 resource_name = "idle"
 length = 1.6
@@ -1028,6 +1112,7 @@ _data = {
 &"RESET": SubResource("Animation_vgasa"),
 &"attack": SubResource("Animation_103rb"),
 &"die": SubResource("Animation_yh6em"),
+&"hit_flash": SubResource("Animation_auxvx"),
 &"idle": SubResource("Animation_bislg"),
 &"run": SubResource("Animation_rq23g"),
 &"walk": SubResource("Animation_0dmku")

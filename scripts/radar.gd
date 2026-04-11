@@ -44,7 +44,6 @@ func scan_radar() -> void:
 
 func _on_timer_timeout() -> void:
 	can_scan = true
-	# (Opsional) Jika kamu ingin titik merahnya menghilang saat cooldown selesai:
 	# for blip in radar_blips:
 	#     if is_instance_valid(blip):
 	#         blip.queue_free()

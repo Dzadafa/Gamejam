@@ -190,10 +190,21 @@ func handle_flip(move_direction_x: float):
 		enemy_body.scale.x = -1 * enemy_size
 	elif move_direction_x < -0.1:
 		enemy_body.scale.x = 1 * enemy_size
+		
+func reset_shader_state():
+	if enemy_body and enemy_body.material:
+		if not enemy_body.material.resource_local_to_scene:
+			enemy_body.material = enemy_body.material.duplicate()
+		
+		enemy_body.material.set_shader_parameter("hit_flash_on", false)
+	
+	if animation_enemy != null and animation_enemy.is_playing():
+		if animation_enemy.current_animation == "hit_flash":
+			animation_enemy.stop()
 
 func setup_enemy():
 	speed_multiplier = randf_range(0.2, 1.0) 
-	hp_multiplier = randf_range(0.2, 0.4)
+	hp_multiplier = randf_range(0.1, 0.3)
 	current_hp = base_hp * hp_multiplier
 	texture_progress_bar.max_value = current_hp
 	texture_progress_bar.value = current_hp
@@ -218,7 +229,9 @@ func setup_enemy():
 func player_attacked(attacker_position: Vector2):
 	is_run_attacking = false 
 	
-	if animation_enemy != null and animation_enemy.has_animation("hit_flash"):
+	if animation_enemy != null:
+		animation_enemy.stop() 
+		reset_shader_state()
 		animation_enemy.play("hit_flash")
 		
 	current_hp -= player_damage
@@ -269,7 +282,7 @@ func spawn_bullet():
 	
 	direction += Vector2(randf_range(-0.1, 0.1), randf_range(-0.1, 0.1))
 	direction = direction.normalized()
-	bullet.activate(shoot_position.global_position, direction, "PlayerHurtBox")
+	bullet.activate(shoot_position.global_position, direction, "PlayerHurtBox", enemy_size)
 	bullet.look_at(player_position)
 	
 func enemy_die():
@@ -313,6 +326,7 @@ func activate(spawn_position: Vector2):
 	is_run_attacking = false 
 	global_position = spawn_position
 	
+	reset_shader_state()
 	setup_enemy()
 	
 	show()

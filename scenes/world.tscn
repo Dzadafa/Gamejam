@@ -1,16 +1,20 @@
 [gd_scene format=3 uid="uid://blxffmmsgextb"]
 
 [ext_resource type="PackedScene" uid="uid://raamloyeiv0x" path="res://scenes/radar.tscn" id="1_4wyf3"]
+[ext_resource type="Script" uid="uid://bptkc0nenod3u" path="res://scripts/world.gd" id="1_dss4m"]
 [ext_resource type="PackedScene" uid="uid://plsva74qyasj" path="res://scenes/player.tscn" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://pp3klnapetqe" path="res://scenes/enemy_spawn.tscn" id="3_4wyf3"]
 [ext_resource type="Texture2D" uid="uid://c6l52qaif1eun" path="res://assets/cutscenes/bg/bg_fixfix.png" id="4_k0juu"]
-[ext_resource type="Script" path="res://scripts/canvas_ui_player.gd" id="6_qfnet"]
-[ext_resource type="Shader" uid="uid://bxb53p1bx1wd5" path="res://shaders/sprite_outline.gdshader" id="7_4mrxx"]
+[ext_resource type="Script" uid="uid://b5jj6sw7xxf0m" path="res://scripts/canvas_ui_player.gd" id="6_qfnet"]
+[ext_resource type="Shader" path="res://shaders/sprite_outline.gdshader" id="7_4mrxx"]
 [ext_resource type="Texture2D" uid="uid://x21653afs3f6" path="res://assets/UI/Pause_Button.png" id="7_7r4gi"]
-[ext_resource type="Texture2D" uid="uid://bumh5if4xovdf" path="res://icon.svg" id="8_4mrxx"]
 [ext_resource type="Texture2D" uid="uid://drl0krskisoov" path="res://assets/UI/Frame 1.png" id="9_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://bf1mn5m0dtaru" path="res://assets/UI/Frame.png" id="10_e3hyu"]
+[ext_resource type="Script" uid="uid://dgqp4kma6ylc5" path="res://scripts/canvas_menu_pause.gd" id="10_jhx03"]
 [ext_resource type="Texture2D" uid="uid://dnaw15l4x17vo" path="res://assets/UI/Button_02.png" id="11_q5onr"]
+[ext_resource type="Texture2D" uid="uid://cu58km7lkaqbx" path="res://assets/UI/Switch_Off.png" id="13_o8fc1"]
+[ext_resource type="Texture2D" uid="uid://dbengqd6e8il2" path="res://assets/UI/Button_01.png" id="14_o8fc1"]
+[ext_resource type="Script" uid="uid://cc1nvupcuk2d1" path="res://scripts/canvas_menu_main.gd" id="14_xo05s"]
 
 [sub_resource type="Gradient" id="Gradient_4mrxx"]
 offsets = PackedFloat32Array(0.014851485, 1)
@@ -32,23 +36,26 @@ shader_parameter/width = 5.0000002375
 [sub_resource type="LabelSettings" id="LabelSettings_jhx03"]
 font_size = 40
 
+[sub_resource type="LabelSettings" id="LabelSettings_o8fc1"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_xo05s"]
+font_size = 24
+
 [sub_resource type="Environment" id="Environment_e3hyu"]
+glow_enabled = true
 glow_intensity = 1.35
 glow_bloom = 0.08
 adjustment_brightness = 2.0
 
 [node name="World" type="Node2D" unique_id=805106329]
+script = ExtResource("1_dss4m")
 metadata/_edit_horizontal_guides_ = [1132.0]
 
-[node name="CanvasBgMinimap" type="CanvasLayer" parent="." unique_id=1009113213]
-
-[node name="TextureRect" type="TextureRect" parent="CanvasBgMinimap" unique_id=1145349918]
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(1.2799996, 1.3200002)
-texture = ExtResource("8_4mrxx")
-
 [node name="RadarMinimap" parent="." unique_id=1420225051 node_paths=PackedStringArray("player_sprite") instance=ExtResource("1_4wyf3")]
+offset = Vector2(52, 74)
+scale = Vector2(0.8, 0.8)
+transform = Transform2D(0.8, 0, 0, 0.8, 52, 74)
 player_sprite = NodePath("../Player")
 
 [node name="Player" parent="." unique_id=529118703 instance=ExtResource("1_f3sb7")]
@@ -61,6 +68,7 @@ position = Vector2(578, 161)
 texture = ExtResource("4_k0juu")
 
 [node name="CanvasUIPlayer" type="CanvasLayer" parent="." unique_id=1854109003]
+process_mode = 3
 script = ExtResource("6_qfnet")
 
 [node name="TPBHealthBarPlayer" type="TextureProgressBar" parent="CanvasUIPlayer" unique_id=149955767]
@@ -114,6 +122,10 @@ scale = Vector2(0.20163299, 0.20163299)
 texture = ExtResource("9_7r4gi")
 
 [node name="CanvasMenuPause" type="CanvasLayer" parent="." unique_id=1282388377]
+process_mode = 3
+layer = 10
+visible = false
+script = ExtResource("10_jhx03")
 
 [node name="BgMenuPause" type="TextureRect" parent="CanvasMenuPause" unique_id=615711263]
 offset_left = 281.0
@@ -134,7 +146,7 @@ scale = Vector2(0.239333, 0.20087959)
 pivot_offset = Vector2(403.75418, 45.656616)
 texture_normal = ExtResource("11_q5onr")
 
-[node name="Label2" type="Label" parent="CanvasMenuPause/TextureButtonExit" unique_id=38354166]
+[node name="LabelExit" type="Label" parent="CanvasMenuPause/TextureButtonExit" unique_id=38354166]
 layout_mode = 0
 offset_left = 258.5415
 offset_top = 62.300278
@@ -152,21 +164,7 @@ offset_right = 944.0
 offset_bottom = 304.0
 scale = Vector2(0.6560872, 0.63847107)
 
-[node name="CheckButton" type="CheckButton" parent="CanvasMenuPause" unique_id=692404887]
-offset_left = 513.0
-offset_top = 275.0
-offset_right = 557.0
-offset_bottom = 299.0
-scale = Vector2(3.8000047, 3.8000047)
-
-[node name="CheckButton2" type="CheckButton" parent="CanvasMenuPause" unique_id=697240899]
-offset_left = 520.0
-offset_top = 354.0
-offset_right = 564.0
-offset_bottom = 378.0
-scale = Vector2(3.8000047, 3.8000047)
-
-[node name="Label" type="Label" parent="CanvasMenuPause" unique_id=1340870356]
+[node name="LabelPause" type="Label" parent="CanvasMenuPause" unique_id=1340870356]
 offset_left = 532.0
 offset_top = 188.0
 offset_right = 657.0
@@ -175,12 +173,44 @@ text = "PAUSE"
 label_settings = SubResource("LabelSettings_jhx03")
 horizontal_alignment = 1
 
-[node name="TextureButton" type="TextureButton" parent="CanvasMenuPause" unique_id=150260714]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="LabelMusic" type="Label" parent="CanvasMenuPause" unique_id=987930442]
+offset_left = 499.0
+offset_top = 346.0
+offset_right = 581.0
+offset_bottom = 381.0
+text = "MUSIC"
+label_settings = SubResource("LabelSettings_o8fc1")
+horizontal_alignment = 1
+
+[node name="LabelSFX" type="Label" parent="CanvasMenuPause" unique_id=753144620]
+offset_left = 495.0
+offset_top = 387.0
+offset_right = 545.0
+offset_bottom = 422.0
+text = "SFX"
+label_settings = SubResource("LabelSettings_xo05s")
+horizontal_alignment = 1
+
+[node name="TextureButtonMusic" type="TextureButton" parent="CanvasMenuPause" unique_id=150260714]
+offset_left = 615.0
+offset_top = 346.0
+offset_right = 1266.0
+offset_bottom = 606.0
+scale = Vector2(0.12000136, 0.12000136)
+texture_normal = ExtResource("13_o8fc1")
+
+[node name="TextureButtonSFX" type="TextureButton" parent="CanvasMenuPause" unique_id=1967750721]
+offset_left = 616.0
+offset_top = 391.0
+offset_right = 1267.0
+offset_bottom = 651.0
+scale = Vector2(0.12000136, 0.12000136)
+texture_normal = ExtResource("13_o8fc1")
 
 [node name="CanvasMenuMain" type="CanvasLayer" parent="." unique_id=1305880565]
-visible = false
+process_mode = 3
+layer = 2
+script = ExtResource("14_xo05s")
 
 [node name="LabelTitleGame" type="Label" parent="CanvasMenuMain" unique_id=309188428]
 offset_left = 434.0
@@ -203,32 +233,86 @@ offset_left = 471.99997
 offset_top = 270.99997
 offset_right = 600.0
 offset_bottom = 398.99997
-scale = Vector2(2.2000012, 0.6106431)
-texture_normal = ExtResource("8_4mrxx")
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("11_q5onr")
 
 [node name="TextureButtonSettings" type="TextureButton" parent="CanvasMenuMain" unique_id=739809472]
 offset_left = 475.99997
 offset_top = 366.99997
 offset_right = 604.0
 offset_bottom = 494.99997
-scale = Vector2(2.2000012, 0.6106431)
-texture_normal = ExtResource("8_4mrxx")
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("14_o8fc1")
 
 [node name="TextureButtonCredits" type="TextureButton" parent="CanvasMenuMain" unique_id=1008880833]
 offset_left = 475.99997
 offset_top = 458.99997
 offset_right = 604.0
 offset_bottom = 587.0
-scale = Vector2(2.2000012, 0.6106431)
-texture_normal = ExtResource("8_4mrxx")
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("14_o8fc1")
 
 [node name="TextureButtonTutorial" type="TextureButton" parent="CanvasMenuMain" unique_id=1603352804]
 offset_left = 478.99997
 offset_top = 545.0
 offset_right = 607.0
 offset_bottom = 673.0
-scale = Vector2(2.2000012, 0.6106431)
-texture_normal = ExtResource("8_4mrxx")
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("14_o8fc1")
+
+[node name="LabelPlay" type="Label" parent="CanvasMenuMain" unique_id=1754632124]
+offset_left = 508.0
+offset_top = 287.0
+offset_right = 693.0
+offset_bottom = 339.0
+theme_override_font_sizes/font_size = 32
+text = "Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelSettings" type="Label" parent="CanvasMenuMain" unique_id=158564507]
+offset_left = 507.0
+offset_top = 384.0
+offset_right = 692.0
+offset_bottom = 436.0
+theme_override_font_sizes/font_size = 32
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelCredits" type="Label" parent="CanvasMenuMain" unique_id=1258543840]
+offset_left = 507.0
+offset_top = 476.0
+offset_right = 692.0
+offset_bottom = 528.0
+theme_override_font_sizes/font_size = 32
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelExit" type="Label" parent="CanvasMenuMain" unique_id=1337109676]
+offset_left = 499.0
+offset_top = 556.0
+offset_right = 684.0
+offset_bottom = 608.0
+theme_override_font_sizes/font_size = 32
+text = "Tutorial"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasCredits" type="CanvasLayer" parent="." unique_id=1222353623]
+layer = 3
+
+[node name="CanvasTutorial" type="CanvasLayer" parent="." unique_id=14447821]
+layer = 3
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2045445139]
 environment = SubResource("Environment_e3hyu")
+
+[connection signal="pressed" from="CanvasUIPlayer/TextureButtonMenuPause" to="CanvasUIPlayer" method="_on_texture_button_menu_pause_pressed"]
+[connection signal="pressed" from="CanvasMenuPause/TextureButtonExit" to="CanvasMenuPause" method="_on_texture_button_exit_pressed"]
+[connection signal="pressed" from="CanvasMenuPause/ButtonExitMenuPause" to="CanvasMenuPause" method="_on_button_exit_menu_pause_pressed"]
+[connection signal="pressed" from="CanvasMenuMain/TextureButtonPlay" to="CanvasMenuMain" method="_on_texture_button_play_pressed"]
+[connection signal="pressed" from="CanvasMenuMain/TextureButtonSettings" to="CanvasMenuMain" method="_on_texture_button_settings_pressed"]
+[connection signal="pressed" from="CanvasMenuMain/TextureButtonCredits" to="CanvasMenuMain" method="_on_texture_button_credits_pressed"]
+[connection signal="pressed" from="CanvasMenuMain/TextureButtonTutorial" to="CanvasMenuMain" method="_on_texture_button_tutorial_pressed"]

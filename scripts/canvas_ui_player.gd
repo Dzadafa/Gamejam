@@ -4,7 +4,8 @@ extends CanvasLayer
 @onready var TPB_DNA_enemy = $TPBDNAEnemy
 @onready var label_timer_end_game = $LabelTimerEndGame
 @onready var texture_button_menu_pause = $TextureButtonMenuPause
-
+@onready var canvas_menu_pause = $"../CanvasMenuPause"
+@onready var world = $".."
 var time_elapsed = GameDataManager.MAX_TIME
 
 func _ready() -> void:
@@ -34,3 +35,9 @@ func _physics_process(delta: float) -> void:
 	
 	label_timer_end_game.text = "%02d:%02d" % [minutes, seconds]
 	GameDataManager.current_time += delta
+
+
+func _on_texture_button_menu_pause_pressed() -> void:
+	canvas_menu_pause.show()
+	world.pause_game()
+	pass # Replace with function body.

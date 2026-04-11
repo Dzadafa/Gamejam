@@ -20,6 +20,7 @@ var knockback_multiplier : float
 var isKnockbacked = false
 var isMoving = true
 var is_animation_hurt = null
+var is_invisible : bool = false
 
 func _ready() -> void:
 	z_index = 2
@@ -35,7 +36,7 @@ func _ready() -> void:
 		label.hide()
 		
 	gun.reload_status.connect(_on_gun_reload_status)
-	
+	activate_invisible(2.0)
 
 func _physics_process(delta: float) -> void:
 	#print(GameDataManager.curssrent_hp)
@@ -77,23 +78,19 @@ func _exit_tree() -> void:
 	if PlayerManager.player == self:
 		PlayerManager.player = null
 		
-#func take_damage(amount: int):
-	#GameDataManager.current_hp -= amount
-	#if GameDataManager.current_hp <= 0:
-		#die()
-#
-#func shoot():
-	#if GameDataManager.ammo > 0:
-		#GameDataManager.ammo -= 1
+func activate_invisible(duration: float) -> void:
+	is_invisible = true
+	await get_tree().create_timer(duration).timeout
+	is_invisible = false
+	player_body.modulate.a = 1.0
 
 func die():
 	SignalBus.player_died.emit()
 	
 func _knockback(damage, attacker_position, attacker_size):
+	if is_invisible:
+		return
 	on_hit_flash.emit(true) 
-	#animation_player.play("hurt")
-	#await animation_player.animation_finished
-	#animation_player.play("RESET")
 	GameDataManager.current_hp -= damage
 	isMoving = false
 

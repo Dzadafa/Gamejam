@@ -1,31 +1,26 @@
 extends CanvasLayer
 
+@onready var canvas_menu_pause = $"../CanvasMenuPause"
+@onready var canvas_tutorial = $"../CanvasTutorial"
+@onready var canvas_credit = $"../CanvasCredits"
+@onready var world = $".." 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-
 func _on_texture_button_play_pressed() -> void:
-	SceneManager.switch_scene(SceneManager.GameState.GAMEPLAY)
-	pass # Replace with function body.
-
+	world.start_game()
 
 func _on_texture_button_settings_pressed() -> void:
-	SceneManager.switch_scene(SceneManager.GameState.SETTINGS)
-	pass # Replace with function body.
-
+	# Cukup panggil ini, karena di dalam pause_game() 
+	# menu pause sudah otomatis di-show dan game di-pause
+	world.pause_game()
 
 func _on_texture_button_credits_pressed() -> void:
-	SceneManager.switch_scene(SceneManager.GameState.CREDITS)
-	pass # Replace with function body.
-
+	pass 
 
 func _on_texture_button_tutorial_pressed() -> void:
-	SceneManager.switch_scene(SceneManager.GameState.TUTORIAL)
-	pass # Replace with function body.
+	pass

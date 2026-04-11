@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var max_enemies_on_screen : int = 21 
+@export var max_enemies_on_screen : int = 30
 var spawn_timer : Timer
 
 func _ready() -> void:
@@ -18,6 +18,6 @@ func _on_spawn_timer_timeout() -> void:
 	var active_enemies_count = EnemyPoolManager.get_active_enemies().size()
 	
 	if active_enemies_count < max_enemies_on_screen:
-		var spawned = EnemyPoolManager.spawn_random_type_enemies(1)
+		var spawned = EnemyPoolManager.spawn_random_type_enemies(10)
 		if spawned.is_empty():
 			print("semua tipe di layar!")

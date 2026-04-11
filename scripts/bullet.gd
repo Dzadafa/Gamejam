@@ -44,20 +44,19 @@ func deactivate():
 	if bullet_area != null:
 		bullet_area.set_deferred("monitoring", false)
 		
-func activate(start_position: Vector2, direction: Vector2, position_target_group: String = "EnemyHurtBox"):
+func activate(start_position: Vector2, direction: Vector2, position_target_group: String = "EnemyHurtBox", source_size: float = 1.0):
 	global_position = start_position
 	bullet_direction = direction
 	target_group = position_target_group
 	
 	if bullet_sprite != null:
 		if target_group == "PlayerHurtBox":
-			bullet_collision.scale.x = 3
-			bullet_collision.scale.y = 3 
 			bullet_sprite.texture = throw_foot_sprite
+			bullet_sprite.scale = Vector2(source_size * 0.2, source_size * 0.2)
+			bullet_collision.scale = Vector2(source_size * 0.2 , source_size * 0.2) 
 		else:
-			# Jika targetnya Enemy (berarti Player yang menembak)
-			bullet_collision.scale.x = 1 
-			bullet_collision.scale.y = 1
+			bullet_collision.scale = Vector2(0.1, 0.1)
+			bullet_sprite.scale = Vector2(0.1, 0.1)
 			bullet_sprite.texture = default_sprite_texture
 	
 	if bullet_explosion != null:
