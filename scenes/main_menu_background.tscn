@@ -7,6 +7,21 @@
 [ext_resource type="Texture2D" uid="uid://dl3n61iw5c0w4" path="res://assets/cutscenes/pod/left_shi.png" id="5_sij4v"]
 [ext_resource type="Texture2D" uid="uid://bjsup8w7ffy4j" path="res://assets/cutscenes/pod/right_shi.png" id="6_1rgf1"]
 
+[sub_resource type="GDScript" id="GDScript_os371"]
+resource_name = "animate"
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	$AnimationPlayer.play(\"iddle\")
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
 [sub_resource type="Animation" id="Animation_0omyj"]
 length = 0.001
 tracks/0/type = "value"
@@ -70,6 +85,7 @@ _data = {
 }
 
 [node name="MainMenuBackground" type="Node2D" unique_id=2136661801]
+script = SubResource("GDScript_os371")
 
 [node name="UnknwonSpace" type="Sprite2D" parent="." unique_id=765833355]
 position = Vector2(585.00006, 334)

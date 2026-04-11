@@ -9,6 +9,9 @@ extends Node2D
 @onready var player = $Player
 @onready var RadarMinimap = $RadarMinimap
 
+@onready var menu_bgm = $MenuBGM
+@onready var game_bgm = $GameBGM
+
 var is_game_started: bool = false 
 var is_ending: bool = false 
 
@@ -28,6 +31,9 @@ func show_main_menu() -> void:
 	ui_player.hide()
 	
 	get_tree().paused = true 
+	game_bgm.stop()
+	if not menu_bgm.playing:
+		menu_bgm.play()
 
 func start_game() -> void:
 	is_game_started = true 
@@ -37,6 +43,9 @@ func start_game() -> void:
 	ui_player.show()
 	RadarMinimap.show()
 	get_tree().paused = false
+	menu_bgm.stop()
+	if not game_bgm.playing:
+		game_bgm.play()
 
 func pause_game() -> void:
 	if is_ending:
@@ -66,6 +75,7 @@ func _on_player_died() -> void:
 	RadarMinimap.hide()
 	menu_restart_game.show()
 	get_tree().paused = true
+	game_bgm.stop()
 
 func tutorial_game() -> void:
 	menu_tutorial.show()

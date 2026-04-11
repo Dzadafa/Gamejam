@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dmp8rrohgr55t" path="res://assets/gullible/left_arm.png" id="5_ipns3"]
 [ext_resource type="Texture2D" uid="uid://bvda1855tw327" path="res://assets/gullible/body.png" id="6_8qclf"]
 [ext_resource type="Texture2D" uid="uid://x8ork2h2gteg" path="res://assets/gullible/right_arm.png" id="7_w8i8w"]
+[ext_resource type="AudioStream" uid="uid://b3runha7hbwuu" path="res://assets/audio/sfx/monster_sound.mp3" id="9_ipns3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ipns3"]
 shader = ExtResource("3_md484")
@@ -291,6 +292,21 @@ tracks/9/keys = {
 "update": 0,
 "values": [0.04820977, -0.16320605999999999, -1.2822403]
 }
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("AudioStreamEnemy")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 24.6,
+"start_offset": 4.6,
+"stream": ExtResource("9_ipns3")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/10/use_blend = true
 
 [sub_resource type="Shader" id="Shader_ur7pv"]
 code = "shader_type canvas_item;
@@ -827,30 +843,35 @@ audio_stream_enemy = NodePath("AudioStreamEnemy")
 material = SubResource("ShaderMaterial_ipns3")
 
 [node name="LeftArm" type="Sprite2D" parent="Body/Node2D/CanvasGroup" unique_id=1432847223]
-position = Vector2(-48.853745, 0)
+position = Vector2(-48.7567, 3.0777667)
+rotation = -0.32375157
 scale = Vector2(0.12526602, 0.12526602)
 texture = ExtResource("5_ipns3")
 offset = Vector2(477.74884, 0.55874723)
 
 [node name="LeftFoot" type="Sprite2D" parent="Body/Node2D/CanvasGroup" unique_id=22295791]
-position = Vector2(-36.327145, 37.579803)
-scale = Vector2(0.12526602, 0.12526602)
+position = Vector2(-34.06878, 36.921516)
+rotation = 0.29582188
+scale = Vector2(0.12526603, 0.12526603)
 texture = ExtResource("3_nenq2")
 offset = Vector2(352.1725, -376.17026)
 
 [node name="RightFoot" type="Sprite2D" parent="Body/Node2D/CanvasGroup" unique_id=434789095]
-position = Vector2(28.811184, 41.337784)
+position = Vector2(31.176905, 36.568344)
+rotation = -0.22624741
 scale = Vector2(0.12526602, 0.12526602)
 texture = ExtResource("4_md484")
 offset = Vector2(-313.38208, -388.7279)
 
 [node name="Body" type="Sprite2D" parent="Body/Node2D/CanvasGroup" unique_id=1896565775]
+rotation = -0.06304136
 scale = Vector2(0.12526602, 0.12526602)
 texture = ExtResource("6_8qclf")
 offset = Vector2(-11.998886, -24.556526)
 
 [node name="RightArm" type="Sprite2D" parent="Body/Node2D/CanvasGroup" unique_id=794119485]
-position = Vector2(42.590446, -2.5053203)
+position = Vector2(42.348007, -5.183525)
+rotation = 0.7465916
 scale = Vector2(0.1252658, 0.1252658)
 texture = ExtResource("7_w8i8w")
 offset = Vector2(-438.95844, 25.674013)

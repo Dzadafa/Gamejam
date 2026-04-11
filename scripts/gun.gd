@@ -7,6 +7,7 @@ extends Node2D
 @onready var click_particle = $ClickParticleMouse
 @onready var gun_sprite = $CanvasGroup/Gun
 @onready var ray_gun_particle = $RayGunParticle
+@onready var shoot_sound = $ShootSound
 
 
 var shoot_gun = preload("res://assets/player/gun.png") 
@@ -74,6 +75,8 @@ func shoot() -> void:
 		
 	var bullet = BulletPoolManager.get_bullet()
 	if bullet != null:
+		shoot_sound.play()
+		get_tree().create_timer(0.5).timeout.connect(shoot_sound.stop)
 		var shoot_direction = (bullet_target_position.global_position - bullet_spawn_position.global_position).normalized()
 
 		isShooting = false
