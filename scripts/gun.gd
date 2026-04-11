@@ -6,6 +6,7 @@ extends Node2D
 @onready var animation_gun = $AnimationGun
 @onready var click_particle = $ClickParticleMouse
 @onready var gun_sprite = $CanvasGroup/Gun
+@onready var vacuum_particle = $VacuumParticle
 
 var shoot_gun = preload("res://assets/player/gun.png") 
 var ray_gun = preload("res://assets/player/ray_gun.png") 
@@ -24,9 +25,11 @@ func _ready() -> void:
 	timer.wait_time = 0.25
 	on_scan.connect(BulletPoolManager.get_scanning_gun)
 	gun_sprite.texture = shoot_gun
+	vacuum_particle.emitting = false
 	
 func _physics_process(delta: float) -> void:
 	if isReloading:
+		vacuum_particle.emitting = false
 		return
 		
 	var is_anybody_chasing = GameDataManager.chasing_count > 0
@@ -39,18 +42,27 @@ func _physics_process(delta: float) -> void:
 		if isScanning:
 			isScanning = false
 			on_scan.emit(isScanning)
-			print("Safe zone: Kembali ke Shoot Gun")
+			print("Shoot Gun")
 
 	if not isScanning:
 		gun_sprite.texture = shoot_gun
+		vacuum_particle.emitting = false
 		if Input.is_action_just_pressed("klik_kiri_mouse"):
 			spawn_particle()
 			shoot()
 	else:
 		gun_sprite.texture = ray_gun
-		if Input.is_action_pressed("klik_kiri_mouse") and isShooting:
-			spawn_particle()
-			shoot()
+		if Input.is_action_pressed("klik_kiri_mouse"):
+			var offset_to_mouse = get_global_mouse_position() - bullet_spawn_position.global_position
+			var mat = vacuum_particle.process_material as ParticleProcessMaterial
+			if mat:
+				mat.emission_shape_offset = Vector3(offset_to_mouse.x, offset_to_mouse.y, 0)
+			vacuum_particle.emitting = true
+			if isShooting:
+				spawn_particle()
+				shoot()
+		else:
+			vacuum_particle.emitting = false
 
 var n = 0
 func shoot() -> void:
@@ -64,12 +76,6 @@ func shoot() -> void:
 
 		isShooting = false
 		GameDataManager.current_ammo -= 1
-		
-		if isScanning:
-			GameDataManager.current_dna += 2.0
-			
-		
-		print("Peluru aktif : " + str(n) + "Sisa: " + str(GameDataManager.current_ammo))
 		n += 1
 		
 		bullet.activate(bullet_spawn_position.global_position, shoot_direction)

@@ -3,7 +3,7 @@ class_name Player
 
 signal on_hit_flash(knockback : bool)
 
-const SPEED = 400.0
+const SPEED = 300.0
 const ACCELERATION = SPEED * 5
 const FRICTION = SPEED * 4
 var knockback = GameDataManager.KNOCKBACK

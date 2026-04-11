@@ -33,6 +33,8 @@ var can_shoot := true
 const SPEED : float = 300.0
 const HP : float = 200.0
 const DISTANCE_AREA : float = 50.0
+const MAX_DNA_PER_ENEMY : float = 50.0
+var get_dna : float = 0.0
 
 var player_knockback : float = GameDataManager.KNOCKBACK
 var player_damage = GameDataManager.DAMAGE
@@ -326,6 +328,8 @@ func activate(spawn_position: Vector2):
 	is_run_attacking = false 
 	global_position = spawn_position
 	
+	get_dna = 0.0
+	
 	reset_shader_state()
 	setup_enemy()
 	
@@ -352,7 +356,16 @@ func _on_enemy_hurt_box_area_area_entered(area: Area2D) -> void:
 			if not BulletPoolManager.isScanning:
 				player_attacked(area.global_position) 
 			else:
-				GameDataManager.current_dna += 5.0
+				if get_dna < MAX_DNA_PER_ENEMY:
+					var dna_to_add = 5.0
+					if get_dna + dna_to_add > MAX_DNA_PER_ENEMY:
+						dna_to_add = MAX_DNA_PER_ENEMY - get_dna
+					
+					GameDataManager.current_dna += dna_to_add
+					get_dna += dna_to_add
+					print("DNA diambil dari ", name, ": ", get_dna, "/", MAX_DNA_PER_ENEMY)
+				else:
+					pass
 
 func _on_enemy_hit_box_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerHurtBox"):
