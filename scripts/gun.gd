@@ -29,21 +29,23 @@ func _physics_process(delta: float) -> void:
 	if isReloading:
 		return
 		
-	#if Input.is_action_just_pressed("klik_kiri_mouse"):
-		#isScanning = false
-		#on_scan.emit(isScanning)
+	var is_anybody_chasing = GameDataManager.chasing_count > 0
 	
-	if Input.is_action_just_pressed("switch_weapon"):
-		isScanning = not isScanning
-		print(isScanning)
-		on_scan.emit(isScanning)
-	
+	if is_anybody_chasing:
+		if Input.is_action_just_pressed("switch_weapon"):
+			isScanning = not isScanning
+			on_scan.emit(isScanning)
+	else:
+		if isScanning:
+			isScanning = false
+			on_scan.emit(isScanning)
+			print("Safe zone: Kembali ke Shoot Gun")
+
 	if not isScanning:
 		gun_sprite.texture = shoot_gun
 		if Input.is_action_just_pressed("klik_kiri_mouse"):
 			spawn_particle()
 			shoot()
-			
 	else:
 		gun_sprite.texture = ray_gun
 		if Input.is_action_pressed("klik_kiri_mouse") and isShooting:

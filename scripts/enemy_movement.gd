@@ -80,11 +80,6 @@ func _ready() -> void:
 		if not shoot_timer.timeout.is_connected(_on_shoot_timer_timeout):
 			shoot_timer.timeout.connect(_on_shoot_timer_timeout)
 	
-	if shoot_timer != null:
-		shoot_timer.wait_time = 1.2 
-		if not shoot_timer.timeout.is_connected(_on_shoot_timer_timeout):
-			shoot_timer.timeout.connect(_on_shoot_timer_timeout)
-	
 func _physics_process(delta: float) -> void:
 	if isDead:
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
@@ -278,6 +273,9 @@ func spawn_bullet():
 	bullet.look_at(player_position)
 	
 func enemy_die():
+	if isChasing:
+		GameDataManager.chasing_count = max(0, GameDataManager.chasing_count - 1)
+	
 	if animation_enemy != null and animation_enemy.has_animation("die"):
 		animation_enemy.play("die")
 		await animation_enemy.animation_finished
@@ -335,14 +333,12 @@ func _on_timer_timeout() -> void:
 
 func _on_enemy_hurt_box_area_area_entered(area: Area2D) -> void:
 	if area.name == "BulletArea":
-		var bullet = area.get_parent() 
+		var bullet = area.get_parent()
 		if bullet is Bullet and bullet.target_group == "EnemyHurtBox":
 			if not BulletPoolManager.isScanning:
-				isHurting = true
-				bullet_area = area
+				player_attacked(area.global_position) 
 			else:
 				GameDataManager.current_dna += 5.0
-				print("Scan berhasil! DNA sekarang: ", GameDataManager.current_dna)
 
 func _on_enemy_hit_box_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerHurtBox"):
@@ -357,10 +353,13 @@ func _on_enemy_hit_box_area_area_exited(area: Area2D) -> void:
 func _on_enemy_chase_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		isChasing = true
+		GameDataManager.chasing_count += 1
 
 func _on_enemy_chase_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		isChasing = false
+		GameDataManager.chasing_count -= 1
+		GameDataManager.chasing_count = max(0, GameDataManager.chasing_count)
 
 func _on_shoot_timer_timeout() -> void:
 	can_shoot = true

@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://c7it4gd4odn8s"]
+
+[ext_resource type="Script" uid="uid://b5jj6sw7xxf0m" path="res://scripts/canvas_ui_player.gd" id="1_8wb6p"]
+[ext_resource type="Texture2D" uid="uid://bumh5if4xovdf" path="res://icon.svg" id="2_lsn8u"]
+
+[node name="CanvasUIPlayer" type="CanvasLayer" unique_id=299736252]
+script = ExtResource("1_8wb6p")
+
+[node name="TPBHealthBarPlayer" type="TextureProgressBar" parent="." unique_id=988334586]
+offset_left = 181.00002
+offset_top = 13.0
+offset_right = 309.0
+offset_bottom = 141.0
+scale = Vector2(2.6, 0.23999947)
+texture_under = ExtResource("2_lsn8u")
+texture_progress = ExtResource("2_lsn8u")
+tint_progress = Color(0, 1, 0, 1)
+
+[node name="TPBDNAEnemy" type="TextureProgressBar" parent="." unique_id=1442254617]
+offset_left = 179.0
+offset_top = 72.0
+offset_right = 307.0
+offset_bottom = 200.0
+scale = Vector2(2.6, 0.27999997)
+texture_under = ExtResource("2_lsn8u")
+texture_progress = ExtResource("2_lsn8u")
+tint_progress = Color(0, 0, 1, 1)
+
+[node name="TextureButtonMenuPause" type="TextureButton" parent="." unique_id=1106788575]
+offset_left = 1012.0
+offset_top = 11.0
+offset_right = 1140.0
+offset_bottom = 139.0
+texture_normal = ExtResource("2_lsn8u")
+
+[node name="LabelTimerEndGame" type="Label" parent="." unique_id=1979903656]
+offset_left = 879.0
+offset_top = 22.0
+offset_right = 1005.0
+offset_bottom = 65.0
+theme_override_font_sizes/font_size = 32
+text = "23.59"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -7,7 +7,7 @@ const MAX_TIME: float = 10.0
 const DAMAGE : float = 10.0
 const KNOCKBACK : float = 500.0
 
-
+var chasing_count : int = 0
 var isRestart :bool = false
 var current_hp: float = 100.0:
 	set(value):
@@ -37,15 +37,14 @@ var current_ammo: int = MAG_SIZE:
 		SignalBus.ammo_changed.emit(current_ammo)
 
 func restart_game():
-	print("mati")
 	if isRestart:
 		return
 		
 	isRestart = true
+	print("mati")
 	self.current_hp = MAX_HP
 	self.current_ammo = MAG_SIZE
-	#get_tree().paused = true
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(1.0).timeout
+	
 	isRestart = false
-	#get_tree().paused =  false
-	get_tree().change_scene_to_file("res://scenes/world.tscn")
+	SceneManager.switch_scene(SceneManager.GameState.GAMEPLAY)
