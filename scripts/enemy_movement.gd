@@ -31,7 +31,7 @@ var can_shoot := true
 const SPEED : float = 300.0
 const HP : float = 200.0
 const DISTANCE_AREA : float = 50.0
-const MAX_DNA_PER_ENEMY : float = 50.0
+const MAX_DNA_PER_ENEMY : float = 100.0
 var get_dna : float = 0.0
 
 @export var wander_radius : float = 100.0
@@ -378,7 +378,7 @@ func _on_enemy_hurt_box_area_area_entered(area: Area2D) -> void:
 				player_attacked(area.global_position) 
 			else:
 				if get_dna < MAX_DNA_PER_ENEMY:
-					var dna_to_add = 5.0
+					var dna_to_add = 100.0
 					if get_dna + dna_to_add > MAX_DNA_PER_ENEMY:
 						dna_to_add = MAX_DNA_PER_ENEMY - get_dna
 					

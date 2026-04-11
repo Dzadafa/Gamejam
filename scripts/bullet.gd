@@ -55,8 +55,8 @@ func activate(start_position: Vector2, direction: Vector2, position_target_group
 			bullet_sprite.scale = Vector2(source_size * 0.2, source_size * 0.2)
 			bullet_collision.scale = Vector2(source_size * 0.2 , source_size * 0.2) 
 		else:
-			bullet_collision.scale = Vector2(0.1, 0.1)
-			bullet_sprite.scale = Vector2(0.1, 0.1)
+			bullet_collision.scale = Vector2(0.01, 0.01)
+			bullet_sprite.scale = Vector2(0.01, 0.01)
 			bullet_sprite.texture = default_sprite_texture
 	
 	if bullet_explosion != null:

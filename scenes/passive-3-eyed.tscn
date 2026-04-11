@@ -956,8 +956,8 @@ offset = Vector2(-96.995834, -483.7197)
 
 [node name="RightArm" type="Sprite2D" parent="Body/Node2D/CanvasGroup" unique_id=626374289]
 position = Vector2(27.616684, -10.115265)
-rotation = -0.33161205
-scale = Vector2(0.12526596, 0.12526596)
+rotation = -0.33161202
+scale = Vector2(0.12526594, 0.12526594)
 texture = ExtResource("8_rny4k")
 offset = Vector2(-254.43687, -150.3194)
 
@@ -983,6 +983,7 @@ texture = ExtResource("6_8woxg")
 offset = Vector2(-82.221695, 126.62268)
 
 [node name="Node2D2" type="Node2D" parent="Body" unique_id=1646405937]
+visible = false
 
 [node name="Skeleton2D" type="Skeleton2D" parent="Body/Node2D2" unique_id=323621508]
 
@@ -1035,7 +1036,7 @@ remote_path = NodePath("../../../../../Node2D/CanvasGroup/Eye3")
 [node name="right_arm" type="Bone2D" parent="Body/Node2D2/Skeleton2D/body" unique_id=195336823]
 position = Vector2(22.352428, -7.18471)
 rotation = -0.291512
-scale = Vector2(0.9999994, 0.9999994)
+scale = Vector2(0.99999934, 0.99999934)
 rest = Transform2D(0.98895615, -0.14820783, 0.14820783, 0.98895615, 15.167722, -26.343937)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Body/Node2D2/Skeleton2D/body/right_arm" unique_id=1252864283]
@@ -1066,6 +1067,7 @@ scale = Vector2(0.1, 0.1)
 remote_path = NodePath("../../../../Node2D/CanvasGroup/Body")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=515656335]
+visible = false
 position = Vector2(0, -9)
 rotation = 0.1887001
 shape = SubResource("CapsuleShape2D_otmr2")
@@ -1079,14 +1081,17 @@ texture = ExtResource("2_swp7h")
 libraries/ = SubResource("AnimationLibrary_m4job")
 
 [node name="EnemyChaseArea" type="Area2D" parent="." unique_id=876085762]
+visible = false
 collision_layer = 4
 collision_mask = 10
 
 [node name="ChaseAreaCollision" type="CollisionShape2D" parent="EnemyChaseArea" unique_id=441894777]
+visible = false
 rotation = -0.06813157
 shape = SubResource("CircleShape2D_iabrv")
 
 [node name="EnemyHitBoxArea" type="Area2D" parent="." unique_id=1874401756]
+visible = false
 modulate = Color(0, 1, 0, 1)
 collision_layer = 4
 collision_mask = 10
@@ -1095,6 +1100,7 @@ collision_mask = 10
 shape = SubResource("CapsuleShape2D_nqmow")
 
 [node name="EnemyHurtBoxArea" type="Area2D" parent="." unique_id=1253018449 groups=["EnemyHurtBox"]]
+visible = false
 modulate = Color(1, 0, 1, 1)
 collision_layer = 4
 collision_mask = 10
@@ -1105,6 +1111,7 @@ shape = SubResource("CapsuleShape2D_w6nf2")
 [node name="Timer" type="Timer" parent="." unique_id=1494587603]
 
 [node name="EnemyDieParticle" type="CPUParticles2D" parent="." unique_id=1156532103]
+visible = false
 emitting = false
 amount = 20
 explosiveness = 1.0
@@ -1120,6 +1127,7 @@ scale_amount_curve = SubResource("Curve_8woxg")
 [node name="ShootTimer" type="Timer" parent="." unique_id=36963443]
 
 [node name="AudioStreamEnemy" type="AudioStreamPlayer2D" parent="." unique_id=1093308838]
+visible = false
 
 [connection signal="body_entered" from="EnemyChaseArea" to="." method="_on_enemy_chase_area_body_entered"]
 [connection signal="body_exited" from="EnemyChaseArea" to="." method="_on_enemy_chase_area_body_exited"]
