@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://ct1cds5d54rwj"]
+
+[ext_resource type="Texture2D" uid="uid://bgriut6h4lpgr" path="res://assets/cutscenes/bg/unknwon_space.png" id="1_os371"]
+[ext_resource type="Texture2D" uid="uid://cj1m5mvjk8fv6" path="res://assets/cutscenes/planet_unknown.png" id="2_hi2cd"]
+[ext_resource type="Texture2D" uid="uid://cyw21il1yxcmy" path="res://assets/cutscenes/pod/foot.png" id="3_dv37r"]
+[ext_resource type="Texture2D" uid="uid://84xikyg34kdo" path="res://assets/cutscenes/pod/body.png" id="4_huch7"]
+[ext_resource type="Texture2D" uid="uid://dl3n61iw5c0w4" path="res://assets/cutscenes/pod/left_shi.png" id="5_sij4v"]
+[ext_resource type="Texture2D" uid="uid://bjsup8w7ffy4j" path="res://assets/cutscenes/pod/right_shi.png" id="6_1rgf1"]
+
+[sub_resource type="Animation" id="Animation_0omyj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlanetUnknown:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(607, 318)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlanetUnknown:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_nifa5"]
+resource_name = "iddle"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlanetUnknown:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(607, 318), Vector2(607, 318)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlanetUnknown:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.2831855]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xunmx"]
+_data = {
+&"RESET": SubResource("Animation_0omyj"),
+&"iddle": SubResource("Animation_nifa5")
+}
+
+[node name="MainMenuBackground" type="Node2D" unique_id=2136661801]
+
+[node name="UnknwonSpace" type="Sprite2D" parent="." unique_id=765833355]
+position = Vector2(585.00006, 334)
+scale = Vector2(0.6482004, 0.6482004)
+texture = ExtResource("1_os371")
+
+[node name="PlanetUnknown" type="Sprite2D" parent="." unique_id=81304812]
+position = Vector2(607, 318)
+scale = Vector2(0.6270287, 0.6270287)
+texture = ExtResource("2_hi2cd")
+
+[node name="Foot" type="Sprite2D" parent="PlanetUnknown" unique_id=122907947]
+position = Vector2(-513.14844, -167.07175)
+rotation = -1.3089969
+scale = Vector2(0.15036124, 0.15036124)
+texture = ExtResource("3_dv37r")
+
+[node name="Body" type="Sprite2D" parent="PlanetUnknown" unique_id=1225179789]
+position = Vector2(-513.14844, -167.07175)
+rotation = -1.3089969
+scale = Vector2(0.15036124, 0.15036124)
+texture = ExtResource("4_huch7")
+
+[node name="LeftShi" type="Sprite2D" parent="PlanetUnknown" unique_id=1486205446]
+position = Vector2(-513.14844, -167.07175)
+rotation = -1.3089969
+scale = Vector2(0.15036124, 0.15036124)
+texture = ExtResource("5_sij4v")
+
+[node name="RightShi" type="Sprite2D" parent="PlanetUnknown" unique_id=340924763]
+position = Vector2(-513.14844, -167.07175)
+rotation = -1.3089969
+scale = Vector2(0.15036124, 0.15036124)
+texture = ExtResource("6_1rgf1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1585266043]
+libraries/ = SubResource("AnimationLibrary_xunmx")
+speed_scale = 0.05
+
+[node name="for_the_contrast" type="ColorRect" parent="." unique_id=2118115377]
+offset_right = 1164.0
+offset_bottom = 653.0
+color = Color(0, 0, 0, 0.30980393)

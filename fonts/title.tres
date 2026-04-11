@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://bfswf5t1avxwr"]
+
+[ext_resource type="FontFile" uid="uid://kj78a1a10xqv" path="res://assets/fonts/erasdust.ttf" id="1_mowgd"]
+
+[resource]
+font = ExtResource("1_mowgd")
+font_size = 50
+font_color = Color(1, 0.67058825, 0.21568628, 1)
