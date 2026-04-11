@@ -14,6 +14,7 @@ var knockback = GameDataManager.KNOCKBACK
 @onready var player_body = $Body
 @onready var timer = $Timer
 @onready var animation_player = $AnimationPlayer
+@onready var label = $Label
 
 var knockback_multiplier : float
 var isKnockbacked = false
@@ -22,12 +23,18 @@ var is_animation_hurt = null
 
 func _ready() -> void:
 	z_index = 2
+	label.z_index = 2
 	#mendaftarkan diri sebagaii player
 	PlayerManager.player = self
 	SignalBus.enemy_hit.connect(_knockback)
 	
 	on_hit_flash.connect(gun._on_gun_hit_flash)
 	on_hit_flash.connect(_on_player_hit_flash)
+	
+	if label != null:
+		label.hide()
+		
+	gun.reload_status.connect(_on_gun_reload_status)
 	
 
 func _physics_process(delta: float) -> void:
@@ -113,7 +120,16 @@ func _on_player_hit_flash(knockback : bool) -> void:
 			await animation_player.animation_finished
 		animation_player.play("RESET")
 		
-
+func _on_gun_reload_status(is_reloading: bool) -> void:
+	print("status relaod: ", is_reloading)
+	if label == null:
+		return
+		
+	if is_reloading:
+		label.text = "Reloading..."
+		label.show()
+	else:
+		label.hide()
 	
 func _on_timer_timeout() -> void:
 	isMoving = true

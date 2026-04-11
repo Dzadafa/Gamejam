@@ -24,7 +24,7 @@ handle_input_locally = false
 render_target_update_mode = 4
 
 [node name="MinimapCamera" type="Camera2D" parent="SubViewportContainer/SubViewport" unique_id=1734907530]
-zoom = Vector2(0.2, 0.2)
+zoom = Vector2(0.3, 0.3)
 
 [node name="MinimapPlayerIcon" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=495053773]
 texture = ExtResource("2_klbcc")

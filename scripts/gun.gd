@@ -18,6 +18,7 @@ var isReloading: bool = false
 const RELOAD_TIME: float = 1.5 
 
 signal on_scan(scan : bool)
+signal reload_status(is_reloading : bool)
 
 func _ready() -> void:
 	timer.wait_time = 0.25
@@ -62,6 +63,10 @@ func shoot() -> void:
 		isShooting = false
 		GameDataManager.current_ammo -= 1
 		
+		if isScanning:
+			GameDataManager.current_dna += 2.0
+			
+		
 		print("Peluru aktif : " + str(n) + "Sisa: " + str(GameDataManager.current_ammo))
 		n += 1
 		
@@ -77,14 +82,17 @@ func reload() -> void:
 		return
 		
 	isReloading = true
-	print("Ammo habis! Auto-reloading...")
+	print("ada ammo lagi ngga bang? oh ada")
 	
+	reload_status.emit(true) 
 	
 	await get_tree().create_timer(RELOAD_TIME).timeout
 	
 	GameDataManager.current_ammo = GameDataManager.MAG_SIZE
 	isReloading = false
-	print("Reload selesai! Ammo kembali 30.")
+	print("ammo kembali 30")
+	
+	reload_status.emit(false)
 
 func _on_gun_hit_flash(knockback: bool) -> void:
 	if knockback:

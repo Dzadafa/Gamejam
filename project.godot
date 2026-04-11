@@ -23,6 +23,10 @@ PlayerManager="*uid://cnevc07aj545d"
 GameDataManager="*uid://dbp3rc0mx3lum"
 SignalBus="*uid://dhcsipq0ovlf2"
 
+[display]
+
+window/stretch/aspect="expand"
+
 [global_group]
 
 Enemy=""

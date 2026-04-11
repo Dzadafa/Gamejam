@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://plsva74qyasj" path="res://scenes/player.tscn" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://pp3klnapetqe" path="res://scenes/enemy_spawn.tscn" id="3_4wyf3"]
 [ext_resource type="Texture2D" uid="uid://c6l52qaif1eun" path="res://assets/cutscenes/bg/bg_fixfix.png" id="4_k0juu"]
+[ext_resource type="Script" uid="uid://b5jj6sw7xxf0m" path="res://scripts/canvas_ui_player.gd" id="6_qfnet"]
 [ext_resource type="Texture2D" uid="uid://bumh5if4xovdf" path="res://icon.svg" id="8_4mrxx"]
 
 [node name="World" type="Node2D" unique_id=805106329]
@@ -29,6 +30,7 @@ position = Vector2(578, 161)
 texture = ExtResource("4_k0juu")
 
 [node name="CanvasUIPlayer" type="CanvasLayer" parent="." unique_id=1854109003]
+script = ExtResource("6_qfnet")
 
 [node name="TPBHealthBarPlayer" type="TextureProgressBar" parent="CanvasUIPlayer" unique_id=149955767]
 offset_left = 181.00002
@@ -37,6 +39,8 @@ offset_right = 309.0
 offset_bottom = 141.0
 scale = Vector2(2.6, 0.23999947)
 texture_under = ExtResource("8_4mrxx")
+texture_progress = ExtResource("8_4mrxx")
+tint_progress = Color(0, 1, 0, 1)
 
 [node name="TPBDNAEnemy" type="TextureProgressBar" parent="CanvasUIPlayer" unique_id=115850784]
 offset_left = 179.0
@@ -45,6 +49,8 @@ offset_right = 307.0
 offset_bottom = 200.0
 scale = Vector2(2.6, 0.27999997)
 texture_under = ExtResource("8_4mrxx")
+texture_progress = ExtResource("8_4mrxx")
+tint_progress = Color(0, 0, 1, 1)
 
 [node name="TextureButtonMenuPause" type="TextureButton" parent="CanvasUIPlayer" unique_id=1870478829]
 offset_left = 1012.0

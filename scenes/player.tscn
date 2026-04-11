@@ -700,6 +700,7 @@ radius = 34.0
 height = 146.0
 
 [node name="Player" type="CharacterBody2D" unique_id=529118703 groups=["Player"]]
+scale = Vector2(0.5, 0.5)
 collision_layer = 2
 collision_mask = 6
 script = ExtResource("1_onrkg")
@@ -802,6 +803,16 @@ drag_top_margin = 0.0
 drag_right_margin = 0.0
 drag_bottom_margin = 0.0
 editor_draw_drag_margin = true
+
+[node name="Label" type="Label" parent="." unique_id=543070262]
+offset_left = -84.0
+offset_top = -128.0
+offset_right = 95.0
+offset_bottom = -83.0
+theme_override_font_sizes/font_size = 32
+text = "Reloading..."
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="PlayerHurtBoxArea" to="." method="_on_player_hurt_box_area_area_entered"]

@@ -9,10 +9,10 @@ extends CanvasLayer
 @onready var timer = $SubViewportContainer/SubViewport/Timer
 
 var can_scan = true
-var radar_blips = [] # Array untuk menyimpan ikon jejak musuh di radar
+var radar_blips = []
 
 func _ready() -> void:
-	timer.wait_time = 5.0
+	timer.wait_time = 2.0
 	timer.one_shot = true 
 	icon_template.hide()
 
