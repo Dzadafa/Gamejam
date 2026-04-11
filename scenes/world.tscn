@@ -71,6 +71,14 @@ texture = ExtResource("4_k0juu")
 process_mode = 3
 script = ExtResource("6_qfnet")
 
+[node name="TextureRectAmmo" type="TextureRect" parent="CanvasUIPlayer" unique_id=785384923]
+offset_left = 215.0
+offset_top = 137.00002
+offset_right = 1033.0
+offset_bottom = 405.0
+scale = Vector2(0.07999915, 0.07999915)
+texture = ExtResource("11_q5onr")
+
 [node name="TPBHealthBarPlayer" type="TextureProgressBar" parent="CanvasUIPlayer" unique_id=149955767]
 offset_left = 192.74693
 offset_top = 67.39406

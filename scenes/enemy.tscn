@@ -841,8 +841,7 @@ texture = ExtResource("3_nenq2")
 offset = Vector2(352.1725, -376.17026)
 
 [node name="RightFoot" type="Sprite2D" parent="Body/Node2D/CanvasGroup" unique_id=434789095]
-position = Vector2(23.000008, 41)
-rotation = -0.46229592
+position = Vector2(28.811184, 41.337784)
 scale = Vector2(0.12526602, 0.12526602)
 texture = ExtResource("4_md484")
 offset = Vector2(-313.38208, -388.7279)

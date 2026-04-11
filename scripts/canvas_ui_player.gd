@@ -3,6 +3,7 @@ extends CanvasLayer
 @onready var TPB_health_bar_player = $TPBHealthBarPlayer
 @onready var TPB_DNA_enemy = $TPBDNAEnemy
 @onready var label_timer_end_game = $LabelTimerEndGame
+@onready var texture_ammo = $TextureRectAmmo
 @onready var texture_button_menu_pause = $TextureButtonMenuPause
 @onready var canvas_menu_pause = $"../CanvasMenuPause"
 @onready var world = $".."

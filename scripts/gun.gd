@@ -43,7 +43,8 @@ func _physics_process(delta: float) -> void:
 			isScanning = false
 			on_scan.emit(isScanning)
 			print("Shoot Gun")
-
+		if Input.is_action_just_pressed("switch_weapon"):
+			print("tolong aku, aku butuh medkit")
 	if not isScanning:
 		gun_sprite.texture = shoot_gun
 		vacuum_particle.emitting = false

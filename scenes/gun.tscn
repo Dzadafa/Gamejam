@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://di0wvuiya4yn1" path="res://assets/player/glove_left.png" id="4_6b133"]
 [ext_resource type="Texture2D" uid="uid://cu24b5ko0cqtt" path="res://assets/player/gun.png" id="4_qd4js"]
 [ext_resource type="Texture2D" uid="uid://m8gs4oiag6jt" path="res://assets/player/glove_right.png" id="5_haq8l"]
-[ext_resource type="Texture2D" uid="uid://ydonwo2exjha" path="res://assets/cutscenes/earth_type_shit.png" id="6_haq8l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_haq8l"]
 shader = ExtResource("2_6b133")
@@ -121,6 +120,9 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6b133"]
+load_path = "res://.godot/imported/earth_type_shit.png-51fa28cb31256036d17f3b5726abe2d5.ctex"
+
 [sub_resource type="Curve" id="Curve_bmp1f"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.032786846), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -138,7 +140,7 @@ angle_max = 180.00002
 radial_velocity_min = -1000.0
 radial_velocity_max = -2.2351742e-05
 gravity = Vector3(0, 0, 0)
-radial_accel_min = -10.000002
+radial_accel_min = -5.000002
 radial_accel_max = -2.2351742e-06
 scale_min = 0.01
 scale_max = 0.02
@@ -199,8 +201,10 @@ scale_amount_curve = SubResource("Curve_6b133")
 material = SubResource("CanvasItemMaterial_bmp1f")
 position = Vector2(101, -1)
 scale = Vector2(0.5075665, 0.70607835)
-amount = 20
-texture = ExtResource("6_haq8l")
+emitting = false
+amount = 5
+texture = SubResource("CompressedTexture2D_6b133")
+lifetime = 3.0
 process_material = SubResource("ParticleProcessMaterial_6oi81")
 
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_timer_timeout"]

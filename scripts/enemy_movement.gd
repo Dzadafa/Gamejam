@@ -36,6 +36,13 @@ const DISTANCE_AREA : float = 50.0
 const MAX_DNA_PER_ENEMY : float = 50.0
 var get_dna : float = 0.0
 
+@export var wander_radius : float = 100.0
+@export var wander_speed_mult : float = 0.3 
+
+var start_position : Vector2
+var target_wander_position : Vector2
+var wander_timer : float = 0.0
+
 var player_knockback : float = GameDataManager.KNOCKBACK
 var player_damage = GameDataManager.DAMAGE
 
@@ -68,7 +75,7 @@ var bullet_area : Area2D = null
 var player_hurt_box_area : Area2D = null
 
 func _ready() -> void:
-	label.text = name
+	#label.text = name
 	z_index = 3
 	acceleration = base_speed * 5
 	friction = base_speed * 4
@@ -164,16 +171,29 @@ func _physics_process(delta: float) -> void:
 		handle_flip(direction.x)
 		move_and_slide()
 	else:
-		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
-		move_and_slide()
+		wander_timer -= delta
+		var distance_to_target = global_position.distance_to(target_wander_position)
 		
+		if distance_to_target < 10.0 or wander_timer <= 0:
+			pick_new_wander_target()
+			
+		var direction = global_position.direction_to(target_wander_position)
+		var wander_velocity = direction * base_speed * speed_multiplier * wander_speed_mult
+		velocity = velocity.move_toward(wander_velocity, acceleration * delta)
+		handle_flip(direction.x)
+		move_and_slide()
 		if animation_enemy != null:
 			var is_busy = false
 			var ignore_anims = ["hit_flash", "attack", "run_and_attack", "throw_foot"]
 			is_busy = animation_enemy.is_playing() and (animation_enemy.current_animation in ignore_anims)
 			
-			if not is_busy and animation_enemy.has_animation("idle"):
-				animation_enemy.play("idle")
+			if not is_busy:
+				if velocity.length() > 10.0:
+					if animation_enemy.has_animation("walk"):
+						animation_enemy.play("walk")
+				else:
+					if animation_enemy.has_animation("idle"):
+						animation_enemy.play("idle")
 		
 func chase_player(direction: Vector2, delta: float):
 	var target_velocity = direction * base_speed * speed_multiplier
@@ -330,6 +350,11 @@ func activate(spawn_position: Vector2):
 	
 	get_dna = 0.0
 	
+	global_position = spawn_position
+	start_position = spawn_position
+	target_wander_position = start_position
+	pick_new_wander_target() 
+	
 	reset_shader_state()
 	setup_enemy()
 	
@@ -345,6 +370,8 @@ func activate(spawn_position: Vector2):
 	if enemy_hit_box_area:
 		enemy_hit_box_area.set_deferred("monitoring", true)
 		enemy_hit_box_area.set_deferred("monitorable", true)
+
+
 
 func _on_timer_timeout() -> void:
 	isHittingPlayer = true
@@ -365,7 +392,16 @@ func _on_enemy_hurt_box_area_area_entered(area: Area2D) -> void:
 					get_dna += dna_to_add
 					print("DNA diambil dari ", name, ": ", get_dna, "/", MAX_DNA_PER_ENEMY)
 				else:
+					print("udah habis mau nambah lagi kak?")
 					pass
+
+func pick_new_wander_target():
+	var random_offset = Vector2(
+		randf_range(-wander_radius, wander_radius),
+		randf_range(-wander_radius, wander_radius)
+	)
+	target_wander_position = start_position + random_offset
+	wander_timer = randf_range(2.0, 4.0)
 
 func _on_enemy_hit_box_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerHurtBox"):
