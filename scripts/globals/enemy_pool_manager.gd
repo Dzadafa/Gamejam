@@ -13,7 +13,7 @@ var enemy_scenes : Array[PackedScene] = [
 var aggressive_types : Array[int] = []
 var passive_types : Array[int] = []
 
-var pool_size_per_type : int = 3
+var pool_size_per_type : int = 10
 
 @export var min_x : float = -100.0
 @export var max_x : float = 1000.0
@@ -77,7 +77,6 @@ func spawn_multiple_enemies(type_index: int, amount: int) -> Array:
 		if enemy != null:
 			spawned_enemies.append(enemy)
 		else:
-			push_warning("Pool musuh index ke ", type_index, " yah udah habis, berhasil spawn: ", spawned_enemies.size())
 			break
 			
 	return spawned_enemies
@@ -92,7 +91,7 @@ func spawn_random_type_enemies(amount: int) -> Array:
 		if enemy != null:
 			spawned_enemies.append(enemy)
 		else:
-			push_warning("Pool musuh index ke-", random_type_index, " habis!")
+			pass
 			
 	return spawned_enemies
 

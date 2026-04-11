@@ -2,7 +2,7 @@ extends Node
 
 const MAX_HP: float = 100.0
 const MAX_DNA: float = 500.0
-const MAG_SIZE: int = 30 
+const MAG_SIZE: int = 60 
 const MAX_TIME: float = 10.0
 const DAMAGE : float = 10.0
 const KNOCKBACK : float = 500.0
