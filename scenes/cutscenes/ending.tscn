@@ -1,0 +1,1692 @@
+[gd_scene format=3 uid="uid://ddsoiimmsgkej"]
+
+[ext_resource type="Script" path="res://scripts/cutscenes/ending.gd" id="1_i5d2a"]
+[ext_resource type="Texture2D" uid="uid://sdd11kk30cfk" path="res://assets/cutscenes/bg/pod.png" id="2_10303"]
+[ext_resource type="Texture2D" uid="uid://0u2d4a45n7ca" path="res://assets/player/left_foot.png" id="3_jt040"]
+[ext_resource type="Texture2D" uid="uid://cbdvij018k3xg" path="res://assets/player/right_foot.png" id="4_fsv26"]
+[ext_resource type="Texture2D" uid="uid://c1pcwr6covd08" path="res://assets/player/body.png" id="5_ax4gs"]
+[ext_resource type="Texture2D" uid="uid://78qt8cq8e1db" path="res://assets/player/helmet.png" id="6_tlad1"]
+[ext_resource type="Texture2D" uid="uid://dny5la00dq8ef" path="res://assets/cutscenes/tablet.png" id="7_qxemm"]
+[ext_resource type="Texture2D" uid="uid://di0wvuiya4yn1" path="res://assets/player/glove_left.png" id="8_b7dy5"]
+[ext_resource type="Texture2D" uid="uid://m8gs4oiag6jt" path="res://assets/player/glove_right.png" id="9_thepp"]
+[ext_resource type="Texture2D" uid="uid://ckrc6osj8qqpe" path="res://assets/cutscenes/bg/pod_door.png" id="10_sq5pc"]
+[ext_resource type="Texture2D" uid="uid://drnu1mgtll8c" path="res://assets/cutscenes/bg/our_solar_system.png" id="11_ax4gs"]
+[ext_resource type="FontFile" path="res://assets/fonts/erasdust.ttf" id="11_m21dw"]
+[ext_resource type="FontFile" path="res://assets/fonts/Eraser.ttf" id="12_mh0x8"]
+[ext_resource type="Texture2D" uid="uid://ydonwo2exjha" path="res://assets/cutscenes/earth_type_shit.png" id="12_tlad1"]
+[ext_resource type="Texture2D" uid="uid://cuu4b0vqe5j6n" path="res://assets/cutscenes/rocket_scene2.png" id="13_qxemm"]
+[ext_resource type="Texture2D" uid="uid://cu1fh22qxtnhs" path="res://assets/cutscenes/dragonfly.png" id="14_b7dy5"]
+[ext_resource type="Texture2D" uid="uid://u23wldg7hduq" path="res://assets/cutscenes/bg/cloudy_earth.png" id="17_ytpmb"]
+[ext_resource type="Texture2D" uid="uid://btrkgnnl4b1gn" path="res://assets/cutscenes/engine_exhaust_residue.png" id="18_erbx5"]
+[ext_resource type="Texture2D" uid="uid://buhqheu1p6e55" path="res://assets/cutscenes/silhouette_gray.png" id="19_e4l7o"]
+[ext_resource type="Texture2D" uid="uid://g420jufx45dh" path="res://assets/cutscenes/silhouette_black.png" id="20_4xupt"]
+[ext_resource type="Texture2D" uid="uid://cj1m5mvjk8fv6" path="res://assets/cutscenes/planet_unknown.png" id="21_erbx5"]
+[ext_resource type="Texture2D" uid="uid://pr130j8g1808" path="res://assets/cutscenes/silhouette_monster_black.png" id="21_tyjoo"]
+[ext_resource type="Texture2D" uid="uid://c6l52qaif1eun" path="res://assets/cutscenes/bg/bg_fixfix.png" id="22_tyjoo"]
+[ext_resource type="Texture2D" uid="uid://c6wuwpg5g0fy" path="res://assets/cutscenes/silhouette_monster_gray.png" id="23_e4l7o"]
+[ext_resource type="Texture2D" uid="uid://bwsy35uh1wsai" path="res://assets/cutscenes/meme_remake.png" id="23_jq2n5"]
+[ext_resource type="Texture2D" uid="uid://bgriut6h4lpgr" path="res://assets/cutscenes/bg/unknwon_space.png" id="24_4xupt"]
+[ext_resource type="LabelSettings" path="res://fonts/sub.tres" id="27_e00l0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jq2n5"]
+font = ExtResource("11_m21dw")
+font_size = 50
+font_color = Color(1, 0.67058825, 0.21568628, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_e00l0"]
+font = ExtResource("12_mh0x8")
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_d7l6k"]
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_jpsbq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("scene1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("scene1/PodDoor:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(562, 322)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("scene1/PodDoor:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("scene1/PodDoor:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.6423292, 0.6423292)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("scene1/ColorRect:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("scene2/Body/skeleton/Skeleton2D/body/head:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -20)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("scene2/Body/skeleton/Skeleton2D/body/head:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.03188788]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("scene2/GloveLeft:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(510.46112, 340.46112)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("scene2/GloveLeft:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.26830465]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("scene2/Tablet:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(510.46112, 340.46112)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("scene2/Tablet:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.2607761]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("ColorRect2:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("scene2:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("scene4:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("scene3:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("ColorRect2:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("scene3:modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("scene4/EarthTypeShit:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(738.00006, 279.00003)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("scene4/EarthTypeShit:rotation")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("scene4/RocketScene2:position")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(558, 320)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("scene4/RocketScene2:rotation")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("scene4/Dragonfly:modulate")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("scene4/Dragonfly:scale")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.9152968, 0.9152968)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("scene4/Dragonfly:position")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(594, 475)]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("scene4/Dragonfly:rotation")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("scene5:visible")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("scene5/Dragonfly2:modulate")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.43137255)]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("scene5/SilhouetteBlack:texture")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("20_4xupt")]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("scene5/SilhouetteGray:texture")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("19_e4l7o")]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("scene4/EarthTypeShit:modulate")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("scene5/CloudyEarth:modulate")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("scene6/OurSolarSystem:visible")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("scene6/EarthTypeShit:visible")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/33/type = "value"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("scene6/Dragonfly:modulate")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.69411767)]
+}
+tracks/34/type = "value"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("scene6/Dragonfly:visible")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/35/type = "value"
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/path = NodePath("scene6/OurSolarSystem:texture")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_ax4gs")]
+}
+tracks/36/type = "value"
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/path = NodePath("scene6/PlanetUnknown:modulate")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/37/type = "value"
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/path = NodePath("scene6/EarthTypeShit:modulate")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/38/type = "value"
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/path = NodePath("scene6:visible")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/39/type = "value"
+tracks/39/imported = false
+tracks/39/enabled = true
+tracks/39/path = NodePath("scene2/GloveRight:position")
+tracks/39/interp = 1
+tracks/39/loop_wrap = true
+tracks/39/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(579, 336)]
+}
+tracks/40/type = "value"
+tracks/40/imported = false
+tracks/40/enabled = true
+tracks/40/path = NodePath("scene2/GloveRight:rotation")
+tracks/40/interp = 1
+tracks/40/loop_wrap = true
+tracks/40/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.79666334]
+}
+tracks/41/type = "value"
+tracks/41/imported = false
+tracks/41/enabled = true
+tracks/41/path = NodePath("Label:visible_ratio")
+tracks/41/interp = 1
+tracks/41/loop_wrap = true
+tracks/41/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/42/type = "value"
+tracks/42/imported = false
+tracks/42/enabled = true
+tracks/42/path = NodePath("Label:text")
+tracks/42/interp = 1
+tracks/42/loop_wrap = true
+tracks/42/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["could it be that we're actually alien"]
+}
+tracks/43/type = "value"
+tracks/43/imported = false
+tracks/43/enabled = true
+tracks/43/path = NodePath("scene7/BgFixfix:visible")
+tracks/43/interp = 1
+tracks/43/loop_wrap = true
+tracks/43/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/44/type = "value"
+tracks/44/imported = false
+tracks/44/enabled = true
+tracks/44/path = NodePath("scene7/MemeRemake:visible")
+tracks/44/interp = 1
+tracks/44/loop_wrap = true
+tracks/44/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/45/type = "value"
+tracks/45/imported = false
+tracks/45/enabled = true
+tracks/45/path = NodePath("scene7/Dragonfly:visible")
+tracks/45/interp = 1
+tracks/45/loop_wrap = true
+tracks/45/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/46/type = "value"
+tracks/46/imported = false
+tracks/46/enabled = true
+tracks/46/path = NodePath("scene7/Dragonfly:position")
+tracks/46/interp = 1
+tracks/46/loop_wrap = true
+tracks/46/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(635, 1190)]
+}
+tracks/47/type = "value"
+tracks/47/imported = false
+tracks/47/enabled = true
+tracks/47/path = NodePath("scene7/Dragonfly:rotation")
+tracks/47/interp = 1
+tracks/47/loop_wrap = true
+tracks/47/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/48/type = "value"
+tracks/48/imported = false
+tracks/48/enabled = true
+tracks/48/path = NodePath("Label:visible")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/49/type = "value"
+tracks/49/imported = false
+tracks/49/enabled = true
+tracks/49/path = NodePath("scene7:visible")
+tracks/49/interp = 1
+tracks/49/loop_wrap = true
+tracks/49/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_m21dw"]
+resource_name = "dna_scan"
+length = 6.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("scene1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("scene1/PodDoor:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(619, 371), Vector2(519, 371)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("scene1/PodDoor:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("scene1/PodDoor:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.6423292, 0.6423292), Vector2(2.7954493, 2.7954493)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("scene1/ColorRect:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("scene2/Body/skeleton/Skeleton2D/body/head:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5, 1.5, 2.5, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -20), Vector2(0, -20), Vector2(0, -20), Vector2(0, -20)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("scene2/Body/skeleton/Skeleton2D/body/head:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.5, 1.5, 2.5, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-0.03188788, -0.24825436, -0.03188788, -0.24825436]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("scene2/GloveLeft:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.5, 3.45, 4.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(510.46112, 340.46112), Vector2(510.46112, 340.46112), Vector2(510.46112, 340.46112)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("scene2/GloveLeft:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.5, 3.45, 4.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.11857912, 0.11857912, -0.26830465]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("scene2/Tablet:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.5, 3.45, 4.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(510.46112, 340.46112), Vector2(510.46112, 340.46112), Vector2(510.46112, 340.46112)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("scene2/Tablet:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.5, 3.45, 4.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.06968397, 0.06968397, -0.2607761]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("ColorRect2:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.050000012, 0.5, 5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("scene2:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.5, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Label:visible_ratio")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 1.2, 2.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Label:text")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["why do this alien has the same dna as human"]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Label:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0.15, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_d7l6k"]
+resource_name = "lose"
+length = 7.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("scene2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 6.9, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("scene2/Body/skeleton/Skeleton2D/body/head:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 2.65, 3.6000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -20), Vector2(0, -20), Vector2(0, -20), Vector2(0, -20)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("scene2/Body/skeleton/Skeleton2D/body/head:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 2.65, 3.6000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.48411304, -0.08777988, -0.08777988, -0.21920913]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("scene2/GloveRight:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1, 2, 2.65, 3.6000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(579, 336), Vector2(579, 336), Vector2(579, 336), Vector2(575.99994, 359.00003)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("scene2/GloveRight:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1, 2, 2.65, 3.6000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.79666334, 1.3032813, 4.095842]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("scene2/Tablet:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1, 2, 2.65, 3.6000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(510.46112, 340.46112), Vector2(525, 292), Vector2(525, 292), Vector2(644.00006, 368)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("scene2/Tablet:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1, 2, 2.65, 3.6000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.06968397, 0.5768501, 0.5768501, 2.9737983]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Label:text")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 2.583607, 2.6000001, 3.6015213, 4.55, 6.05),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["could it be that we're actually alien", "could it be that we're actually alien", "Spaceship: \"ABORT MISSION! ABORT MISSION\"", "huh? but why? ", "...", "guess i know why"]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Label:visible_ratio")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.5, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("scene7/BgFixfix:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 4.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("scene7/MemeRemake:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 4.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("scene7/Dragonfly:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(4, 4.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("scene7/Dragonfly:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(4.55, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(635, 1190), Vector2(635, 579)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("scene7/Dragonfly:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(4.55, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("scene7:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(3.75, 4.5, 7.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Label:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 7.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_i5d2a"]
+resource_name = "reveal"
+length = 12.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("scene4:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("scene3:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.4, 2, 3, 10.85, 11.3, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("scene3:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("scene4/EarthTypeShit:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(726, 291), Vector2(738.00006, 279.00003)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("scene4/EarthTypeShit:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("scene4/RocketScene2:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(2, 3.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(558, 320), Vector2(1039, 706)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("scene4/RocketScene2:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(2, 3.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("scene4/Dragonfly:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(3, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.9254902)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("scene4/Dragonfly:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(3, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.9152968, 0.9152968), Vector2(0.6630052, 0.6630052)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("scene4/Dragonfly:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(3, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(594, 475), Vector2(594, 405)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("scene4/Dragonfly:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(3, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("scene5:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 5.7, 9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("scene5/Dragonfly2:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(6, 7.05, 8, 9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.43137255), Color(1, 1, 1, 0.43137255), Color(1, 1, 1, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("scene5/SilhouetteBlack:texture")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(6, 7.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("20_4xupt"), ExtResource("21_tyjoo")]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("scene5/SilhouetteGray:texture")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(6, 7.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("19_e4l7o"), ExtResource("23_e4l7o")]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("scene4/EarthTypeShit:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(5, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("scene5/CloudyEarth:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(8.55, 9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.90588236, 0.15686275, 0.08627451, 1)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("scene6/OurSolarSystem:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(8.55, 9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("scene6/EarthTypeShit:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(8.55, 9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("scene6/Dragonfly:modulate")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(9, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.69411767), Color(1, 1, 1, 0)]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("scene6/Dragonfly:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(8.55, 9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("scene6/OurSolarSystem:texture")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(9, 9.55),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("11_ax4gs"), ExtResource("24_4xupt")]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("scene6/PlanetUnknown:modulate")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("scene6/EarthTypeShit:modulate")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(9.5, 10.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("scene6:visible")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0, 8.6, 9, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, false]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("Label:visible")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(1.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mh0x8"]
+_data = {
+&"RESET": SubResource("Animation_jpsbq"),
+&"dna_scan": SubResource("Animation_m21dw"),
+&"lose": SubResource("Animation_d7l6k"),
+&"reveal": SubResource("Animation_i5d2a")
+}
+
+[node name="ending" type="Node2D" unique_id=1752505302]
+script = ExtResource("1_i5d2a")
+
+[node name="scene2" type="Node2D" parent="." unique_id=1082792161]
+visible = false
+
+[node name="Pod" type="Sprite2D" parent="scene2" unique_id=820294049]
+position = Vector2(555.00006, 322.00003)
+scale = Vector2(0.62722844, 0.62722844)
+texture = ExtResource("2_10303")
+
+[node name="Body" type="Node2D" parent="scene2" unique_id=893341018]
+position = Vector2(515, 322)
+scale = Vector2(2.319301, 2.319301)
+
+[node name="body" type="Node2D" parent="scene2/Body" unique_id=2128474114]
+
+[node name="CanvasGroup" type="CanvasGroup" parent="scene2/Body/body" unique_id=567709547]
+
+[node name="LeftFoot" type="Sprite2D" parent="scene2/Body/body/CanvasGroup" unique_id=454938952]
+position = Vector2(-15, 33)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_jt040")
+offset = Vector2(141.44395, -259.7179)
+
+[node name="RightFoot" type="Sprite2D" parent="scene2/Body/body/CanvasGroup" unique_id=583526849]
+position = Vector2(9.000015, 30.999985)
+scale = Vector2(0.09999997, 0.09999997)
+texture = ExtResource("4_fsv26")
+offset = Vector2(-99.253136, -249.68883)
+
+[node name="Body" type="Sprite2D" parent="scene2/Body/body/CanvasGroup" unique_id=410041560]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_ax4gs")
+offset = Vector2(-8.991725, 71.24065)
+
+[node name="Helmet" type="Sprite2D" parent="scene2/Body/body/CanvasGroup" unique_id=780091157]
+position = Vector2(0, -20.000008)
+rotation = -0.031887878
+scale = Vector2(0.09999997, 0.09999997)
+texture = ExtResource("6_tlad1")
+offset = Vector2(-8.991725, 281.85065)
+
+[node name="skeleton" type="Node2D" parent="scene2/Body" unique_id=781150181]
+
+[node name="Skeleton2D" type="Skeleton2D" parent="scene2/Body/skeleton" unique_id=2020981282]
+
+[node name="body" type="Bone2D" parent="scene2/Body/skeleton/Skeleton2D" unique_id=258218371]
+rest = Transform2D(1, 0, 0, 1, 0, 0)
+
+[node name="left_foot" type="Bone2D" parent="scene2/Body/skeleton/Skeleton2D/body" unique_id=1664115022]
+position = Vector2(-15, 33)
+rest = Transform2D(1, 0, 0, 1, -15, 33)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="scene2/Body/skeleton/Skeleton2D/body/left_foot" unique_id=1322842670]
+scale = Vector2(0.1, 0.1)
+remote_path = NodePath("../../../../../body/CanvasGroup/LeftFoot")
+
+[node name="right_foot" type="Bone2D" parent="scene2/Body/skeleton/Skeleton2D/body" unique_id=203488553]
+position = Vector2(9, 31)
+scale = Vector2(0.99999964, 0.99999964)
+rest = Transform2D(1, 0, 0, 1, 9, 31)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="scene2/Body/skeleton/Skeleton2D/body/right_foot" unique_id=988692928]
+scale = Vector2(0.1, 0.1)
+remote_path = NodePath("../../../../../body/CanvasGroup/RightFoot")
+
+[node name="head" type="Bone2D" parent="scene2/Body/skeleton/Skeleton2D/body" unique_id=132380933]
+position = Vector2(0, -20)
+rotation = -0.03188788
+scale = Vector2(0.9999997, 0.9999997)
+rest = Transform2D(1, 0, 0, 1, 0, -38)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="scene2/Body/skeleton/Skeleton2D/body/head" unique_id=538269389]
+scale = Vector2(0.1, 0.1)
+remote_path = NodePath("../../../../../body/CanvasGroup/Helmet")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="scene2/Body/skeleton/Skeleton2D/body" unique_id=220880838]
+scale = Vector2(0.1, 0.1)
+remote_path = NodePath("../../../../body/CanvasGroup/Body")
+
+[node name="Tablet" type="Sprite2D" parent="scene2" unique_id=557536771]
+position = Vector2(510.46112, 340.46112)
+rotation = -0.2607761
+scale = Vector2(0.26414868, 0.26414868)
+texture = ExtResource("7_qxemm")
+
+[node name="GloveLeft" type="Sprite2D" parent="scene2" unique_id=210676693]
+position = Vector2(510.46112, 340.46112)
+rotation = -0.26830465
+scale = Vector2(0.26414868, 0.26414868)
+texture = ExtResource("8_b7dy5")
+
+[node name="GloveRight" type="Sprite2D" parent="scene2" unique_id=367850329]
+position = Vector2(579, 336)
+rotation = 0.79666334
+scale = Vector2(0.26414868, 0.26414868)
+texture = ExtResource("9_thepp")
+offset = Vector2(-259.47095, 16.888672)
+
+[node name="scene1" type="Node2D" parent="." unique_id=1101638297]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="scene1" unique_id=2044877425]
+offset_right = 1165.0
+offset_bottom = 684.0
+color = Color(0, 0, 0, 1)
+
+[node name="PodDoor" type="Sprite2D" parent="scene1" unique_id=296862561]
+position = Vector2(562, 322)
+scale = Vector2(0.6423292, 0.6423292)
+texture = ExtResource("10_sq5pc")
+offset = Vector2(-77.841736, -59.1597)
+
+[node name="scene3" type="Node2D" parent="." unique_id=420251071]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="scene3" unique_id=2030452661]
+offset_right = 1184.0
+offset_bottom = 694.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="scene3" unique_id=1738616491]
+offset_left = 476.0
+offset_top = 257.0
+offset_right = 749.0
+offset_bottom = 322.0
+text = "5 Years ago"
+label_settings = SubResource("LabelSettings_jq2n5")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="scene3" unique_id=112740335]
+offset_left = 432.0
+offset_top = 326.0
+offset_right = 806.0
+offset_bottom = 368.0
+text = "135+ Years ago Earth Time"
+label_settings = SubResource("LabelSettings_e00l0")
+horizontal_alignment = 1
+
+[node name="scene4" type="Node2D" parent="." unique_id=796156645]
+visible = false
+
+[node name="OurSolarSystem" type="Sprite2D" parent="scene4" unique_id=373292639]
+position = Vector2(579.00006, 324.00003)
+scale = Vector2(0.62999827, 0.62999827)
+texture = ExtResource("11_ax4gs")
+
+[node name="EarthTypeShit" type="Sprite2D" parent="scene4" unique_id=12547585]
+position = Vector2(738.00006, 279.00003)
+scale = Vector2(0.73441505, 0.73441505)
+texture = ExtResource("12_tlad1")
+
+[node name="RocketScene2" type="Sprite2D" parent="scene4" unique_id=271753220]
+position = Vector2(558, 320)
+scale = Vector2(0.6214527, 0.6214527)
+texture = ExtResource("13_qxemm")
+
+[node name="Dragonfly" type="Sprite2D" parent="scene4" unique_id=1639341102]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(594, 475)
+scale = Vector2(0.9152968, 0.9152968)
+texture = ExtResource("14_b7dy5")
+
+[node name="Rise" type="AudioStreamPlayer" parent="scene4" unique_id=686397621]
+volume_db = -10.0
+
+[node name="scene5" type="Node2D" parent="." unique_id=1885320014]
+visible = false
+
+[node name="CloudyEarth" type="Sprite2D" parent="scene5" unique_id=469426002]
+position = Vector2(571.1859, 320.72955)
+scale = Vector2(0.6106103, 0.6106103)
+texture = ExtResource("17_ytpmb")
+
+[node name="EngineExhaustResidue" type="Sprite2D" parent="scene5" unique_id=1286029280]
+modulate = Color(1, 1, 1, 0.22745098)
+position = Vector2(570, 353.99997)
+scale = Vector2(0.62834024, 0.62834024)
+texture = ExtResource("18_erbx5")
+
+[node name="Dragonfly2" type="Sprite2D" parent="scene5" unique_id=15948706]
+modulate = Color(1, 1, 1, 0.43137255)
+position = Vector2(592, 382)
+scale = Vector2(0.6997411, 0.6997411)
+texture = ExtResource("14_b7dy5")
+
+[node name="SilhouetteGray" type="Sprite2D" parent="scene5" unique_id=1920521079]
+modulate = Color(0.72, 0.72, 0.72, 1)
+position = Vector2(571, 380.00003)
+scale = Vector2(0.6106103, 0.6106103)
+texture = ExtResource("19_e4l7o")
+
+[node name="SilhouetteBlack" type="Sprite2D" parent="scene5" unique_id=338650028]
+position = Vector2(569.1859, 358)
+scale = Vector2(0.6106103, 0.6106103)
+texture = ExtResource("20_4xupt")
+
+[node name="Label" type="Label" parent="scene5" unique_id=1764639182]
+offset_left = 289.0
+offset_top = 579.0
+offset_right = 793.0
+offset_bottom = 602.0
+text = "The launch of the first interstellar travel project in human history"
+label_settings = SubResource("LabelSettings_d7l6k")
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Clap" type="AudioStreamPlayer" parent="scene5" unique_id=935164324]
+volume_db = -80.0
+autoplay = true
+
+[node name="scene6" type="Node2D" parent="." unique_id=87207866]
+visible = false
+
+[node name="OurSolarSystem" type="Sprite2D" parent="scene6" unique_id=1594134549]
+position = Vector2(569.2092, 335.1802)
+scale = Vector2(0.62966657, 0.62966657)
+texture = ExtResource("11_ax4gs")
+
+[node name="PlanetUnknown" type="Sprite2D" parent="scene6" unique_id=864856927]
+position = Vector2(544, 428.00003)
+scale = Vector2(0.68335724, 0.68335724)
+texture = ExtResource("21_erbx5")
+
+[node name="EarthTypeShit" type="Sprite2D" parent="scene6" unique_id=1245077936]
+position = Vector2(780.00006, 324.00003)
+scale = Vector2(0.62966657, 0.62966657)
+texture = ExtResource("12_tlad1")
+
+[node name="Dragonfly" type="Sprite2D" parent="scene6" unique_id=306660721]
+visible = false
+modulate = Color(1, 1, 1, 0.69411767)
+position = Vector2(646, 424.99997)
+scale = Vector2(0.7357716, 0.7357716)
+texture = ExtResource("14_b7dy5")
+
+[node name="scene7" type="Node2D" parent="." unique_id=2050842301]
+visible = false
+
+[node name="BgFixfix" type="Sprite2D" parent="scene7" unique_id=287752359]
+visible = false
+position = Vector2(-58.999992, 1591.0001)
+scale = Vector2(1.7685281, 1.7685281)
+texture = ExtResource("22_tyjoo")
+
+[node name="MemeRemake" type="Sprite2D" parent="scene7" unique_id=1285894005]
+visible = false
+position = Vector2(578, 315)
+scale = Vector2(0.61368555, 0.61368555)
+texture = ExtResource("23_jq2n5")
+
+[node name="Dragonfly" type="Sprite2D" parent="scene7" unique_id=1696698449]
+visible = false
+modulate = Color(1, 1, 1, 0.3254902)
+position = Vector2(635, 1190)
+texture = ExtResource("14_b7dy5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1356750981]
+libraries/ = SubResource("AnimationLibrary_mh0x8")
+
+[node name="Label" type="Label" parent="." unique_id=1623564371]
+visible = false
+offset_left = 416.0
+offset_top = 581.0
+offset_right = 768.0
+offset_bottom = 604.0
+text = "could it be that we're actually alien"
+label_settings = ExtResource("27_e00l0")
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=406617917]
+offset_right = 1165.0
+offset_bottom = 684.0
+color = Color(0, 0, 0, 1)
