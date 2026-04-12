@@ -13,12 +13,12 @@ var enemy_scenes : Array[PackedScene] = [
 var aggressive_types : Array[int] = []
 var passive_types : Array[int] = []
 
-var pool_size_per_type : int = 10
+var pool_size_per_type : int = 20
 
 @export var min_x : float = -100.0
-@export var max_x : float = 1000.0
-@export var min_y : float = -1000.0
-@export var max_y : float = 1000.0
+@export var max_x : float = 1100.0
+@export var min_y : float = -500.0
+@export var max_y : float = 1100.0
 @export var safe_spawn: float = 300.0
 
 var pools : Dictionary = {}

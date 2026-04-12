@@ -378,7 +378,7 @@ func _on_enemy_hurt_box_area_area_entered(area: Area2D) -> void:
 				player_attacked(area.global_position) 
 			else:
 				if get_dna < MAX_DNA_PER_ENEMY:
-					var dna_to_add = 10.0
+					var dna_to_add = 20.0
 					if get_dna + dna_to_add > MAX_DNA_PER_ENEMY:
 						dna_to_add = MAX_DNA_PER_ENEMY - get_dna
 					

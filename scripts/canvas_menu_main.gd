@@ -9,6 +9,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_texture_button_play_pressed() -> void:
+	self.hide()
 	world.start_game()
 
 func _on_texture_button_settings_pressed() -> void:

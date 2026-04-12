@@ -3,7 +3,7 @@ extends Node
 const MAX_HP: float = 100.0
 const MAX_DNA: float = 500.0
 const MAG_SIZE: int = 60 
-const MAX_TIME: float = 300.0
+const MAX_TIME: float =300.0
 const DAMAGE : float = 10.0
 const KNOCKBACK : float = 500.0
 var is_game_over : bool = false
@@ -24,7 +24,7 @@ var current_dna : float = 0.0:
 			is_game_over = true
 			var time_left = MAX_TIME - current_time
 			
-			if time_left >= 120.0:
+			if time_left >= 90.0:
 				SignalBus.game_ended.emit("easter_egg")
 			else:
 				SignalBus.game_ended.emit("normal_ending")

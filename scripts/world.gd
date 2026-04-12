@@ -37,7 +37,8 @@ func _ready() -> void:
 	
 	SignalBus.player_died.connect(_on_player_died)
 	SignalBus.game_ended.connect(_on_game_ended_ui_hide)
-
+	SignalBus.back_to_main_menu.connect(_on_back_to_main_menu)
+	
 func show_main_menu() -> void:
 	is_game_started = false 
 	is_ending = false
@@ -108,10 +109,12 @@ func _on_game_ended_ui_hide(ending_type: String) -> void:
 	
 	menu_pause.hide()
 
-
-func _on_texture_button_credits_pressed() -> void:
-	pass # Replace with function body.
-
-
-func _on_texture_button_tutorial_pressed() -> void:
-	pass # Replace with function body.
+func _on_back_to_main_menu() -> void:
+	GameDataManager.is_game_over = false
+	GameDataManager.current_dna = 0.0
+	GameDataManager.current_time = 0.0
+	GameDataManager.current_hp = GameDataManager.MAX_HP
+	GameDataManager.current_ammo = GameDataManager.MAG_SIZE
+	
+	get_tree().paused = false
+	get_tree().reload_current_scene()

@@ -8,3 +8,4 @@ signal timer_endgame(new_time)
 signal dna_changed(new_dna)
 signal reload_status(is_reloading)
 signal game_ended(ending_type)
+signal back_to_main_menu
