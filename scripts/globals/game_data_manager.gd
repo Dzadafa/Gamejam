@@ -3,12 +3,15 @@ extends Node
 const MAX_HP: float = 100.0
 const MAX_DNA: float = 500.0
 const MAG_SIZE: int = 60 
-const MAX_TIME: float =300.0
+const MAX_TIME: float =180.0
 const DAMAGE : float = 10.0
 const KNOCKBACK : float = 500.0
 var is_game_over : bool = false
 var chasing_count : int = 0
 var isRestart :bool = false
+var is_intro_skipped: bool = false
+var is_restarting_directly: bool = false
+
 var current_hp: float = 100.0:
 	set(value):
 		current_hp = clamp(value, 0, MAX_HP)
@@ -24,7 +27,7 @@ var current_dna : float = 0.0:
 			is_game_over = true
 			var time_left = MAX_TIME - current_time
 			
-			if time_left >= 90.0:
+			if time_left >= 150.0:
 				SignalBus.game_ended.emit("easter_egg")
 			else:
 				SignalBus.game_ended.emit("normal_ending")

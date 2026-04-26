@@ -15,11 +15,11 @@ var passive_types : Array[int] = []
 
 var pool_size_per_type : int = 20
 
-@export var min_x : float = -100.0
-@export var max_x : float = 1100.0
-@export var min_y : float = -500.0
-@export var max_y : float = 1100.0
-@export var safe_spawn: float = 300.0
+@export var min_x : float = 0.0
+@export var max_x : float = 1153.0
+@export var min_y : float = 0.0
+@export var max_y : float = 648.0
+@export var safe_spawn: float = 100.0
 
 var pools : Dictionary = {}
 
@@ -122,17 +122,28 @@ func get_valid_spawn_position() -> Vector2:
 	var is_valid = false
 	var max_attempts = 10 
 	
+	var center_pos = Vector2.ZERO
+	if PlayerManager.is_player_alive():
+		center_pos = PlayerManager.player.global_position
+	
 	for attempt in range(max_attempts):
-		random_position = Vector2(randf_range(min_x, max_x), randf_range(min_y, max_y))
+		var rx = center_pos.x + randf_range(-700.0, 700.0)
+		var ry = center_pos.y + randf_range(-400.0, 400.0)
+		random_position = Vector2(rx, ry)
 		
 		if PlayerManager.is_player_alive():
-			var player_position = PlayerManager.player.global_position
-			var distance = random_position.distance_to(player_position)
-			
+			var distance = random_position.distance_to(center_pos)
 			if distance >= safe_spawn:
 				is_valid = true
 				break
 		else:
 			is_valid = true
 			break
+			
 	return random_position
+	
+func reset_all_enemies():
+	for enemy_array in pools.values():
+		for enemy in enemy_array:
+			if is_instance_valid(enemy) and enemy.is_physics_processing():
+				enemy.deactivate()

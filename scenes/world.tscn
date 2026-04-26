@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://7pan7rxhlwl8" path="res://scenes/cutscenes/intro.tscn" id="3_fh13f"]
 [ext_resource type="Texture2D" uid="uid://c6l52qaif1eun" path="res://assets/cutscenes/bg/bg_fixfix.png" id="4_k0juu"]
 [ext_resource type="Script" uid="uid://b5jj6sw7xxf0m" path="res://scripts/canvas_ui_player.gd" id="6_qfnet"]
-[ext_resource type="Shader" path="res://shaders/sprite_outline.gdshader" id="7_4mrxx"]
+[ext_resource type="Shader" uid="uid://bxb53p1bx1wd5" path="res://shaders/sprite_outline.gdshader" id="7_4mrxx"]
 [ext_resource type="Texture2D" uid="uid://x21653afs3f6" path="res://assets/UI/Pause_Button.png" id="7_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://drl0krskisoov" path="res://assets/UI/Frame 1.png" id="9_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://bf1mn5m0dtaru" path="res://assets/UI/Frame.png" id="10_e3hyu"]
@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cu58km7lkaqbx" path="res://assets/UI/Switch_Off.png" id="13_o8fc1"]
 [ext_resource type="Texture2D" uid="uid://dbengqd6e8il2" path="res://assets/UI/Button_01.png" id="14_o8fc1"]
 [ext_resource type="Script" uid="uid://cc1nvupcuk2d1" path="res://scripts/canvas_menu_main.gd" id="14_xo05s"]
-[ext_resource type="PackedScene" path="res://scenes/main_menu_background.tscn" id="15_pm21f"]
+[ext_resource type="PackedScene" uid="uid://bj3of3s5st4gs" path="res://scenes/main_menu_background.tscn" id="15_pm21f"]
 [ext_resource type="FontFile" uid="uid://bu2v3e40iaqb2" path="res://assets/fonts/Eraser.ttf" id="16_7iits"]
 [ext_resource type="Script" uid="uid://4xi0q5n0nh0r" path="res://scripts/canvas_restart_game.gd" id="16_dss4m"]
 [ext_resource type="AudioStream" uid="uid://r41vowvx3me3" path="res://assets/audio/bgm/old_city_theme_by_remaxim.ogg" id="17_7t5mc"]
@@ -232,11 +232,11 @@ offset_bottom = 304.0
 scale = Vector2(0.6560872, 0.63847107)
 
 [node name="LabelPause" type="Label" parent="CanvasMenuPause" unique_id=1793410853]
-offset_left = 518.0
-offset_top = 188.0
-offset_right = 660.0
-offset_bottom = 243.0
-text = "PAUSE"
+offset_left = 484.0
+offset_top = 195.0
+offset_right = 692.0
+offset_bottom = 250.0
+text = "SETTINGS"
 label_settings = SubResource("LabelSettings_jhx03")
 horizontal_alignment = 1
 
@@ -558,6 +558,8 @@ bus = &"SFX"
 [connection signal="pressed" from="CanvasUIPlayer/TextureButtonMenuPause" to="CanvasUIPlayer" method="_on_texture_button_menu_pause_pressed"]
 [connection signal="pressed" from="CanvasMenuPause/TextureButtonExit" to="CanvasMenuPause" method="_on_texture_button_exit_pressed"]
 [connection signal="pressed" from="CanvasMenuPause/ButtonExitMenuPause" to="CanvasMenuPause" method="_on_button_exit_menu_pause_pressed"]
+[connection signal="pressed" from="CanvasMenuPause/TextureButtonMusic" to="CanvasMenuPause" method="_on_texture_button_music_pressed"]
+[connection signal="pressed" from="CanvasMenuPause/TextureButtonSFX" to="CanvasMenuPause" method="_on_texture_button_sfx_pressed"]
 [connection signal="pressed" from="CanvasMenuMain/TextureButtonPlay" to="CanvasMenuMain" method="_on_texture_button_play_pressed"]
 [connection signal="pressed" from="CanvasMenuMain/TextureButtonSettings" to="CanvasMenuMain" method="_on_texture_button_settings_pressed"]
 [connection signal="pressed" from="CanvasMenuMain/TextureButtonCredits" to="CanvasMenuMain" method="_on_texture_button_credits_pressed"]

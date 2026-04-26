@@ -25,15 +25,23 @@ func _ready() -> void:
 	ui_player.hide()
 	RadarMinimap.hide()
 	
-	var intro_instance = intro.instantiate()
-	intro_instance.process_mode = Node.PROCESS_MODE_ALWAYS
-	add_child(intro_instance)
-	
-	var anim_player = intro_instance.get_node("AnimationPlayer")
-	await anim_player.animation_finished
-	intro_instance.queue_free()
+	if not GameDataManager.is_intro_skipped:
+		var intro_instance = intro.instantiate()
+		intro_instance.process_mode = Node.PROCESS_MODE_ALWAYS
+		add_child(intro_instance)
+		
+		var anim_player = intro_instance.get_node("AnimationPlayer")
+		await anim_player.animation_finished
+		intro_instance.queue_free()
+		
+		GameDataManager.is_intro_skipped = true
+		
 	intro_canvas.hide()
-	call_deferred("show_main_menu")
+	if GameDataManager.is_restarting_directly:
+		GameDataManager.is_restarting_directly = false
+		call_deferred("start_game") 
+	else:
+		call_deferred("show_main_menu")
 	
 	SignalBus.player_died.connect(_on_player_died)
 	SignalBus.game_ended.connect(_on_game_ended_ui_hide)
@@ -54,14 +62,23 @@ func show_main_menu() -> void:
 		menu_bgm.play()
 
 func start_game() -> void:
+	GameDataManager.is_game_over = false
+	GameDataManager.current_dna = 0.0
+	GameDataManager.current_time = 0.0
+	GameDataManager.current_hp = GameDataManager.MAX_HP
+	GameDataManager.current_ammo = GameDataManager.MAG_SIZE
+	EnemyPoolManager.reset_all_enemies()
 	is_game_started = true 
 	is_ending = false
 	
 	menu_main.hide()
 	ui_player.show()
 	RadarMinimap.show()
+	
 	get_tree().paused = false
+	
 	menu_bgm.stop()
+	mute_music()
 	if not game_bgm.playing:
 		game_bgm.play()
 
@@ -115,6 +132,23 @@ func _on_back_to_main_menu() -> void:
 	GameDataManager.current_time = 0.0
 	GameDataManager.current_hp = GameDataManager.MAX_HP
 	GameDataManager.current_ammo = GameDataManager.MAG_SIZE
-	
+	GameDataManager.is_intro_skipped = true
+
 	get_tree().paused = false
+	menu_bgm.stop()
 	get_tree().reload_current_scene()
+	
+func mute_music():
+	var music_bus_idx: int
+	menu_bgm.stop()
+	music_bus_idx = AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_mute(music_bus_idx, true)
+
+func on_music():
+	menu_bgm.play()
+	var music_bus_idx: int
+	music_bus_idx = AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_mute(music_bus_idx, false)
+
+
+	

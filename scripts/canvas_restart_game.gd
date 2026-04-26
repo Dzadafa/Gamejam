@@ -6,14 +6,14 @@ func _ready() -> void:
 	self.hide()
 
 func _on_texture_button_play_pressed() -> void:
+	GameDataManager.is_restarting_directly = true 
+	world.mute_music()
 	get_tree().paused = false 
-	
-	GameDataManager.current_hp = GameDataManager.MAX_HP
-	GameDataManager.current_ammo = GameDataManager.MAG_SIZE
-	GameDataManager.current_dna = 0.0
-	GameDataManager.current_time = 0.0 
-	world.show_main_menu()
+	get_tree().reload_current_scene()
 	
 func _on_texture_button_exit_pressed() -> void:
 	self.hide()
-	world.show_main_menu()
+	world.on_music()
+	if world.menu_bgm: world.menu_bgm.stop()
+	if world.game_bgm: world.game_bgm.stop()
+	SignalBus.back_to_main_menu.emit()

@@ -59,4 +59,7 @@ func _on_game_ended(ending_type: String) -> void:
 		await loser_ending()
 	
 	self.hide()
+	AudioServer.set_bus_mute(sfx_bus_idx, false)
+	AudioServer.set_bus_mute(music_bus_idx, false)
+	
 	SignalBus.back_to_main_menu.emit()

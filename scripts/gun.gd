@@ -28,6 +28,8 @@ func _ready() -> void:
 	on_scan.connect(BulletPoolManager.get_scanning_gun)
 	gun_sprite.texture = shoot_gun
 	ray_gun_particle.emitting = false
+	isScanning = false
+	on_scan.emit(isScanning)
 	
 func _physics_process(delta: float) -> void:
 	if isReloading:
@@ -75,8 +77,12 @@ func shoot() -> void:
 		
 	var bullet = BulletPoolManager.get_bullet()
 	if bullet != null:
-		shoot_sound.play()
-		get_tree().create_timer(0.5).timeout.connect(shoot_sound.stop)
+		var temp_sound = AudioStreamPlayer.new()
+		temp_sound.stream = shoot_sound.stream
+		temp_sound.volume_db = shoot_sound.volume_db 
+		add_child(temp_sound) 
+		temp_sound.play(0.0) 
+		get_tree().create_timer(0.5).timeout.connect(temp_sound.queue_free)
 		var shoot_direction = (bullet_target_position.global_position - bullet_spawn_position.global_position).normalized()
 
 		isShooting = false

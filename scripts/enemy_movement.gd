@@ -31,7 +31,7 @@ var can_shoot := true
 const SPEED : float = 300.0
 const HP : float = 200.0
 const DISTANCE_AREA : float = 50.0
-const MAX_DNA_PER_ENEMY : float = 60.0
+const MAX_DNA_PER_ENEMY : float = 80.0
 var get_dna : float = 0.0
 
 @export var wander_radius : float = 100.0
@@ -93,6 +93,12 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 		
+	if PlayerManager.is_player_alive():
+		var player_pos = PlayerManager.player.global_position
+		if global_position.distance_to(player_pos) > 1500.0:
+			deactivate()
+			return
+			
 	if run_attack_cooldown > 0:
 		run_attack_cooldown -= delta
 		
@@ -212,15 +218,18 @@ func handle_flip(move_direction_x: float):
 		enemy_body.scale.x = 1 * enemy_size
 		
 func reset_shader_state():
+	if animation_enemy != null:
+		animation_enemy.stop()
+		if animation_enemy.has_animation("RESET"): 
+			animation_enemy.play("RESET")
+			animation_enemy.advance(0) 
+			animation_enemy.stop()
+			
 	if enemy_body and enemy_body.material:
 		if not enemy_body.material.resource_local_to_scene:
 			enemy_body.material = enemy_body.material.duplicate()
 		
-		enemy_body.material.set_shader_parameter("hit_flash_on", false)
-	
-	if animation_enemy != null and animation_enemy.is_playing():
-		if animation_enemy.current_animation == "hit_flash":
-			animation_enemy.stop()
+		enemy_body.material.set_shader_parameter("hit_flash_on", false) 
 
 func setup_enemy():
 	speed_multiplier = randf_range(0.2, 1.0) 
@@ -245,6 +254,8 @@ func setup_enemy():
 	shoot_range = base_shoot_range * enemy_size + base_shoot_range
 	
 func player_attacked(attacker_position: Vector2):
+	if isDead: 
+		return
 	is_run_attacking = false 
 	
 	if animation_enemy != null:
@@ -304,6 +315,11 @@ func spawn_bullet():
 func enemy_die():
 	if isChasing:
 		GameDataManager.chasing_count = max(0, GameDataManager.chasing_count - 1)
+		isChasing = false
+	
+	if enemy_hurt_box_area != null:
+		enemy_hurt_box_area.set_deferred("monitoring", false)
+		enemy_hurt_box_area.set_deferred("monitorable", false)
 	
 	if animation_enemy != null and animation_enemy.has_animation("die"):
 		animation_enemy.play("die")
@@ -340,6 +356,14 @@ func deactivate():
 func activate(spawn_position: Vector2):
 	isDead = false
 	is_run_attacking = false 
+	
+	isChasing = false 
+	isHittingPlayer = false
+	can_shoot = true
+	timer.stop() 
+	
+	if shoot_timer != null:
+		shoot_timer.stop()
 	global_position = spawn_position
 	
 	get_dna = 0.0
@@ -355,7 +379,8 @@ func activate(spawn_position: Vector2):
 	show()
 	set_physics_process(true)
 	
-	enemy_collision.set_deferred("disabled", false)
+	if enemy_collision != null:
+		enemy_collision.set_deferred("disabled", false)
 	
 	if enemy_hurt_box_area:
 		enemy_hurt_box_area.set_deferred("monitoring", true)
